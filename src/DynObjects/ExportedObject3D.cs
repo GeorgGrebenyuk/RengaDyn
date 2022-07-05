@@ -27,18 +27,21 @@ namespace DynRenga.DynObjects
         /// <summary>
         /// Получение интерфейса Renga.IExportedObject3D по идентификатору объекта модели (Renga.IModelObject)
         /// </summary>
-        /// <param name="data_exporter_com">Интерфейс Renga.IDataExporter</param>
+        /// <param name="data_exporter">Класс DataExporter</param>
         /// <param name="modelobject_id">int ModelObjectId (Renga.IModelObject.Id)</param>
         /// <returns></returns>
-        public ExportedObject3D (object data_exporter_com, int modelobject_id)
+        public ExportedObject3D (DynDocument.DataExporter data_exporter, int modelobject_id)
         {
-            IExportedObject3DCollection collection = ((Renga.IDataExporter)data_exporter_com).GetObjects3D();
+            IExportedObject3DCollection collection = data_exporter.data_exporter.GetObjects3D();
             
             for (int i = 0; i < collection.Count; i++)
             {
                 Renga.IExportedObject3D obj = collection.Get(i);
-                if (obj.ModelObjectId == modelobject_id) this.obj = obj;
-                break;
+                if (obj.ModelObjectId == modelobject_id) 
+                {
+                    this.obj = obj;
+                    break;
+                }
             }
         }
         [dr.IsVisibleInDynamoLibrary(true)]

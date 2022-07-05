@@ -14,6 +14,7 @@ namespace DynRenga.Other
 {
     public class RengaSimpleInterfaces
     {
+        private RengaSimpleInterfaces() { }
         /// <summary>
         /// Получение цветового кода из объекта Renga.COlor
         /// </summary>
