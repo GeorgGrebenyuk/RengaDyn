@@ -9,7 +9,7 @@ using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
 
-namespace DynRenga.DynDocument
+namespace DynRenga.DynDocument.Project
 {
     /// <summary>
     /// Рабочий проект

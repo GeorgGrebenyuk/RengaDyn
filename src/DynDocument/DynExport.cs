@@ -26,12 +26,12 @@ namespace DynRenga.DynDocument
         {
             return new Dictionary<string, object>
             {
-                {"v2000", (int)Renga.AutocadVersion.AutocadVersion_v2000 },
-                {"v2004", (int)Renga.AutocadVersion.AutocadVersion_v2004 },
-                {"v2007", (int)Renga.AutocadVersion.AutocadVersion_v2007 },
-                {"v2010", (int)Renga.AutocadVersion.AutocadVersion_v2010 },
-                {"v2013", (int)Renga.AutocadVersion.AutocadVersion_v2013 },
-                {"v2018", (int)Renga.AutocadVersion.AutocadVersion_v2018 }
+                {"v2000", Renga.AutocadVersion.AutocadVersion_v2000 },
+                {"v2004", Renga.AutocadVersion.AutocadVersion_v2004 },
+                {"v2007", Renga.AutocadVersion.AutocadVersion_v2007 },
+                {"v2010", Renga.AutocadVersion.AutocadVersion_v2010 },
+                {"v2013", Renga.AutocadVersion.AutocadVersion_v2013 },
+                {"v2018", Renga.AutocadVersion.AutocadVersion_v2018 }
             };
         }
         /// <summary>
@@ -47,10 +47,11 @@ namespace DynRenga.DynDocument
             };
         }
         /// <summary>
-        /// Экспорт чертежей модели в формат DWG/DXF/PDF/XPS заданной версии в папку по именам чертежей. С выбором перезаписи сущствующих документов
+        /// Экспорт чертежей модели в формат DWG/DXF/PDF/XPS заданной версии в папку по именам чертежей. 
+        /// С выбором перезаписи существующих документов
         /// </summary>
         /// <param name="renga_project_com">Интерфейс Renga.IProject</param>
-        /// <param name="AllDrawings">Выьор, эксортировать все схемы или только Чертежи</param>
+        /// <param name="AllDrawings">Выбор, эксортировать все схемы или только Чертежи</param>
         /// <param name="PathToFolderToExport">Путь к папке, куда сохранять чертежи</param>
         /// <param name="ExportFormat_com">Версия для экспорта, нода AcadExportFormats</param>
         /// <param name="FileType">1 = dwg, 2 = dxf, 3 = pdf, 4 = xps</param>
@@ -89,31 +90,31 @@ namespace DynRenga.DynDocument
         /// <summary>
         /// Экспорт текущего проекта в IFC с выбором папки для экспорта
         /// </summary>
-        /// <param name="order_matching">Условный параметр, для задания очередности выполнения нода</param>
+        /// <param name="renga_project">Класс Project</param>
         /// <param name="PathToFolderToExport"></param>
         /// <param name="Overwrite"></param>
         /// <param name="wait_ifcExportSettings">0 = экспорт с настраиваемыми параметрами; остальное - экспорт с параметрами по умолчанию</param>
-        public static int ExportToIfc(object renga_project_com, string PathToFolderToExport, 
+        public static int ExportToIfc(DynDocument.Project.Project renga_project, string PathToFolderToExport, 
             int wait_ifcExportSettings,  bool Overwrite = true) //
         {
             IIfcExportSettings settings = ifc_settings as IIfcExportSettings;
             string ProjectName;
-            if (((Renga.IProject)renga_project_com).FilePath != null) 
-                ProjectName = Path.GetFileNameWithoutExtension(((Renga.IProject)renga_project_com).FilePath);
+            if ((renga_project.project).FilePath != null) 
+                ProjectName = Path.GetFileNameWithoutExtension((renga_project.project).FilePath);
             ProjectName = Guid.NewGuid().ToString();
             //string export_path = PathToFolderToExport.Replace("\\", "/") + "/" + ProjectName + ".ifc";
             string export_path = PathToFolderToExport.Replace("\\", "/");
             //if (File.Exists(export_path)) export_path.Replace(".ifc", Guid.NewGuid().ToString() + ".ifc");
 
-            if (wait_ifcExportSettings == 0) ((Renga.IProject)renga_project_com).ExportToIfc2(export_path, Overwrite, settings);
-            else ((Renga.IProject)renga_project_com).ExportToIfc(export_path, Overwrite);
+            if (wait_ifcExportSettings == 0) (renga_project.project).ExportToIfc2(export_path, Overwrite, settings);
+            else (renga_project.project).ExportToIfc(export_path, Overwrite);
             
             return 0;
         }
         /// <summary>
         /// Настройки экспорта файла в IFC
         /// </summary>
-        /// <param name="order_matching">Условный параметр, для задания очередности выполнения нода</param>
+        /// <param name="renga_application">Класс Application</param>
         /// <param name="file_ValueMappingFilePath">Файловый путь до файла маппинга значений</param>
         /// <param name="file_EntityTypeMappingFilePath">Файловый путь до файла маппинга объектов модели</param>
         /// <param name="file_LayerMappingFilePath">Файловый путь до файла маппинга слоев</param>
@@ -122,11 +123,11 @@ namespace DynRenga.DynDocument
         /// <param name="bool_SplitObjectsWithLayeredMaterialIntoParts">Включение/отключение опции расчленения объектов на части по материалам слоя</param>
         /// <param name="bool_GeometricRepresentationWithoutCutting">Включение/отключение опции экспорта геометрии без подрезки</param>
         /// <returns></returns>
-        public static int CreateIIfcExportSettings (object renga_app_com, string file_ValueMappingFilePath,  string file_EntityTypeMappingFilePath,
+        public static int CreateIIfcExportSettings (DynDocument.Application renga_application, string file_ValueMappingFilePath,  string file_EntityTypeMappingFilePath,
             string file_LayerMappingFilePath, bool bool_ApproximateCurves, bool bool_VoidsAsReference, bool bool_SplitObjectsWithLayeredMaterialIntoParts, 
             bool bool_GeometricRepresentationWithoutCutting)
         {
-            IIfcExportSettings settings = ((Renga.IApplication)renga_app_com).CreateIfcExportSettings();
+            IIfcExportSettings settings = renga_application.renga_app.CreateIfcExportSettings();
             settings.ValueMappingFilePath = file_ValueMappingFilePath;
             settings.Version = IfcVersion.IfcVersion_4;
             settings.EntityTypeMappingFilePath = file_EntityTypeMappingFilePath;

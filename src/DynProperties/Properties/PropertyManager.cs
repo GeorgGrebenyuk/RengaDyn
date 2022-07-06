@@ -21,7 +21,7 @@ namespace DynRenga.DynProperties.Properties
         /// Получение менеджера свойства (Renga.IPropertyManager) из данного проекта
         /// </summary>
         /// <param name="renga_project"></param>
-        public PropertyManager (DynDocument.Project renga_project)
+        public PropertyManager (DynDocument.Project.Project renga_project)
         {
             this.prop_manager = renga_project.project.PropertyManager;
         }

@@ -13,7 +13,7 @@ namespace DynRenga.DynDocument
 {
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IDataExporter
-    /// (предоставлением информации о геометрии) объектов)
+    /// (предоставлением информации о геометрии объектов)
     /// </summary>
     [dr.IsVisibleInDynamoLibrary(true)]
     public class DataExporter
@@ -21,11 +21,11 @@ namespace DynRenga.DynDocument
         public Renga.IDataExporter data_exporter;
         /// <summary>
         /// Инициализация класса через получение Renga.IDataExporter
-        /// из сущности проекта Renga
+        /// из сущности проекта Renga (класса Project)
         /// </summary>
         /// <param name="renga_project"></param>
         [dr.IsVisibleInDynamoLibrary(true)]
-        public DataExporter(DynRenga.DynDocument.Project renga_project)
+        public DataExporter(DynRenga.DynDocument.Project.Project renga_project)
         {
             this.data_exporter = renga_project.project.DataExporter;
         }
