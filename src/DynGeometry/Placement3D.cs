@@ -11,6 +11,7 @@ using Renga;
 
 namespace DynRenga.DynGeometry
 {
+    [dr.IsVisibleInDynamoLibrary(false)]
     public class Placement3D
     {
         private Placement3D() { }

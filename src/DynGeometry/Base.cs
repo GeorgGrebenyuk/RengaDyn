@@ -1,17 +1,17 @@
-﻿using Autodesk.DesignScript.Runtime;
-using System;
+﻿using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
+
+using dr = Autodesk.DesignScript.Runtime;
+using dg = Autodesk.DesignScript.Geometry;
 using Renga;
 
 namespace DynRenga.DynGeometry
 {
+    [dr.IsVisibleInDynamoLibrary(false)]
     public class Base
     {
         private Base() { }
@@ -34,7 +34,7 @@ namespace DynRenga.DynGeometry
         /// <param name="com_Base2DGeometry">COM-объект геометрии (двухмерный объект)</param>
         /// <param name="ObjType">0 = FloatPoint2D, 1 = Point2D, 2 = Vector2D</param>
         /// <returns></returns>
-        [MultiReturn(new[] { "X", "Y" })]
+        [dr.MultiReturn(new[] { "X", "Y" })]
         public static Dictionary <string, object> GetCoords_2D (object com_Base2DGeometry, int ObjType)
         {
             switch (ObjType)
@@ -72,7 +72,7 @@ namespace DynRenga.DynGeometry
         /// <param name="com_Base3DGeometry">COM-объект геометрии (трехмерный объект)</param>
         /// <param name="ObjType">0 = FloatPoint3D, 1 = Point3D, 2 = Vector3D, 3 = FloatVector3D</param>
         /// <returns></returns>
-        [MultiReturn(new[] { "X", "Y", "Z" })]
+        [dr.MultiReturn(new[] { "X", "Y", "Z" })]
         public static Dictionary<string, object> GetCoords_3D(object com_Base3DGeometry, int ObjType)
         {
             switch (ObjType)
@@ -208,7 +208,7 @@ namespace DynRenga.DynGeometry
         /// </summary>
         /// <param name="com_Triangle">COM - объект(Triangle)</param>
         /// <returns></returns>
-        [MultiReturn(new[] { "V0", "V1", "V2" })]
+        [dr.MultiReturn(new[] { "V0", "V1", "V2" })]
         public static Dictionary<string,object> GetTriangleInfo (object com_Triangle)
         {
             Triangle trg = (Triangle)com_Triangle;
