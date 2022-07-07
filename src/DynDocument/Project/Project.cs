@@ -70,47 +70,5 @@ namespace DynRenga.DynDocument.Project
 
 
     }
-    /// <summary>
-    /// Представляет класс Renga.IModel
-    /// </summary>
-    public class Model
-    {
-        public Renga.IModel model;
-        /// <summary>
-        /// Получение Renga.IModel из проекта Renga (нод Project)
-        /// </summary>
-        /// <param name="project"></param>
-        public Model (Project project)
-        {
-            this.model = project.project.Model;
-        }
-        /// <summary>
-        /// Сведение к интерфейсу Renga.IModel объекта модели "Сборка"
-        /// </summary>
-        /// <param name="renga_model_object_assembly"></param>
-        public Model (object renga_model_object_assembly)
-        {
-            if ((renga_model_object_assembly as Renga.IModelObject).ObjectType == ObjectTypes.AssemblyInstance)
-                this.model = (Renga.IModelObject)renga_model_object_assembly as Renga.IModel;
-            else this.model = null;
-        }
-        /// <summary>
-        /// Получение внутреннего челочисенного идентификатора объекта из его Guid-идентификатора
-        /// </summary>
-        /// <param name="internal_model_guid"></param>
-        /// <returns></returns>
-        public int GetIdFromUniqueId (Guid internal_model_guid)
-        {
-            return this.model.GetIdFromUniqueId(internal_model_guid);
-        }
-        /// <summary>
-        /// Получение внутреннего Guid-идентификатора объекта из его целочисленного идентификатора
-        /// </summary>
-        /// <param name="internal_model_id"></param>
-        /// <returns></returns>
-        public Guid GetUniqueIdFromId (int internal_model_id)
-        {
-            return this.model.GetUniqueIdFromId(internal_model_id);
-        }
-    }
+    
 }
