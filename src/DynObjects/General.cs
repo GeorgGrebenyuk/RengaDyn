@@ -18,7 +18,14 @@ namespace DynRenga.DynObjects
     {
         private General() { }
         
-
+        /// <summary>
+        /// Получение всех объектных идентификаторов
+        /// </summary>
+        /// <returns></returns>
+        public static List<Guid> AllObjectTypes()
+        {
+            return ObjectTypes().Select(a => a.Value).ToList();
+        }
         /// <summary>
         /// Типы объектов (перечисление)
         /// </summary>
