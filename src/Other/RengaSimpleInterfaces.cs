@@ -31,6 +31,11 @@ namespace DynRenga.Other
                 {"Alpha",((Renga.Color)renga_color_obj).Alpha }
             };
         }
+        /// <summary>
+        /// Расшифровка значения типа Logical в Renga (встречается в свойствах)
+        /// </summary>
+        /// <param name="Logical_obj"></param>
+        /// <returns></returns>
         public static string GetLogicalValue(object Logical_obj)
         {
             string value = null;
@@ -61,7 +66,7 @@ namespace DynRenga.Other
         /// </summary>
         /// <param name="guid_str"></param>
         /// <returns></returns>
-        public static Guid ByString(string guid_str)
+        public static Guid GuidByString(string guid_str)
         {
             return Guid.Parse(guid_str);
         }
@@ -70,7 +75,7 @@ namespace DynRenga.Other
         /// </summary>
         /// <param name="guid"></param>
         /// <returns></returns>
-        public static string ByGuid (Guid guid)
+        public static string StringByGuid (Guid guid)
         {
             return guid.ToString();
         }

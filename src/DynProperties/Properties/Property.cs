@@ -165,43 +165,67 @@ namespace DynRenga.DynProperties.Properties
             
 
         }
+        /// <summary>
+        /// Получение строкового наименования свойства
+        /// </summary>
+        /// <returns></returns>
         public string Name()
         {
             return this.prop.Name;
         }
+        /// <summary>
+        /// Получение Guid-идентификатора свойства
+        /// </summary>
+        /// <returns></returns>
         public Guid Id()
         {
             return this.prop.Id;
         }
-        public string IdS()
-        {
-            return this.prop.IdS;
-        }
+        /// <summary>
+        /// Получение значения свойства как дробного числа double
+        /// </summary>
+        /// <returns></returns>
         public double GetDoubleValue()
         {
             if (this.prop.HasValue()) return this.prop.GetDoubleValue();
             else return double.NaN;
         }
+        /// <summary>
+        /// Получение значения свойства как строкового представления
+        /// </summary>
+        /// <returns></returns>
         public string GetStringValue()
         {
             if (this.prop.HasValue()) return this.prop.GetStringValue();
             else return null;
         }
+        /// <summary>
+        /// Сброс значения свойства
+        /// </summary>
         public void ResetValue()
         {
             this.prop.ResetValue();
         }
+        /// <summary>
+        /// Проверка, имеет ли свойство какое-либо значение
+        /// </summary>
+        /// <returns></returns>
         public bool HasValue()
         {
             return this.prop.HasValue();
         }
+        /// <summary>
+        /// Получение значения свойства как величины угла
+        /// </summary>
+        /// <param name="AngleUnit">Параметр Renga.AngleUnit как единица измерения угловой меры</param>
+        /// <returns></returns>
         public double GetAngleValue(object AngleUnit)
         {
             if (this.prop.HasValue()) return this.prop.GetAngleValue((Renga.AngleUnit)AngleUnit);
             else return double.NaN;
         }
         /// <summary>
-        /// 
+        /// Получение булева значения свойства
         /// </summary>
         /// <returns></returns>
         public object GetBooleanValue()
@@ -209,26 +233,48 @@ namespace DynRenga.DynProperties.Properties
             if (this.prop.HasValue()) return this.prop.GetBooleanValue();
             else return null;
         }
+        /// <summary>
+        /// Получение строкового представления свойства как одного из заложенных значений Enumaration
+        /// </summary>
+        /// <returns></returns>
         public string GetEnumerationValue()
         {
             if (this.prop.HasValue()) return this.prop.GetEnumerationValue();
             else return null;
         }
+        /// <summary>
+        /// Получение целочисленного значения свойства
+        /// </summary>
+        /// <returns></returns>
         public int GetIntegerValue()
         {
             if (this.prop.HasValue()) return this.prop.GetIntegerValue();
             else return -1000000;
         }
+        /// <summary>
+        /// Получение значения свойства как меры длины
+        /// </summary>
+        /// <param name="LengthUnit">Параметр Renga.LengthUnit как единица измерения длины</param>
+        /// <returns></returns>
         public double GetLengthValue(object LengthUnit)
         {
             if (this.prop.HasValue()) return this.prop.GetLengthValue((Renga.LengthUnit)LengthUnit);
             else return double.NaN;
         }
+        /// <summary>
+        /// Получение логического значения свойства. Смотри нод Other.RengaSimpleInterfaces.GetLogicalValue
+        /// </summary>
+        /// <returns></returns>
         public object GetLogicalValue()
         {
             if (this.prop.HasValue()) return this.prop.GetLogicalValue();
             else return null;
         }
+        /// <summary>
+        /// Получение значения свойства как массы
+        /// </summary>
+        /// <param name="MassUnit">Параметр Renga.MassUnit как единица измерения массы</param>
+        /// <returns></returns>
         public double GetMassValue(object MassUnit)
         {
             if (this.prop.HasValue()) return this.prop.GetMassValue((Renga.MassUnit)MassUnit);

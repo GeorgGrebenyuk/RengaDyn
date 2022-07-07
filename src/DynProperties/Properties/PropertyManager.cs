@@ -12,13 +12,14 @@ using Renga;
 namespace DynRenga.DynProperties.Properties
 {
     /// <summary>
-    /// Класс для работы с менеджером свойств
+    /// Класс для работы с менеджером свойств проекта 
+    /// (интерфейсом Renga.IPropertyManager)
     /// </summary>
     public class PropertyManager
     {
         public Renga.IPropertyManager prop_manager;
         /// <summary>
-        /// Получение менеджера свойства (Renga.IPropertyManager) из данного проекта
+        /// Получение менеджера свойств (интерфейса Renga.IPropertyManager) из данного проекта
         /// </summary>
         /// <param name="renga_project"></param>
         public PropertyManager (DynDocument.Project.Project renga_project)
