@@ -5,3 +5,7 @@ ifc c++ какая библиотека?
 treegeometrygym - для просмотра чем закодирован элемент и поиска Id-объекта из Renga
 
 IGridWithMaterialCollection и Mesh.Grids -- используют ли одинаковые гриды
+
+
+К поддержке
+https://help.rengabim.com/api/interface_i_transform3_d.html - как его создавать, в частности для https://help.rengabim.com/api/interface_i_curve3_d.html#a1528ff28af9925b00d3492d967f695e4
