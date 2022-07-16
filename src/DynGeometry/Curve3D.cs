@@ -83,7 +83,7 @@ namespace DynRenga.DynGeometry
         public dg.Point GetBeginPoint()
         {
             Renga.Point3D p3d = this.curve_3d.GetBeginPoint();
-            return dg.Point.ByCoordinates(p3d.X, p3d.Y, p3d.Z);
+            return dg.Point.ByCoordinates(p3d.X / 1000.0, p3d.Y / 1000.0, p3d.Z / 1000.0);
         }
         /// <summary>
         /// Получение конечной точки кривой
@@ -92,7 +92,7 @@ namespace DynRenga.DynGeometry
         public dg.Point GetEndPoint()
         {
             Renga.Point3D p3d = this.curve_3d.GetEndPoint();
-            return dg.Point.ByCoordinates(p3d.X, p3d.Y, p3d.Z);
+            return dg.Point.ByCoordinates(p3d.X / 1000.0, p3d.Y / 1000.0, p3d.Z / 1000.0);
         }
         /// <summary>
         /// Вычисление точки на кривой по заданному значению параметра.
@@ -104,7 +104,7 @@ namespace DynRenga.DynGeometry
         public dg.Point GetPointOn(double param)
         {
             Renga.Point3D p3d = this.curve_3d.GetPointOn(param);
-            return dg.Point.ByCoordinates(p3d.X, p3d.Y, p3d.Z);
+            return dg.Point.ByCoordinates(p3d.X / 1000.0, p3d.Y / 1000.0, p3d.Z / 1000.0);
         }
         /// <summary>
         /// Вычисление длины кривой (в м.)
@@ -122,8 +122,8 @@ namespace DynRenga.DynGeometry
         {
             Renga.Cube bb = this.curve_3d.GetGabarit();
             return dg.BoundingBox.ByGeometry(new List<dg.Point> {
-                dg.Point.ByCoordinates(bb.MIN.X, bb.MIN.Y,bb.MIN.Z),
-                dg.Point.ByCoordinates(bb.MAX.X, bb.MAX.Y,bb.MAX.Z)});
+                dg.Point.ByCoordinates(bb.MIN.X/1000.0, bb.MIN.Y/1000.0,bb.MIN.Z/1000.0),
+                dg.Point.ByCoordinates(bb.MAX.X/1000.0, bb.MAX.Y/1000.0,bb.MAX.Z/1000.0)});
         }
         /// <summary>
         /// Проверка, замкнутая ли кривая
@@ -196,6 +196,31 @@ namespace DynRenga.DynGeometry
             v3d.Y = pOffset.Y;
             v3d.Z = pOffset.Z;
             return this.curve_3d.GetOffseted(ref v3d);
+        }
+        /// <summary>
+        /// Преобразование в dynamo PolyCurve
+        /// </summary>
+        /// <param name="parts_in_meter">Число сегментов полилинии в 1 метре</param>
+        /// <returns></returns>
+        public dg.PolyCurve ToDynamoPolyCurve(int parts_in_meter = 2)
+        {
+            Renga.Point3D curve_start_point = this.curve_3d.GetBeginPoint();
+            Renga.Point3D curve_end_point = this.curve_3d.GetEndPoint();
+
+            List<dg.Point> points = new List<dg.Point>();
+            double param_start = this.curve_3d.PointProjection(ref curve_start_point);
+            double param_end = this.curve_3d.PointProjection(ref curve_end_point);
+            double curve_length = this.curve_3d.GetLength()/1000.0;
+
+            int count_parts = Convert.ToInt32(curve_length * parts_in_meter);
+            for (int counter_param = 0; counter_param < count_parts; counter_param++)
+            {
+                double new_param = param_start + (param_end - param_start) / count_parts * counter_param;
+                Renga.Point3D calc_point = this.curve_3d.GetPointOn(new_param);
+                points.Add(dg.Point.ByCoordinates(calc_point.X / 1000.0, calc_point.Y / 1000.0, calc_point.Z / 1000.0));
+            }
+            return dg.PolyCurve.ByPoints(points);
+            
         }
     }
 }
