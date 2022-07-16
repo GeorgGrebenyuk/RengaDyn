@@ -1,0 +1,1229 @@
+{
+  "Uuid": "fcbc066c-5046-47d8-830a-9758821a0f4e",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "demo_load_osm",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "osm2dyn.OSM_data.OSM_data@double,double,double,double",
+      "Id": "a72ebf46e5e7448195d54129fd239832",
+      "Inputs": [
+        {
+          "Id": "39b428fb1d3d45adb1d8e9258ad637ad",
+          "Name": "min_longitude",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9109b2c6e2594c438b9d368f59195c6e",
+          "Name": "min_latitude",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d7d128d4713b43c1b975b496a31b3f0d",
+          "Name": "max_longitude",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "33de150c3c334dd9853cf6f0c54aba00",
+          "Name": "max_latitude",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b59f47e3bca641dcabd7182af21f2391",
+          "Name": "OSM_data",
+          "Description": "OSM_data",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Load from Web (https://www.openstreetmap.org) OSM file for terrtory or getting an error if operation unsuccessfully\n\nOSM_data.OSM_data (min_longitude: double, min_latitude: double, max_longitude: double, max_latitude: double): OSM_data"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "60.079383;\n30.268524;\n0;",
+      "Id": "9e9bda93ba824898b258a42aee5b7095",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f9ea98a8b7d24f8c9cdd4f85f165ca8f",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fd3c34226fec4778a5808a2cd8a81d22",
+          "Name": "",
+          "Description": "Значение выражения в строке 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "30a209132fec4e31b3854b5853d26c66",
+          "Name": "",
+          "Description": "Значение выражения в строке 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "60.082103;\n30.276866;\n0;",
+      "Id": "8736ab388bd343c1979f14d992351501",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "548b7d73e1494a79a1215ce680be1f9e",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8c806ac9408547138fafdac5b409a2aa",
+          "Name": "",
+          "Description": "Значение выражения в строке 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0d825011c9b3475a87ed9b2da7b77ba8",
+          "Name": "",
+          "Description": "Значение выражения в строке 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "osm2dyn.OSM_data.OSM_polygons",
+      "Id": "00037422830244719cf555732d854857",
+      "Inputs": [
+        {
+          "Id": "2b2eeb22eef04edca046e961cda207ab",
+          "Name": "oSM_data",
+          "Description": "osm2dyn.OSM_data",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1732f8bd01cc4d5e9c99eaf5824da417",
+          "Name": "OSM_object[]",
+          "Description": "OSM_object[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "OSM_data.OSM_polygons: OSM_object[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "osm2dyn.OSM_data.OSM_polylines",
+      "Id": "6ebb23f3e4d44cbcad4bbfff7bb0e92f",
+      "Inputs": [
+        {
+          "Id": "0b2ac54f80a84958848e1556f8780cff",
+          "Name": "oSM_data",
+          "Description": "osm2dyn.OSM_data",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4ae50c6484484586897c4ded9892b702",
+          "Name": "OSM_object[]",
+          "Description": "OSM_object[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "OSM_data.OSM_polylines: OSM_object[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "osm2dyn.OSM_object.GetAttributes",
+      "Id": "41bc273530bf49048f7574ab08edbec1",
+      "Inputs": [
+        {
+          "Id": "0df85981278646aaacab5c15690a5160",
+          "Name": "oSM_object",
+          "Description": "osm2dyn.OSM_object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d0d5e9b6fc0746a7bf793c1dd9af9538",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "OSM_object.GetAttributes ( ): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "osm2dyn.OSM_object.GetGeometry",
+      "Id": "c4e64a668c434b32816422a01da551df",
+      "Inputs": [
+        {
+          "Id": "19c232e17dc140a18a918987aabfd25c",
+          "Name": "oSM_object",
+          "Description": "osm2dyn.OSM_object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ba7c1d4c77c24d98b9d1dd23324631c2",
+          "Name": "double[][]",
+          "Description": "double[][]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "OSM_object.GetGeometry ( ): double[][]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "4326;\n32636;",
+      "Id": "e7b32696502b4d3092852b74d8aa61f7",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6e2d5b0b03ef44ad975e1323322057e2",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0f92d04feebe40f59cd8647257de0230",
+          "Name": "",
+          "Description": "Значение выражения в строке 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "dyn_proj_library.Reprojecting.Reproject_point_as_double_array@int,int,double[]",
+      "Id": "305369f230a442ad89b9019b04362855",
+      "Inputs": [
+        {
+          "Id": "9cdad66f886e4399a7b3aa20087677f7",
+          "Name": "cs_source_code",
+          "Description": "int",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bcdc8261fbd84f5692dcde6ba1aa006d",
+          "Name": "cs_target_code",
+          "Description": "int",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0dd83b6e95884d37a0a5a4c19e2d074a",
+          "Name": "source_point",
+          "Description": "double[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bb79c0739dbe4a0b9cb2c550b094ed07",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Too as Reproject_dynamo_point\n\nReprojecting.Reproject_point_as_double_array (cs_source_code: int, cs_target_code: int, source_point: double[]): Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Polygon.ByPoints@Autodesk.DesignScript.Geometry.Point[]",
+      "Id": "061ddda97c434d9d99bb75750ee3747d",
+      "Inputs": [
+        {
+          "Id": "12777a9df7464da3a5336d927a5777ff",
+          "Name": "points",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "dcf7d51d5aea4673aeecd32e5fde621f",
+          "Name": "Polygon",
+          "Description": "Polygon",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Построение кривой полигона путем соединения точек.\n\nPolygon.ByPoints (points: Point[]): Polygon"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "#input_data\r\npolygons = IN[0]\r\nattributes = IN[1]\r\nstorey_height = float(IN[2])\r\n\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import Curve, Line, Point, Polygon\r\n\r\ncounter_1 = 0\r\nosm_buildins = list()\r\nosm_natural = list()\r\nfor one_dict in attributes:\r\n\t#check, is that plg is building\r\n\tplg_needing = polygons[counter_1]\r\n\tplg_center = plg_needing.Center()\r\n\tif one_dict.get(\"building\") != None:\r\n\t\tlevel_value_temp = one_dict.get(\"height\",storey_height)\r\n\t\tlevel_value = float(level_value_temp)\r\n\t\tosm_buildins.append(Curve.SweepAsSolid(plg_needing,Line.ByStartPointEndPoint(plg_center, Point.ByCoordinates(plg_center.X,plg_center.Y,plg_center.Z + level_value))))\r\n\tcounter_1+=1\r\nOUT = osm_buildins",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "f1365ca87d3c4f8682e7d64b2bf224df",
+      "Inputs": [
+        {
+          "Id": "65357e62e4884b94973bd2f7fd11bc96",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8aa43c38f70f4bcdb5d2f877b7d9e7eb",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8659c2a6c68e474ab71113207be7682e",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "badb072f5a794702aa3beef0dde181eb",
+          "Name": "OUT",
+          "Description": "Результат сценария Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выполнение встроенного сценария Python."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.DoubleInput, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Double",
+      "InputValue": 3.0,
+      "Id": "b14d82a5cdb14e7caae8af030bcaefdd",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5d8277cb629746f5bc778d232b44ec95",
+          "Name": "",
+          "Description": "Double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание числа."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "osm2dyn.OSM_data.OSM_points",
+      "Id": "43db3621a15f4e0b85afb1f9722d9aa9",
+      "Inputs": [
+        {
+          "Id": "81d4a021a8454353880636b0585930e0",
+          "Name": "oSM_data",
+          "Description": "osm2dyn.OSM_data",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "03064f683bcb490b98adffb4e742f460",
+          "Name": "OSM_object[]",
+          "Description": "OSM_object[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "OSM_data.OSM_points: OSM_object[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "dyn_proj_library.Reprojecting.Reprojecting@double,double,double,double,double,Autodesk.DesignScript.Geometry.Point",
+      "Id": "c871ee1137384c9cbbcf3a89f4711a56",
+      "Inputs": [
+        {
+          "Id": "fa235698d1e44144bfb9b27de4fe138a",
+          "Name": "dx",
+          "Description": "Offset for x-coordinate\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ded69a5e6a024f008b8e53285d047d4b",
+          "Name": "dy",
+          "Description": "Offset for y-coordinate\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0140c0f9049142cdb2771a5679bec3c3",
+          "Name": "dz",
+          "Description": "Offset for z-coordinate\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "06544fdfbdb24b9493998ef7aa5a9573",
+          "Name": "angle_value",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d70ad40bb1c64d4b9e1af02171cb1537",
+          "Name": "scale",
+          "Description": "Coefficient to coordinate (for unit's translations)\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "db4fb457810c473ab5f837254aef3464",
+          "Name": "source_point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6b791199c60c4b3f9eb4acd7f3c6f72c",
+          "Name": "Reprojecting",
+          "Description": "Reprojecting",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Recalc dynapo point by local offset-point and rotation angle (f.e. for Revit base point)\n\nReprojecting.Reprojecting (dx: double, dy: double, dz: double, angle_value: double, scale: double, source_point: Point): Reprojecting"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0.0;\n0.0;\n1.0;",
+      "Id": "893fdb7d96ba4b76b3649ed37d3dbba2",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5bccb306ab75452fa23ea07afd8e2dab",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d11cf2542c5b42358ed411116e38f650",
+          "Name": "",
+          "Description": "Значение выражения в строке 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1f682bfe716a4e258859ff52c4031875",
+          "Name": "",
+          "Description": "Значение выражения в строке 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "dyn_proj_library.Reprojecting.DynamoPoint",
+      "Id": "566485860ba3445985ecc4c650495559",
+      "Inputs": [
+        {
+          "Id": "e2bdde6101064fa08e2307bca60c1949",
+          "Name": "reprojecting",
+          "Description": "dyn_proj_library.Reprojecting",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ae0e6add0cad49429d7a6e0f281937e9",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Reprojecting.DynamoPoint: Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "60.080695;\n30.272463;\n0.0;",
+      "Id": "ac95197cfe5b4acc9cf6b12f057288ed",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "cb71920ae3ce4c48be1154f75fdf59ab",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ddf9effee78241b19b7486a9faa8ec83",
+          "Name": "",
+          "Description": "Значение выражения в строке 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b6ece56527d34ab5a1c1a5906e1577a7",
+          "Name": "",
+          "Description": "Значение выражения в строке 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "dyn_proj_library.Reprojecting.Reprojecting@int,int,double,double,double",
+      "Id": "6af840aba3494a9ea9ab8cedfa56b65d",
+      "Inputs": [
+        {
+          "Id": "5ce099b766cc47c5bfbec6ca5d15c0eb",
+          "Name": "cs_source_code",
+          "Description": "integer value of EPSG code for source coordinate system\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "999f61cca0c54079bcd0e6577b6577ae",
+          "Name": "cs_target_code",
+          "Description": "integer value of EPSG code for target coordinate system\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "54918b4ca2b146849b9dfb5f8dcff024",
+          "Name": "coord_x",
+          "Description": "double-value of X-coordinate (too latitude)\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6602266e434044e595c0b7d7f92b57d2",
+          "Name": "coord_y",
+          "Description": "double-value of Y-coordinate (too longitude)\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e82de34a79824940aaa35764b1e06582",
+          "Name": "coord_z",
+          "Description": "double-value of Z-coordinate (too altitude)\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e1dbcf856d6f4638836d856cad001897",
+          "Name": "Reprojecting",
+          "Description": "Reprojecting",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Reproject data (point) by codes of start and target coordinate system (EPSG code) and coordinates of point\n\nReprojecting.Reprojecting (cs_source_code: int, cs_target_code: int, coord_x: double, coord_y: double, coord_z: double): Reprojecting"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "dyn_proj_library.Reprojecting.XYZ",
+      "Id": "7966fac24ba446d496719270ae475d07",
+      "Inputs": [
+        {
+          "Id": "828f43783df44450bb67b056f6afbb7a",
+          "Name": "reprojecting",
+          "Description": "dyn_proj_library.Reprojecting",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cf0f284a08de45e6a25fc2e57bd70bfa",
+          "Name": "X",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "000c53a911e2490d9b3c72bdd1dc6d65",
+          "Name": "Y",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7a4e23c3510b45ba80a09cbbe40e0c5f",
+          "Name": "Z",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Reprojecting.XYZ: var[]..[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "b59f47e3bca641dcabd7182af21f2391",
+      "End": "2b2eeb22eef04edca046e961cda207ab",
+      "Id": "56c2bf3dd02c4594bf1ec54d138d3b5f"
+    },
+    {
+      "Start": "b59f47e3bca641dcabd7182af21f2391",
+      "End": "0b2ac54f80a84958848e1556f8780cff",
+      "Id": "70ffc16999e9423985e4505fa401592f"
+    },
+    {
+      "Start": "b59f47e3bca641dcabd7182af21f2391",
+      "End": "81d4a021a8454353880636b0585930e0",
+      "Id": "3659a143fcc7489d8099f89f77045ae9"
+    },
+    {
+      "Start": "f9ea98a8b7d24f8c9cdd4f85f165ca8f",
+      "End": "9109b2c6e2594c438b9d368f59195c6e",
+      "Id": "8cc40cd2a05842d28594d0648bf62881"
+    },
+    {
+      "Start": "fd3c34226fec4778a5808a2cd8a81d22",
+      "End": "39b428fb1d3d45adb1d8e9258ad637ad",
+      "Id": "7a2d9783424e4417ac6737a077029ac6"
+    },
+    {
+      "Start": "548b7d73e1494a79a1215ce680be1f9e",
+      "End": "33de150c3c334dd9853cf6f0c54aba00",
+      "Id": "d507b73c1fdc4683a6da1147ee082d8c"
+    },
+    {
+      "Start": "8c806ac9408547138fafdac5b409a2aa",
+      "End": "d7d128d4713b43c1b975b496a31b3f0d",
+      "Id": "de290538097547ea857cf5152621dc14"
+    },
+    {
+      "Start": "1732f8bd01cc4d5e9c99eaf5824da417",
+      "End": "0df85981278646aaacab5c15690a5160",
+      "Id": "ce7d5bb5df544ee3951b4e2473c9d91a"
+    },
+    {
+      "Start": "1732f8bd01cc4d5e9c99eaf5824da417",
+      "End": "19c232e17dc140a18a918987aabfd25c",
+      "Id": "bba144f3ec7141248dd3173c8ce975e4"
+    },
+    {
+      "Start": "d0d5e9b6fc0746a7bf793c1dd9af9538",
+      "End": "8aa43c38f70f4bcdb5d2f877b7d9e7eb",
+      "Id": "708f3f29fffd4a279ef2f46bcc0307a2"
+    },
+    {
+      "Start": "ba7c1d4c77c24d98b9d1dd23324631c2",
+      "End": "0dd83b6e95884d37a0a5a4c19e2d074a",
+      "Id": "4ba4ec2b0b76491987ebcdbb37571662"
+    },
+    {
+      "Start": "6e2d5b0b03ef44ad975e1323322057e2",
+      "End": "9cdad66f886e4399a7b3aa20087677f7",
+      "Id": "4d3c6dc27cbe4d5ba1008df1021b5e51"
+    },
+    {
+      "Start": "6e2d5b0b03ef44ad975e1323322057e2",
+      "End": "5ce099b766cc47c5bfbec6ca5d15c0eb",
+      "Id": "52780591751e461f8a1dee0946ce5f98"
+    },
+    {
+      "Start": "0f92d04feebe40f59cd8647257de0230",
+      "End": "bcdc8261fbd84f5692dcde6ba1aa006d",
+      "Id": "c4f006c49e47416eb7d35976aaae3b86"
+    },
+    {
+      "Start": "0f92d04feebe40f59cd8647257de0230",
+      "End": "999f61cca0c54079bcd0e6577b6577ae",
+      "Id": "db0e96f18e57489a838276405f81f7ac"
+    },
+    {
+      "Start": "bb79c0739dbe4a0b9cb2c550b094ed07",
+      "End": "db4fb457810c473ab5f837254aef3464",
+      "Id": "1f438bb7f97b4537ad6b3fc4532377da"
+    },
+    {
+      "Start": "dcf7d51d5aea4673aeecd32e5fde621f",
+      "End": "65357e62e4884b94973bd2f7fd11bc96",
+      "Id": "14d76ff3f8264321bacccf5f68dc22e9"
+    },
+    {
+      "Start": "5d8277cb629746f5bc778d232b44ec95",
+      "End": "8659c2a6c68e474ab71113207be7682e",
+      "Id": "71217b0632244e0da6f7320b9d68a93f"
+    },
+    {
+      "Start": "6b791199c60c4b3f9eb4acd7f3c6f72c",
+      "End": "e2bdde6101064fa08e2307bca60c1949",
+      "Id": "71a492a578094248bc79974e0a687505"
+    },
+    {
+      "Start": "d11cf2542c5b42358ed411116e38f650",
+      "End": "06544fdfbdb24b9493998ef7aa5a9573",
+      "Id": "d705818e4d5446589537e8d5dc510c5a"
+    },
+    {
+      "Start": "1f682bfe716a4e258859ff52c4031875",
+      "End": "d70ad40bb1c64d4b9e1af02171cb1537",
+      "Id": "e1110633bdbd4cdc92af9a3af79f7575"
+    },
+    {
+      "Start": "ae0e6add0cad49429d7a6e0f281937e9",
+      "End": "12777a9df7464da3a5336d927a5777ff",
+      "Id": "48615089ab7b4a9292f3a85bd053e058"
+    },
+    {
+      "Start": "cb71920ae3ce4c48be1154f75fdf59ab",
+      "End": "54918b4ca2b146849b9dfb5f8dcff024",
+      "Id": "f0471ef357cf4f98b3854504284cc47b"
+    },
+    {
+      "Start": "ddf9effee78241b19b7486a9faa8ec83",
+      "End": "6602266e434044e595c0b7d7f92b57d2",
+      "Id": "a80164897d6f4e6d829bb9a63940977a"
+    },
+    {
+      "Start": "b6ece56527d34ab5a1c1a5906e1577a7",
+      "End": "e82de34a79824940aaa35764b1e06582",
+      "Id": "53d91e699b9745629aa67ddf00682a78"
+    },
+    {
+      "Start": "e1dbcf856d6f4638836d856cad001897",
+      "End": "828f43783df44450bb67b056f6afbb7a",
+      "Id": "2860badad3ce47b3a069930639da8e48"
+    },
+    {
+      "Start": "cf0f284a08de45e6a25fc2e57bd70bfa",
+      "End": "fa235698d1e44144bfb9b27de4fe138a",
+      "Id": "7aeec4436e304d2fb75e255de371e231"
+    },
+    {
+      "Start": "000c53a911e2490d9b3c72bdd1dc6d65",
+      "End": "ded69a5e6a024f008b8e53285d047d4b",
+      "Id": "3bb7b14508a94ac2ad40365257a3f3de"
+    },
+    {
+      "Start": "7a4e23c3510b45ba80a09cbbe40e0c5f",
+      "End": "0140c0f9049142cdb2771a5679bec3c3",
+      "Id": "3f8a77dbe44a455a955500b158be571f"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "Нет",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 100.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.1.8246",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -6.18297004699707,
+      "EyeY": -24.276622772216797,
+      "EyeZ": 6.6004066467285156,
+      "LookX": 1.1369495391845703,
+      "LookY": 25.776622772216797,
+      "LookZ": -9.8013343811035156,
+      "UpX": 0.10078111290931702,
+      "UpY": -0.55919528007507324,
+      "UpZ": -0.8228875994682312
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "OSM_data.OSM_data",
+        "Id": "a72ebf46e5e7448195d54129fd239832",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 843.68653266500019,
+        "Y": 377.57285069431759
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Min_point",
+        "Id": "9e9bda93ba824898b258a42aee5b7095",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 446.44541440205091,
+        "Y": 349.83383898950257
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Max_point",
+        "Id": "8736ab388bd343c1979f14d992351501",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 446.9243826973626,
+        "Y": 478.41238865349686
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "OSM_data.OSM_polygons",
+        "Id": "00037422830244719cf555732d854857",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1308.0932362028652,
+        "Y": 228.42443892194885
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "OSM_data.OSM_polylines",
+        "Id": "6ebb23f3e4d44cbcad4bbfff7bb0e92f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 1299.5312185667738,
+        "Y": 403.56422468116205
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "OSM_object.GetAttributes",
+        "Id": "41bc273530bf49048f7574ab08edbec1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1829.9045619275621,
+        "Y": 152.38027859639303
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "OSM_object.GetGeometry",
+        "Id": "c4e64a668c434b32816422a01da551df",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1830.0045052089392,
+        "Y": 267.96348794546833
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "e7b32696502b4d3092852b74d8aa61f7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1860.6795108838305,
+        "Y": 586.92839980809777
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Reprojecting.Reproject_point_as_double_array",
+        "Id": "305369f230a442ad89b9019b04362855",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2317.5529065605756,
+        "Y": 226.68110160516179
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Polygon.ByPoints",
+        "Id": "061ddda97c434d9d99bb75750ee3747d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4496.31593825862,
+        "Y": 252.81382019674021
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "GetBuildingsPolygons",
+        "Id": "f1365ca87d3c4f8682e7d64b2bf224df",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4890.41177853999,
+        "Y": 278.26848261494104
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "HeightOfStorey",
+        "Id": "b14d82a5cdb14e7caae8af030bcaefdd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4496.1007124284233,
+        "Y": 373.50526545031812
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "OSM_data.OSM_points",
+        "Id": "43db3621a15f4e0b85afb1f9722d9aa9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 1299.7720231165515,
+        "Y": 529.4599881574062
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Reprojecting.Reprojecting",
+        "Id": "c871ee1137384c9cbbcf3a89f4711a56",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3467.0085460618407,
+        "Y": 793.32338511214823
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Offset in meters",
+        "Id": "893fdb7d96ba4b76b3649ed37d3dbba2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2893.3026145361187,
+        "Y": 911.38766624929451
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Reprojecting.DynamoPoint",
+        "Id": "566485860ba3445985ecc4c650495559",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3817.5426283886709,
+        "Y": 778.8393085945446
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "center_point",
+        "Id": "ac95197cfe5b4acc9cf6b12f057288ed",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1799.3883373735921,
+        "Y": 725.268244939588
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Reprojecting.Reprojecting",
+        "Id": "6af840aba3494a9ea9ab8cedfa56b65d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2222.6543083929159,
+        "Y": 692.87295655950959
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Reprojecting.XYZ",
+        "Id": "7966fac24ba446d496719270ae475d07",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2609.910765197852,
+        "Y": 664.50515788142241
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "dee225a6d6624387a5b992972577f736",
+        "Title": "Create BoundingBox for load OSM data",
+        "Nodes": [
+          "a72ebf46e5e7448195d54129fd239832",
+          "9e9bda93ba824898b258a42aee5b7095",
+          "8736ab388bd343c1979f14d992351501"
+        ],
+        "Left": 436.44541440205091,
+        "Top": 296.83383898950257,
+        "Width": 687.24111826294927,
+        "Height": 302.57854966399435,
+        "FontSize": 36.0,
+        "InitialTop": 349.83383898950257,
+        "InitialHeight": 282.16997516751633,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "b27b0a1664c64451b8d381bd1ddc8ddf",
+        "Title": "Getting polygons andreproject data from geographic \r\ncoordinates and project to UTM84-31N",
+        "Nodes": [
+          "00037422830244719cf555732d854857",
+          "41bc273530bf49048f7574ab08edbec1",
+          "c4e64a668c434b32816422a01da551df",
+          "e7b32696502b4d3092852b74d8aa61f7",
+          "305369f230a442ad89b9019b04362855"
+        ],
+        "Left": 1298.0932362028652,
+        "Top": 56.380278596393026,
+        "Width": 1334.4596703577104,
+        "Height": 633.54812121170471,
+        "FontSize": 36.0,
+        "InitialTop": 152.38027859639303,
+        "InitialHeight": 260.58320934907533,
+        "TextblockHeight": 86.0,
+        "Background": "#FFFFB8D8"
+      },
+      {
+        "Id": "f7a7295bc5ad4e0e97125b1b6ac271be",
+        "Title": "Create Buildings from polygons",
+        "Nodes": [
+          "061ddda97c434d9d99bb75750ee3747d",
+          "f1365ca87d3c4f8682e7d64b2bf224df",
+          "b14d82a5cdb14e7caae8af030bcaefdd"
+        ],
+        "Left": 4486.1007124284233,
+        "Top": 199.81382019674021,
+        "Width": 633.311066111567,
+        "Height": 241.69144525357791,
+        "FontSize": 36.0,
+        "InitialTop": 252.81382019674021,
+        "InitialHeight": 327.09474855915619,
+        "TextblockHeight": 43.0,
+        "Background": "#FFB9F9E1"
+      },
+      {
+        "Id": "ef708a822b744ee2929b852f14f2b310",
+        "Title": "Reproject point (f.e. with some offsetting as in Revit-base point)",
+        "Nodes": [
+          "c871ee1137384c9cbbcf3a89f4711a56",
+          "893fdb7d96ba4b76b3649ed37d3dbba2",
+          "566485860ba3445985ecc4c650495559"
+        ],
+        "Left": 2883.3026145361187,
+        "Top": 725.8393085945446,
+        "Width": 1168.2400138525522,
+        "Height": 306.54835765474991,
+        "FontSize": 36.0,
+        "InitialTop": 778.8393085945446,
+        "InitialHeight": 187.40030545248123,
+        "TextblockHeight": 43.0,
+        "Background": "#FF48B9FF"
+      }
+    ],
+    "X": -2383.3233962766785,
+    "Y": -385.2655717520027,
+    "Zoom": 0.92695264760787244
+  }
+}

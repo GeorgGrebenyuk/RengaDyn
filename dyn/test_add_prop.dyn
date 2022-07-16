@@ -782,7 +782,7 @@
     {
       "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
       "NodeType": "PythonScriptNode",
-      "Code": "# Загрузить стандартную библиотеку Python и библиотеку DesignScript\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Введенные в этом узле данные сохраняется в виде списка в переменных IN.\r\ndataEnteringNode = IN\r\n\r\n# Разместите код под этой строкой\r\n\r\n# Назначьте вывод переменной OUT.\r\nOUT = 0",
+      "Code": "import json\r\nfrom json import *\r\n#source data\r\nrenga\r\nOUT = 0",
       "Engine": "IronPython2",
       "VariableInputPorts": true,
       "Id": "7ce43133af364c4682a75358e92fbac0",
@@ -1242,7 +1242,7 @@
         "Height": 152.18510175563142,
         "FontSize": 36.0,
         "InitialTop": 354.79976456518773,
-        "InitialHeight": 129.18510175563142,
+        "InitialHeight": 151.18510175563142,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       },
@@ -1265,7 +1265,7 @@
         "Height": 704.28049449933508,
         "FontSize": 36.0,
         "InitialTop": 671.40714285669117,
-        "InitialHeight": 681.28049449933519,
+        "InitialHeight": 703.28049449933508,
         "TextblockHeight": 43.0,
         "Background": "#FFFFC999"
       },
@@ -1282,7 +1282,7 @@
         "Height": 192.54381450022487,
         "FontSize": 36.0,
         "InitialTop": 309.27093872676232,
-        "InitialHeight": 126.54381450022487,
+        "InitialHeight": 148.54381450022487,
         "TextblockHeight": 86.0,
         "Background": "#FFFF7BAC"
       },
@@ -1302,7 +1302,7 @@
         "Height": 472.28346803841214,
         "FontSize": 36.0,
         "InitialTop": 590.621960097355,
-        "InitialHeight": 449.28346803841214,
+        "InitialHeight": 445.28346803841214,
         "TextblockHeight": 43.0,
         "Background": "#FFBB87C6"
       }
