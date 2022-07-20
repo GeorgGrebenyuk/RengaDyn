@@ -77,14 +77,15 @@ namespace DynRenga.DynProperties.Properties
             this.prop_descr_new.Name = name;
             this.prop_descr_new.Type = (Renga.PropertyType)prop_type;
         }
-        [dr.IsVisibleInDynamoLibrary(false)] //Зачем он нужен?
+
         /// <summary>
         /// Инициализация класса Renga.PropertyDescription по его сущности.
         /// Второй параметр ни на что не влияет
         /// </summary>
         /// <param name="PropertyDescription_obj"></param>
         /// <param name="NewProp"></param>
-        public PropertyDescription(object PropertyDescription_obj, bool NewProp = true)
+        [dr.IsVisibleInDynamoLibrary(false)] //Зачем он нужен?
+        public PropertyDescription(object PropertyDescription_obj, bool PropFromManager = true)
         {
             this.prop_descr_new = (Renga.PropertyDescription)PropertyDescription_obj;
         }
