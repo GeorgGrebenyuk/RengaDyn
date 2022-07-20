@@ -70,8 +70,10 @@
     <Compile Include="DynDocument\Project\LandPlotInfo.cs" />
     <Compile Include="DynDocument\Project\Project.cs" />
     <Compile Include="DynDocument\Project\ProjectInfo.cs" />
+    <Compile Include="DynDocument\StylesManager\ColumnStyleManager.cs" />
     <Compile Include="DynGeometry\Base.cs" />
     <Compile Include="DynGeometry\Curve3D.cs" />
+    <Compile Include="DynGeometry\Placement2D.cs" />
     <Compile Include="DynGeometry\Placement3D.cs" />
     <Compile Include="DynGeometry\Profile.cs" />
     <Compile Include="DynGeometry\Region2D.cs" />
@@ -83,8 +85,9 @@
     <Compile Include="DynObjects\General.cs" />
     <Compile Include="DynObjects\GridWithMaterial.cs" />
     <Compile Include="DynObjects\ModelObject.cs" />
-    <Compile Include="DynProperties\Parameters\ObjectsParam\BeamParams.cs" />
-    <Compile Include="DynProperties\Parameters\ObjectsParam\RouteParams.cs" />
+    <Compile Include="DynProperties\Parameters\ObjectsParam\Beam\BeamParams.cs" />
+    <Compile Include="DynProperties\Parameters\ObjectsParam\Column\ColumnParams.cs" />
+    <Compile Include="DynProperties\Parameters\ObjectsParam\Route\RouteParams.cs" />
     <Compile Include="DynProperties\Parameters\Parameter.cs" />
     <Compile Include="DynProperties\Parameters\ParameterContainer.cs" />
     <Compile Include="DynProperties\Parameters\ParameterDefinition.cs" />
@@ -120,5 +123,11 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /Y "$(TargetDir)$(SolutionName).dll" "C:\Users\Georg\AppData\Roaming\Autodesk\C3D 2022\Dynamo\2.12\packages\RengaDyn\bin\$(SolutionName).dll"
+copy /Y "$(TargetDir)$(SolutionName).xml" "C:\Users\Georg\AppData\Roaming\Autodesk\C3D 2022\Dynamo\2.12\packages\RengaDyn\bin\$(SolutionName).xml"
+copy /Y "$(TargetDir)Renga.NET.PluginUtility.dll" "C:\Users\Georg\AppData\Roaming\Autodesk\C3D 2022\Dynamo\2.12\packages\RengaDyn\bin\Renga.NET.PluginUtility.dll"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
