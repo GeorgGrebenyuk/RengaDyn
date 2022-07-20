@@ -32,7 +32,7 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DynRenga.DynObjects.Selection.GetSelectedObjectsIdByUser@DynRenga.DynDocument.Application",
+      "FunctionSignature": "DynRenga.DynObjects.Selection.GetSelectedObjectsIdByUser@DynRenga.DynDocument.Application,bool",
       "Id": "f399796bcf01468586e0535a275da69b",
       "Inputs": [
         {
@@ -40,6 +40,15 @@
           "Name": "renga_application",
           "Description": "Application",
           "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4aae20c643db4922b25c6b9ee582ed19",
+          "Name": "run_again",
+          "Description": "bool\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -57,7 +66,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Получает выделенные пользователем идентификаторы (int) объектов модели Renga\n\nSelection.GetSelectedObjectsIdByUser (renga_application: Application): int[]"
+      "Description": "Получает выделенные пользователем идентификаторы (int) объектов модели Renga. Работает с новым выделенением только при перезапуске скрипта!\n\nSelection.GetSelectedObjectsIdByUser (renga_application: Application, run_again: bool = false): int[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -157,6 +166,35 @@
       ],
       "Replication": "Auto",
       "Description": "Получение Renga.IModel из проекта Renga (нод Project)\n\nModel.Model (project: Project): Model"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "true;\nfalse;",
+      "Id": "12a24c29379d4ede956874b4e9f26068",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "718b85c2087c4062af64536c0c680136",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "81470dad521a4c8f9a01058f1b2e8d04",
+          "Name": "",
+          "Description": "Значение выражения в строке 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
     }
   ],
   "Connectors": [
@@ -184,6 +222,11 @@
       "Start": "4305ca26fc18460cadc57584aec67a72",
       "End": "852a0a0de7bc471cbb0eb8348fb29048",
       "Id": "91606963313d4d04bd6ba0e9004d14a0"
+    },
+    {
+      "Start": "718b85c2087c4062af64536c0c680136",
+      "End": "4aae20c643db4922b25c6b9ee582ed19",
+      "Id": "698ccddcd06e408394bcda9d58efdad4"
     }
   ],
   "Dependencies": [],
@@ -277,11 +320,21 @@
         "Excluded": false,
         "X": 1076.5,
         "Y": 272.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "12a24c29379d4ede956874b4e9f26068",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 558.0,
+        "Y": 587.0
       }
     ],
     "Annotations": [],
-    "X": -565.0,
-    "Y": -81.0,
-    "Zoom": 1.0
+    "X": -287.0,
+    "Y": 37.0,
+    "Zoom": 0.8425
   }
 }
