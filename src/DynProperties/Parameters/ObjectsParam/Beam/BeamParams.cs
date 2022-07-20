@@ -10,7 +10,7 @@ using dg = Autodesk.DesignScript.Geometry;
 using Renga;
 
 
-namespace DynRenga.DynProperties.Parameters.ObjectsParam
+namespace DynRenga.DynProperties.Parameters.ObjectsParam.Beam
 {
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IBeamParams

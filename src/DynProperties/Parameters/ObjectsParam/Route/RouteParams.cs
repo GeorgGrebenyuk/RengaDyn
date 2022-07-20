@@ -9,7 +9,7 @@ using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
 
-namespace DynRenga.DynProperties.Parameters.ObjectsParam
+namespace DynRenga.DynProperties.Parameters.ObjectsParam.Route
 {
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IRouteParams
