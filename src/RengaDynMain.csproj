@@ -80,6 +80,7 @@
     <Compile Include="DynGeometry\Curve3D.cs" />
     <Compile Include="DynGeometry\Placement2D.cs" />
     <Compile Include="DynGeometry\Placement3D.cs" />
+    <Compile Include="DynGeometry\Placement3DCollection.cs" />
     <Compile Include="DynGeometry\Profile.cs" />
     <Compile Include="DynGeometry\Region2D.cs" />
     <Compile Include="DynGeometry\Transform3D.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="DynObjects\ModelObject.cs" />
     <Compile Include="DynProperties\Parameters\ObjectsParam\BeamParams.cs" />
     <Compile Include="DynProperties\Parameters\ObjectsParam\ColumnParams.cs" />
+    <Compile Include="DynProperties\Parameters\ObjectsParam\RebarUsage.cs" />
     <Compile Include="DynProperties\Parameters\ObjectsParam\RouteParams.cs" />
     <Compile Include="DynProperties\Parameters\Parameter.cs" />
     <Compile Include="DynProperties\Parameters\ParameterContainer.cs" />
@@ -104,6 +106,11 @@
     <Compile Include="DynProperties\Quantities\QuantityContainer.cs" />
     <Compile Include="DynStyles\BeamStyle.cs" />
     <Compile Include="DynStyles\ColumnStyle.cs" />
+    <Compile Include="DynStyles\EquipmentStyle .cs" />
+    <Compile Include="DynStyles\PlumbingFixtureStyle.cs" />
+    <Compile Include="DynStyles\RebarStyle.cs" />
+    <Compile Include="DynStyles\ReinforcementUnitStyle .cs" />
+    <Compile Include="DynStyles\SystemStyle.cs" />
     <Compile Include="Other\GuidCollection.cs" />
     <Compile Include="Other\Materials\Material.cs" />
     <Compile Include="Other\PostalAddress.cs" />
