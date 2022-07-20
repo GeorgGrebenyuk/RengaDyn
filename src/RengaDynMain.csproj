@@ -85,9 +85,9 @@
     <Compile Include="DynObjects\General.cs" />
     <Compile Include="DynObjects\GridWithMaterial.cs" />
     <Compile Include="DynObjects\ModelObject.cs" />
-    <Compile Include="DynProperties\Parameters\ObjectsParam\Beam\BeamParams.cs" />
-    <Compile Include="DynProperties\Parameters\ObjectsParam\Column\ColumnParams.cs" />
-    <Compile Include="DynProperties\Parameters\ObjectsParam\Route\RouteParams.cs" />
+    <Compile Include="DynProperties\Parameters\ObjectsParam\BeamParams.cs" />
+    <Compile Include="DynProperties\Parameters\ObjectsParam\ColumnParams.cs" />
+    <Compile Include="DynProperties\Parameters\ObjectsParam\RouteParams.cs" />
     <Compile Include="DynProperties\Parameters\Parameter.cs" />
     <Compile Include="DynProperties\Parameters\ParameterContainer.cs" />
     <Compile Include="DynProperties\Parameters\ParameterDefinition.cs" />
