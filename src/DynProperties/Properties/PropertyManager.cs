@@ -63,6 +63,15 @@ namespace DynRenga.DynProperties.Properties
             return this.prop_manager.GetPropertyDescription(property_id);
         }
         /// <summary>
+        /// Получение описания свойства (Renga.IPropertyDescription) по его Guid-идентификатору
+        /// </summary>
+        /// <param name="property_id"></param>
+        /// <returns></returns>
+        public object GetPropertyDescription2(Guid property_id)
+        {
+            return this.prop_manager.GetPropertyDescription2(property_id);
+        }
+        /// <summary>
         /// Проверка, зарегистрировано ли в Renga созданное свойство по его Guid-идентификатору
         /// </summary>
         /// <param name="property_id"></param>
@@ -98,6 +107,21 @@ namespace DynRenga.DynProperties.Properties
         public bool IsPropertyAssignedToType(Guid property_id, object object_type)
         {
             return this.prop_manager.IsPropertyAssignedToType(property_id, (Guid)object_type);
+        }
+        /// <summary>
+        /// Проверка, назначено ли свойство с данным идентификатором каждому объекту из списка объектов Renga
+        /// </summary>
+        /// <param name="property_id"></param>
+        /// <param name="object_types"></param>
+        /// <returns></returns>
+        public List<bool> IsPropertyAssignedToTypes(Guid property_id, List<Guid> object_types)
+        {
+            List<bool> bools = new List<bool>();
+            foreach (Guid object_type in object_types)
+            {
+                bools.Add(this.prop_manager.IsPropertyAssignedToType(property_id, object_type));
+            }
+            return bools;
         }
         /// <summary>
         /// Получение наименования свойства по его идентификатору
