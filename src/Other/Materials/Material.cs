@@ -31,9 +31,9 @@ namespace DynRenga.Other.Material
         /// </summary>
         /// <param name="renga_project_obj">Интерфейс проекта Renga</param>
         /// <param name="material_id">Идентификатор материала</param>
-        public Material (object renga_project_obj, int material_id)
+        public Material (DynDocument.Project.Project renga_project, int material_id)
         {
-            Renga.IEntityCollection mat_manager = ((Renga.IProject)renga_project_obj).Materials;
+            Renga.IEntityCollection mat_manager = renga_project.project.Materials;
             this.material = mat_manager.GetById(material_id) as Renga.IMaterial;
 
         }
