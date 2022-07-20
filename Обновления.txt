@@ -1,0 +1,19 @@
+Renga Dynamo 
+1.1.0
+___
+Обновления в версии 1.1.1
+Добавлено:
+- нод GetSelectedObjectsIdByUser для получение int-идентификаторов объектов модели, выбранных Пользователем в параллельном процессе Renga;
+- классы Placement2D и Placement3D, описывающие локальную систему координат Renga в двухмерном и трехмерном пространстве;
+- класс Placement3Dollection для получения спсика интерфейсов Placement3D;
+- класс ColumnParams для получения расширенных параметров о Колонне (типе объекта в Renga);
+- новая категория нодов DynDocument.StylesManager для работы с менеджерами стилей объектов Renga куда добавлены классы: BeamStyleManager, ColumnStyleManager, EquipmentStyleManager, PlumbingFixtureStyleManager, ReinforcementUnitStyleManager, SystemStyleManager; классы обеспечивают доступ к стилям;
+- новая категория нодов DynStyles с перечнем классов: BeamStyle, ColumnStyle, EquipmentStyle, PlumbingFixtureStyle, RebarStyle, ReinforcementUnitStyle, SystemStyle; стили позволяют получать расширенную информацию об объекте, см. соответствующие им интерфейсы Renga;
+- класс RebarUsage для работы с использованием арматуры (свойства и геометрия);
+
+Удалено
+- нод Project.IModel, так как у него был дуюлирующий нод (класс Model (Project project));
+
+
+Вопросы к Ренге
+- https://help.rengabim.com/api/interface_i_placement3_d.html#ae409c6b4ac68205218056aba60815d57 что это значит?
