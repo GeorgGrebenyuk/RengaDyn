@@ -70,7 +70,12 @@
     <Compile Include="DynDocument\Project\LandPlotInfo.cs" />
     <Compile Include="DynDocument\Project\Project.cs" />
     <Compile Include="DynDocument\Project\ProjectInfo.cs" />
+    <Compile Include="DynDocument\StylesManager\BeamStyleManager.cs" />
     <Compile Include="DynDocument\StylesManager\ColumnStyleManager.cs" />
+    <Compile Include="DynDocument\StylesManager\EquipmentStyleManager.cs" />
+    <Compile Include="DynDocument\StylesManager\PlumbingFixtureStyleManager.cs" />
+    <Compile Include="DynDocument\StylesManager\ReinforcementUnitStyleManager.cs" />
+    <Compile Include="DynDocument\StylesManager\SystemStyleManager.cs" />
     <Compile Include="DynGeometry\Base.cs" />
     <Compile Include="DynGeometry\Curve3D.cs" />
     <Compile Include="DynGeometry\Placement2D.cs" />
@@ -97,6 +102,8 @@
     <Compile Include="DynProperties\Properties\PropertyManager.cs" />
     <Compile Include="DynProperties\Quantities\Quantity.cs" />
     <Compile Include="DynProperties\Quantities\QuantityContainer.cs" />
+    <Compile Include="DynStyles\BeamStyle.cs" />
+    <Compile Include="DynStyles\ColumnStyle.cs" />
     <Compile Include="Other\GuidCollection.cs" />
     <Compile Include="Other\Materials\Material.cs" />
     <Compile Include="Other\PostalAddress.cs" />
