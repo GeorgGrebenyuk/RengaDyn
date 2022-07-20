@@ -99,42 +99,31 @@ namespace DynRenga.DynObjects
             for (int counter_meshes = 0; counter_meshes < this.obj.MeshCount; counter_meshes++)
             {
                 Renga.IMesh mesh = this.obj.GetMesh(counter_meshes);
-                int counter_points = 0;
+                
                 List<dg.Point> points = new List<dg.Point>();
                 List<dg.IndexGroup> indexes = new List<dg.IndexGroup>();
-
+                
 
                 for (int counter_grids = 0; counter_grids < mesh.GridCount; counter_grids++)
                 {
+                    int counter_points = points.Count();
                     Renga.IGrid grid = mesh.GetGrid(counter_grids);
-
+                    for (int p_counter = 0; p_counter < grid.VertexCount; p_counter++)
+                    {
+                        Renga.FloatPoint3D p = grid.GetVertex(p_counter);
+                        dg.Point point_new = dg.Point.ByCoordinates(p.X / 1000.0, p.Y / 1000.0, p.Z / 1000.0);
+                        if (point_new.X <= min.X && point_new.Y <= min.Y && point_new.Z <= min.Z) min = point_new;
+                        if (point_new.X >= max.X && point_new.Y >= max.Y && point_new.Z >= max.Z) max = point_new;
+                        points.Add(point_new);
+                    }
                     for (int j = 0; j < grid.TriangleCount; j++)
                     {
                         Renga.Triangle tr = grid.GetTriangle(j);
-                        Renga.FloatPoint3D p1 = grid.GetVertex((int)tr.V0);
-                        Renga.FloatPoint3D p2 = grid.GetVertex((int)tr.V1);
-                        Renga.FloatPoint3D p3 = grid.GetVertex((int)tr.V2);
+                        indexes.Add(dg.IndexGroup.ByIndices(
+                            (uint)counter_points + tr.V0, 
+                            (uint)counter_points + tr.V1, 
+                            (uint)counter_points + tr.V2));
 
-                        int get_pnt(Renga.FloatPoint3D p)
-                        {
-                            dg.Point point_new = dg.Point.ByCoordinates(p.X, p.Y, p.Z);
-                            if (point_new.X <= min.X && point_new.Y <= min.Y && point_new.Z <= min.Z) min = point_new;
-                            if (point_new.X >= max.X && point_new.Y >= max.Y && point_new.Z >= max.Z) max = point_new;
-
-                            if (points.Contains(point_new))
-                            //points.Where(a=>a.X == p.X && a.Y == p.Y && a.Z == p.Z).Any()
-                            {
-                                return points.IndexOf(point_new);
-                            }
-                            else
-                            {
-                                points.Add(point_new);
-                                counter_points++;
-                                return counter_points - 1;
-                            }
-                        }
-
-                        indexes.Add(dg.IndexGroup.ByIndices((uint)get_pnt(p1), (uint)get_pnt(p2), (uint)get_pnt(p3)));
                     }
                 }
                 meshes.Add(dg.Mesh.ByPointsFaceIndices(points, indexes));

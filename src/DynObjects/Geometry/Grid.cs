@@ -218,42 +218,27 @@ namespace DynRenga.DynObjects.Geometry
             dg.Point min = dg.Point.ByCoordinates(100000000000.0, 100000000000.0, 100000000000.0);
             dg.Point max = dg.Point.ByCoordinates(-100000000000.0, -100000000000.0, -100000000000.0);
 
-            int counter_points = 0;
             List<dg.Point> points = new List<dg.Point>();
             List<dg.IndexGroup> indexes = new List<dg.IndexGroup>();
 
+            for (int p_counter = 0; p_counter < grid.VertexCount; p_counter++)
+            {
+                Renga.FloatPoint3D p = grid.GetVertex(p_counter);
+                dg.Point point_new = dg.Point.ByCoordinates(p.X / 1000.0, p.Y / 1000.0, p.Z / 1000.0);
+                if (point_new.X <= min.X && point_new.Y <= min.Y && point_new.Z <= min.Z) min = point_new;
+                if (point_new.X >= max.X && point_new.Y >= max.Y && point_new.Z >= max.Z) max = point_new;
+                points.Add(point_new);
+            }
             for (int j = 0; j < grid.TriangleCount; j++)
             {
                 Renga.Triangle tr = grid.GetTriangle(j);
-                Renga.FloatPoint3D p1 = grid.GetVertex((int)tr.V0);
-                Renga.FloatPoint3D p2 = grid.GetVertex((int)tr.V1);
-                Renga.FloatPoint3D p3 = grid.GetVertex((int)tr.V2);
-
-                int get_pnt(Renga.FloatPoint3D p)
-                {
-                    dg.Point point_new = dg.Point.ByCoordinates(p.X, p.Y, p.Z);
-                    if (point_new.X <= min.X && point_new.Y <= min.Y && point_new.Z <= min.Z) min = point_new;
-                    if (point_new.X >= max.X && point_new.Y >= max.Y && point_new.Z >= max.Z) max = point_new;
-
-                    if (points.Contains(point_new))
-                    //points.Where(a=>a.X == p.X && a.Y == p.Y && a.Z == p.Z).Any()
-                    {
-                        return points.IndexOf(point_new);
-                    }
-                    else
-                    {
-                        points.Add(point_new);
-                        counter_points++;
-                        return counter_points - 1;
-                    }
-                }
-                indexes.Add(dg.IndexGroup.ByIndices((uint)get_pnt(p1), (uint)get_pnt(p2), (uint)get_pnt(p3)));
+                indexes.Add(dg.IndexGroup.ByIndices((uint)tr.V0, (uint)tr.V1, (uint)tr.V2));
             }
 
             return new Dictionary<string, object>()
             {
                 {"Grid_mesh", dg.Mesh.ByPointsFaceIndices(points,indexes) },
-                {"BoundingBox", dg.BoundingBox.ByGeometry(new List<dg.Point>{min,max }) }
+                {"BoundingBox", dg.BoundingBox.ByGeometry(new List<dg.Point>{min, max }) }
             };
 
         }
