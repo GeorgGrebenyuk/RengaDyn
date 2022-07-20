@@ -12,36 +12,36 @@ using Renga;
 namespace DynRenga.DynDocument.StylesManager
 {
     /// <summary>
-    /// Класс для работы с менеджером свойств колонн, 
-    /// интерфейсом Renga.IColumnStyleManager
+    /// Класс для работы с менеджером свойств балок, 
+    /// интерфейсом Renga.IBeamStyleManager
     /// </summary>
-    public class ColumnStyleManager
+    public class BeamStyleManager
     {
-        public Renga.IColumnStyleManager man;
+        public Renga.IBeamStyleManager man;
         /// <summary>
-        /// Получение мененджера свойств колонн из Проекта
+        /// Получение мененджера свойств балок из Проекта
         /// </summary>
         /// <param name="renga_project"></param>
-        public ColumnStyleManager(DynDocument.Project.Project renga_project)
+        public BeamStyleManager(DynDocument.Project.Project renga_project)
         {
-            this.man = renga_project.project.ColumnStyleManager;
+            this.man = renga_project.project.BeamStyleManager;
         }
         /// <summary>
-        /// Получение всех стилей как интерфейсов Renga.IColumnStyle
+        /// Получение всех стилей как интерфейсов Renga.IBeamStyle
         /// </summary>
         /// <returns></returns>
-        public List<object> GetColumnStyles()
+        public List<object> GetBeamStyles()
         {
             List<object> styles = new List<object>();
             List<int> ids = this.man.GetIds().OfType<int>().ToList();
             for (int i = 0; i < ids.Count; i++)
             {
-                styles.Add(this.man.GetColumnStyle(i));
+                styles.Add(this.man.GetBeamStyle(i));
             }
             return styles;
         }
         /// <summary>
-        /// Получение всех идентификаторов (int) стилей колонн
+        /// Получение всех идентификаторов (int) стилей балок
         /// </summary>
         /// <returns></returns>
         public List<int> GetIds()
@@ -49,20 +49,20 @@ namespace DynRenga.DynDocument.StylesManager
             return this.man.GetIds().OfType<int>().ToList();
         }
         /// <summary>
-        /// Получение интерфейса IColumnStyle по его идентификатору
+        /// Получение интерфейса IBeamStyle по его идентификатору
         /// </summary>
-        /// <param name="style_id">Численный (int) идентификатор стиля колонны</param>
+        /// <param name="style_id">Численный (int) идентификатор стиля балки</param>
         /// <returns></returns>
-        public object GetColumnStyle(int style_id)
+        public object GetBeamStyle(int style_id)
         {
-            return this.man.GetColumnStyle(style_id);
+            return this.man.GetBeamStyle(style_id);
         }
         /// <summary>
         /// Проверяет, имеется ли стиль с таким идентификатором
         /// </summary>
-        /// <param name="style_id">Численный (int) идентификатор стиля колонны</param>
+        /// <param name="style_id">Численный (int) идентификатор стиля балки</param>
         /// <returns></returns>
-        public bool Contains (int style_id)
+        public bool Contains(int style_id)
         {
             return this.man.Contains(style_id);
         }
