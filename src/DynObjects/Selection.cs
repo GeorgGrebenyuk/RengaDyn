@@ -86,7 +86,24 @@ namespace DynRenga.DynObjects
             }
             return objects_need;
         }
+        /// <summary>
+        /// Получает выделенные пользователем идентификаторы (int) объектов модели Renga.
+        /// Работает с новым выделенением только при смене с true-false-true
+        /// </summary>
+        /// <param name="renga_application"></param>
+        /// <param name="run_again"></param>
+        /// <returns></returns>
+        public static List<int> GetSelectedObjectsIdByUser(DynDocument.Application renga_application, bool run_again = false)
+        {
+            if (run_again == false) return null;
+            else
+            {
+                var selection = renga_application.renga_app.Selection;
+                if (selection == null) return null;
+                else return selection.GetSelectedObjects().OfType<int>().ToList();
+            }
 
+        }
 
     }
 }
