@@ -13,7 +13,7 @@ using Renga;
 namespace DynRenga.DynObjects
 {
     /// <summary>
-    /// Операции с выборкой объектов
+    /// Методы выборки объектов модели
     /// </summary>
     public class Selection
     {
@@ -33,7 +33,7 @@ namespace DynRenga.DynObjects
             return model_objects;
         }
         /// <summary>
-        /// Получение объекта Renga.IModelObject через его идентификатор (актуально для нодов Exported3DObject)
+        /// Получение интерфейса Renga.IModelObject через его идентификатор (актуально для нодов Exported3DObject)
         /// </summary>
         /// <param name="model_object_id">int идентификатор объекта модели</param>
         /// <returns></returns>
@@ -43,9 +43,8 @@ namespace DynRenga.DynObjects
             return collection.GetById(model_object_id);
         }
         /// <summary>
-        /// Получение списка объектов (интерфейс Renga.IModelObject) из модели проекта определенного типа
+        /// Выборка объектов модели (Renga::IModelObject) по типу (Guid)
         /// </summary>
-        /// <param name="model_com">Интерфейс Renga.IModel из нодов Project</param>
         /// <param name="object_type">Guid типа объектов, см. нод GynObjects.General</param>
         /// <returns>Список объектов (интерфейсов Renga.IModelObject)</returns>
         public static List<object> GetObjectsByType(DynDocument.Model renga_model, Guid object_type)
@@ -64,9 +63,8 @@ namespace DynRenga.DynObjects
             return objects_need;
         }
         /// <summary>
-        /// Получение списка объектов (интерфейс Renga.IModelObject) из модели проекта на поределенном уровне
+        /// Выборка объектов модели (Renga::IModelObject) по принадлежности к уровню (Renga::IModelObject)
         /// </summary>
-        /// <param name="model_com">Интерфейс Renga.IModel из нодов Project</param>
         /// <param name="com_ILevel">Интерфейс Renga.Level</param>
         /// <returns></returns>
         public static List<object> GetObjectsByLevel (DynDocument.Model renga_model, object com_ILevel)
@@ -103,6 +101,16 @@ namespace DynRenga.DynObjects
                 else return selection.GetSelectedObjects().OfType<int>().ToList();
             }
 
+        }
+        /// <summary>
+        /// Выделение в модели Renga объектов по списку их идентификаторов
+        /// </summary>
+        /// <param name="renga_application"></param>
+        /// <param name="model_objects_ids">Список с int-идентификаторами объектов модели</param>
+        public static void SelectObjectsInModelByIds (DynDocument.Application renga_application, List<int> model_objects_ids)
+        {
+            var selection = renga_application.renga_app.Selection;
+            if (model_objects_ids.Any()) selection.SetSelectedObjects(model_objects_ids.ToArray());
         }
 
     }
