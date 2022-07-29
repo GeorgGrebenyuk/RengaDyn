@@ -44,7 +44,7 @@ namespace DynRenga.DynDocument
         /// и открывает проект по файловому пути к нему
         /// </summary>
         /// <param name="project_path">Файловый путь к проекту Renga</param>
-        [dr.IsVisibleInDynamoLibrary(true)]
+        [dr.IsVisibleInDynamoLibrary(false)]
         public Application(string project_path)
         {
             IRunningObjectTable rot;

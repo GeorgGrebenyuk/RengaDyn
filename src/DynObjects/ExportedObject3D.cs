@@ -11,21 +11,22 @@ using Renga;
 
 namespace DynRenga.DynObjects
 {
-    [dr.IsVisibleInDynamoLibrary(true)]
+    /// <summary>
+    /// Класс для работы с интерфейсом Renga.IExportedObject3D (трехмерным представлением объекта)
+    /// </summary>
     public class ExportedObject3D
     {
         private Renga.IExportedObject3D obj;
         /// <summary>
-        /// ПРиведение к интерфейсу Renga.IExportedObject3D полученного объекта
+        /// Инициализация класса через интерфейс Renga.IExportedObject3D
         /// </summary>
         /// <param name="ExportedObject3D_obj"></param>
-        [dr.IsVisibleInDynamoLibrary(true)]
         public ExportedObject3D (object ExportedObject3D_obj)
         {
             this.obj = ExportedObject3D_obj as IExportedObject3D;
         }
         /// <summary>
-        /// Получение интерфейса Renga.IExportedObject3D по идентификатору объекта модели (Renga.IModelObject)
+        /// Инициализация класса через интерфейс Renga.IExportedObject3D по идентификатору объекта модели (Renga.IModelObject)
         /// </summary>
         /// <param name="data_exporter">Класс DataExporter</param>
         /// <param name="modelobject_id">int ModelObjectId (Renga.IModelObject.Id)</param>
@@ -44,27 +45,28 @@ namespace DynRenga.DynObjects
                 }
             }
         }
-        [dr.IsVisibleInDynamoLibrary(true)]
+        /// <summary>
+        /// Получение численного идентификатора объекта модели, 
+        /// свойственного данному трехмерному представлению
+        /// </summary>
+        /// <returns></returns>
         public int ModelObjectId()
         {
             return this.obj.ModelObjectId;
         }
-        [dr.IsVisibleInDynamoLibrary(true)]
+        /// <summary>
+        /// Получение количества мэшей
+        /// </summary>
+        /// <returns></returns>
         public int MeshCount()
         {
             return this.obj.MeshCount;
         }
-        [dr.IsVisibleInDynamoLibrary(true)]
-        public Guid ModelObjectType()
-        {
-            return this.obj.ModelObjectType;
-        }
-        [dr.IsVisibleInDynamoLibrary(true)]
-        public string ModelObjectTypeS()
-        {
-            return this.obj.ModelObjectTypeS;
-        }
-        [dr.IsVisibleInDynamoLibrary(true)]
+        /// <summary>
+        /// Получение мэша по внутреннему индексу
+        /// </summary>
+        /// <param name="mesh_index"></param>
+        /// <returns></returns>
         public object GetMesh(int mesh_index)
         {
             if (mesh_index < 0 | mesh_index > this.obj.MeshCount) return null;
@@ -74,7 +76,7 @@ namespace DynRenga.DynObjects
         /// Получение списка интерейсов Renga.IMesh
         /// </summary>
         /// <returns></returns>
-        [dr.IsVisibleInDynamoLibrary(true)]
+
         public List<object> GetMeshes()
         {
             List<object> meshes = new List<object>();
@@ -134,6 +136,24 @@ namespace DynRenga.DynObjects
                 {"BoundingBox", dg.BoundingBox.ByGeometry(new List<dg.Point>{min,max }) }
             };
 
+        }
+        /// <summary>
+        /// Получение общего числа граней триангуляции у данного объекта
+        /// </summary>
+        /// <returns></returns>
+        public int GetTrianglesCount()
+        {
+            int triangles_count = 0;
+            for (int mesh_counter = 0; mesh_counter < this.obj.MeshCount; mesh_counter ++)
+            {
+                Renga.IMesh mesh = this.obj.GetMesh(mesh_counter);
+                for (int grid_counter = 0; grid_counter < mesh.GridCount; grid_counter ++)
+                {
+                    Renga.IGrid grid = mesh.GetGrid(grid_counter);
+                    triangles_count += grid.TriangleCount;
+                }
+            }
+            return triangles_count;
         }
         
 

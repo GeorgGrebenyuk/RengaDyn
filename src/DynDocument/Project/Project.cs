@@ -12,11 +12,11 @@ using Renga;
 namespace DynRenga.DynDocument.Project
 {
     /// <summary>
-    /// Рабочий проект
+    /// Класс для работы с проектом Renga, интерфейсом Renga.IProject
     /// </summary>
     public class Project
     {
-        public Renga.IProject project;// = Main.renga_project;
+        public Renga.IProject project;
         /// <summary>
         /// Получает текущий проект (интерфейс Renga.Project) от интерфейса Renga.IApplication
         /// </summary>
@@ -35,7 +35,7 @@ namespace DynRenga.DynDocument.Project
             return this.project.FilePath;
         }
         /// <summary>
-        /// Получение инфрмации о проекте ProjectInfo, в виде IPropertyContainer
+        /// Получение инфрмации о проекте ProjectInfo, в виде интерфейса IPropertyContainer
         /// </summary>
         /// <returns></returns>
         public object IProjectInfo()
@@ -43,7 +43,7 @@ namespace DynRenga.DynDocument.Project
             return this.project.ProjectInfo;
         }
         /// <summary>
-        /// Получение инфрмации о здании BuildingInfo, в виде IPropertyContainer
+        /// Получение инфрмации о здании BuildingInfo, в виде интерфейса IPropertyContainer
         /// </summary>
         /// <returns></returns>
         public object IBuildingInfo()
@@ -51,7 +51,7 @@ namespace DynRenga.DynDocument.Project
             return this.project.BuildingInfo;
         }
         /// <summary>
-        /// Получение инфрмации об участке LandPlotInfo, в виде IPropertyContainer
+        /// Получение инфрмации об участке LandPlotInfo, в виде интерфейса IPropertyContainer
         /// </summary>
         /// <returns></returns>
         public object ILandPlotInfo()

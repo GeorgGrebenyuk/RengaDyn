@@ -12,13 +12,13 @@ using Renga;
 namespace DynRenga.DynDocument.Project
 {
     /// <summary>
-    /// Класс для работы с интерфейсом Renga.IBuildingInfo
+    /// Класс для работы с интерфейсом Renga.IBuildingInfo, свойствами здания
     /// </summary>
     public class BuildingInfo
     {
         public Renga.IBuildingInfo b_info;
         /// <summary>
-        /// Инициализация интерфейса Renga.IBuildingInfo из com-объекта
+        /// Инициализация класса из интерфейса Renga.IBuildingInfo
         /// </summary>
         /// <param name="BuildingInfo_com"></param>
         public BuildingInfo(object BuildingInfo_com)
@@ -83,7 +83,7 @@ namespace DynRenga.DynDocument.Project
             return this.b_info.GetProperties();
         }
         /// <summary>
-        /// Получение интерфейса (com-объекта) Renga.IPostalAddress
+        /// Получение интерфейса Renga.IPostalAddress
         /// </summary>
         /// <returns></returns>
         public object GetAddress()

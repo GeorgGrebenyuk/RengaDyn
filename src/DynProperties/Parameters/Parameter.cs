@@ -11,9 +11,16 @@ using Renga;
 
 namespace DynRenga.DynProperties.Parameters
 {
+    /// <summary>
+    /// Класс для работы с одиночным параметром, интерфейсом Renga.IParameter
+    /// </summary>
     public class Parameter
     {
         public Renga.IParameter param;
+        /// <summary>
+        /// Инициация класса из интерфейса Renga.IParameter
+        /// </summary>
+        /// <param name="Parameter_obj_com"></param>
         public Parameter (object Parameter_obj_com)
         {
             this.param = Parameter_obj_com as Renga.IParameter;

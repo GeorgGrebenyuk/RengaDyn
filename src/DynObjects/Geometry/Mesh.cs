@@ -12,37 +12,50 @@ using Renga;
 
 namespace DynRenga.DynObjects.Geometry
 {
-    [dr.IsVisibleInDynamoLibrary(true)]
+    /// <summary>
+    /// Класс для работы с интерфейсом Renga.IMesh
+    /// </summary>
     public class Mesh
     {
         private Renga.IMesh mesh;
-        [dr.IsVisibleInDynamoLibrary(true)]
+        /// <summary>
+        /// Инициализация класса через интерфейс Renga.IMesh
+        /// </summary>
+        /// <param name="mesh_obj"></param>
         public Mesh(object mesh_obj)
         {
             this.mesh = mesh_obj as Renga.IMesh;
         }
-        [dr.IsVisibleInDynamoLibrary(true)]
+        /// <summary>
+        /// Получение количества Grid
+        /// </summary>
+        /// <returns></returns>
         public int GridCount()
         {
             return this.mesh.GridCount;
         }
-        [dr.IsVisibleInDynamoLibrary(true)]
+        /// <summary>
+        /// Получение типа Мэша
+        /// </summary>
+        /// <returns></returns>
         public Guid MeshType()
         {
             return this.mesh.MeshType;
         }
-        [dr.IsVisibleInDynamoLibrary(true)]
-        public string MeshTypeS()
-        {
-            return this.mesh.MeshTypeS;
-        }
-        [dr.IsVisibleInDynamoLibrary(true)]
+        /// <summary>
+        /// Получение отдельной Grid по её порядковому номеру в составе Мэша
+        /// </summary>
+        /// <param name="grid_index"></param>
+        /// <returns></returns>
         public object GetGrid(int grid_index)
         {
             if (grid_index < 0 | grid_index > this.mesh.GridCount) return null;
             else return this.mesh.GetGrid(grid_index);
         }
-        [dr.IsVisibleInDynamoLibrary(true)]
+        /// <summary>
+        /// Получение всех Grids
+        /// </summary>
+        /// <returns></returns>
         public List<object> GetGrids()
         {
             List<object> grids = new List<object>();

@@ -19,7 +19,7 @@ namespace DynRenga.DynDocument.StylesManager
     {
         public Renga.IColumnStyleManager man;
         /// <summary>
-        /// Получение мененджера свойств колонн из Проекта
+        /// Инициализация класса (получение менеджера свойств) из Проекта
         /// </summary>
         /// <param name="renga_project"></param>
         public ColumnStyleManager(DynDocument.Project.Project renga_project)

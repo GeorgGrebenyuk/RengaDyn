@@ -12,7 +12,7 @@ using Renga;
 namespace DynRenga.DynProperties.Parameters.ObjectsParam.Column
 {
     /// <summary>
-    /// Класс для работы с интерфейсом Renga.IColumnParams - параметрами колонны Renga
+    /// Класс для работы с интерфейсом Renga.IColumnParams (расширенные свойства Колонны)
     /// </summary>
     public class ColumnParams
     {

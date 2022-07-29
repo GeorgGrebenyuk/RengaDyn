@@ -15,7 +15,6 @@ namespace DynRenga.DynDocument
     /// Класс для работы с интерфейсом Renga.IDataExporter
     /// (предоставлением информации о геометрии объектов)
     /// </summary>
-    [dr.IsVisibleInDynamoLibrary(true)]
     public class DataExporter
     {
         public Renga.IDataExporter data_exporter;

@@ -13,13 +13,13 @@ using Renga;
 namespace DynRenga.DynObjects
 {
     /// <summary>
-    /// Представляет класс Renga.IGridWithMaterial
+    /// Класс для работы с интерфейсом Renga.IGridWithMaterial
     /// </summary>
     public class GridWithMaterial
     {
         private Renga.IGridWithMaterial gr_mat;
         /// <summary>
-        /// Инициализация Renga.IGridWithMaterial от объекта
+        /// Инициализация класса из интерфейса Renga.IGridWithMaterial
         /// </summary>
         /// <param name="GridWithMaterial_obj"></param>
         public GridWithMaterial (object GridWithMaterial_obj)

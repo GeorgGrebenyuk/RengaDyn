@@ -18,7 +18,7 @@ namespace DynRenga.DynGeometry
     {
         public Renga.ICurve3D curve_3d;
         /// <summary>
-        /// Инициация интерфейса Renga.ICurve3D
+        /// Инициация класса из интерфейса Renga.ICurve3D
         /// </summary>
         /// <param name="Curve3D_object"></param>
         public Curve3D(object Curve3D_object)

@@ -19,7 +19,7 @@ namespace DynRenga.DynDocument.StylesManager
     {
         public Renga.IBeamStyleManager man;
         /// <summary>
-        /// Получение мененджера свойств балок из Проекта
+        /// Инициализация класса (получение менеджера свойств) из Проекта
         /// </summary>
         /// <param name="renga_project"></param>
         public BeamStyleManager(DynDocument.Project.Project renga_project)

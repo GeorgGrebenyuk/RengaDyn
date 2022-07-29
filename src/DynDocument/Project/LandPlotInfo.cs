@@ -12,13 +12,13 @@ using Renga;
 namespace DynRenga.DynDocument.Project
 {
     /// <summary>
-    /// Класс для работы с интерфейсом Renga.ILandPlotInfo
+    /// Класс для работы с интерфейсом Renga.ILandPlotInfo, свойствами участка
     /// </summary>
     public class LandPlotInfo
     {
         public Renga.ILandPlotInfo l_info;
         /// <summary>
-        /// Инициализация интерфейса Renga.ILandPlotInfo из com-объекта
+        /// Инициализация класа из интерфейса Renga.ILandPlotInfo
         /// </summary>
         /// <param name="LandPlotInfo_com"></param>
         public LandPlotInfo(object LandPlotInfo_com)

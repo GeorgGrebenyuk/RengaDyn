@@ -12,6 +12,9 @@ using Renga;
 
 namespace DynRenga.Other
 {
+    /// <summary>
+    /// Класс со вспомогательными методами разного плана
+    /// </summary>
     public class RengaSimpleInterfaces
     {
         private RengaSimpleInterfaces() { }

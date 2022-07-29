@@ -12,7 +12,7 @@ using Renga;
 namespace DynRenga.DynDocument.Project
 {
     /// <summary>
-    /// Класс для работы с интерфейсом Renga.IProjectInfo
+    /// Класс для работы с интерфейсом Renga.IProjectInfo, свойствами проекта
     /// </summary>
     public class ProjectInfo
     {

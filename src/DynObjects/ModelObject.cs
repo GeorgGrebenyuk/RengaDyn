@@ -19,7 +19,7 @@ namespace DynRenga.DynObjects
     {
         public Renga.IModelObject obj;
         /// <summary>
-        /// Инициация объекта Renga.IModelObject из его интерфейса
+        /// Инициация класса из интерфейса Renga.IModelObject
         /// </summary>
         /// <param name="model_object_com"></param>
         public ModelObject (object model_object_com)

@@ -12,13 +12,13 @@ using Renga;
 namespace DynRenga.DynDocument
 {
     /// <summary>
-    /// Представляет класс Renga.IModel
+    /// Класс для работы с интерфейсом Renga.IModel (модель Проекта)
     /// </summary>
     public class Model
     {
         public Renga.IModel model;
         /// <summary>
-        /// Получение Renga.IModel из проекта Renga (нод Project)
+        /// Инициализация класса через свойство Проекта (класса Project)
         /// </summary>
         /// <param name="project"></param>
         public Model(Project.Project project)
@@ -36,7 +36,7 @@ namespace DynRenga.DynDocument
             else this.model = null;
         }
         /// <summary>
-        /// Получение внутреннего челочисенного идентификатора объекта из его Guid-идентификатора
+        /// Получение внутреннего челочисленного идентификатора объекта из его Guid-идентификатора
         /// </summary>
         /// <param name="internal_model_guid"></param>
         /// <returns></returns>

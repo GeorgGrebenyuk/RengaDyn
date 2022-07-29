@@ -58,7 +58,7 @@ namespace DynRenga.DynDocument
             }
         }
         /// <summary>
-        /// Инициация интерфейса Renga.IModelObject как интерфейса Renga.ILevel
+        /// Инициация класса черезе интерфейс Renga.IModelObject как интерфейса Renga.ILevel
         /// </summary>
         /// <param name="level_com">Интерфейс Renga.IModelObject</param>
         public Level (object level_com)

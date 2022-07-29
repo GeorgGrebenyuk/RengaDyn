@@ -13,13 +13,13 @@ using Renga;
 namespace DynRenga.DynProperties.Parameters.ObjectsParam.Beam
 {
     /// <summary>
-    /// Класс для работы с интерфейсом Renga.IBeamParams
+    /// Класс для работы с интерфейсом Renga.IBeamParams (расширенные свойства Балки)
     /// </summary>
     public class BeamParams
     {
         public Renga.IBeamParams beam_params;
         /// <summary>
-        /// Инициация интерфейса Renga.IBeamParams из объекта модели Renga.IModelObject
+        /// Инициация класса из объекта модели Renga.IModelObject
         /// </summary>
         /// <param name="ModelObject_Beam"></param>
         public BeamParams(object ModelObject_Beam)

@@ -11,45 +11,85 @@ using Renga;
 
 namespace DynRenga.DynObjects.Geometry
 {
-    [dr.IsVisibleInDynamoLibrary(true)]
-    public  class Grid
+    /// <summary>
+    /// Класс для работы с интерфейсом Renga.IGrid (триангулированная поверхность объекта)
+    /// </summary>
+    public class Grid
     {
         public Renga.IGrid grid;
+        /// <summary>
+        /// Инициализация класса из интерфейса Renga.IGrid
+        /// </summary>
+        /// <param name="grid_obj"></param>
         public Grid(object grid_obj)
         {
             this.grid = grid_obj as Renga.IGrid;
         }
         //Properties
+        /// <summary>
+        /// Получение числа граней триангуляции
+        /// </summary>
+        /// <returns></returns>
         public int TriangleCount()
         {
             return this.grid.TriangleCount;
         }
+        /// <summary>
+        /// Получение числа вершин поверхности
+        /// </summary>
+        /// <returns></returns>
         public int VertexCount()
         {
             return this.grid.VertexCount;
         }
+        /// <summary>
+        /// Получение числа нормалей поверхности
+        /// </summary>
+        /// <returns></returns>
         public int NormalCount()
         {
             return this.grid.NormalCount;
         }
+        /// <summary>
+        /// Получение числа координат текстур (?) поверхности
+        /// </summary>
+        /// <returns></returns>
         public int TextureCoordinateCount()
         {
             return this.grid.TextureCoordinateCount;
         }
+        /// <summary>
+        /// Получение типа Grid
+        /// </summary>
+        /// <returns></returns>
         public object GridType()
         {
             return this.grid.GridType;
         }
+        /// <summary>
+        /// Проверка, является ли поверхность двухсторонней
+        /// </summary>
+        /// <returns></returns>
         public bool DoubleSided()
         {
             return this.grid.DoubleSided;
         }
         //Triangle
+        /// <summary>
+        /// Получение отдельной грани триангуляции по индексу
+        /// </summary>
+        /// <param name="triangle_index"></param>
+        /// <returns></returns>
         public object GetTriangle(int triangle_index)
         {
             if (triangle_index < 0 | triangle_index > this.grid.TriangleCount) return null;
             else return this.grid.GetTriangle(triangle_index);
         }
+        /// <summary>
+        /// Преобразование информации об отдельной грани триангуляции в dynamo IndexGroup
+        /// </summary>
+        /// <param name="triangle_obj"></param>
+        /// <returns></returns>
         public static dg.IndexGroup GetDynamoIndexGroupByTriangle(object triangle_obj)
         {
             return dg.IndexGroup.ByIndices(
@@ -57,6 +97,11 @@ namespace DynRenga.DynObjects.Geometry
                 ((Renga.Triangle)triangle_obj).V1,
                  ((Renga.Triangle)triangle_obj).V2);
         }
+        /// <summary>
+        /// Получение информации об индексах точек данной грани триангуляции
+        /// </summary>
+        /// <param name="triangle_obj"></param>
+        /// <returns></returns>
         public static List<int> GetTriangleComponentsByTriangle(object triangle_obj)
         {
             return new List<int>(3) {
@@ -64,21 +109,22 @@ namespace DynRenga.DynObjects.Geometry
                 (int)((Renga.Triangle)triangle_obj).V1,
                 (int)((Renga.Triangle)triangle_obj).V2 };
         }
-        public List<int> GetTriangleComponents(int triangle_index)
-        {
-            if (triangle_index < 0 | triangle_index > this.grid.TriangleCount) return null;
-            else 
-            {
-                Renga.Triangle tr = this.grid.GetTriangle(triangle_index);
-                return new List<int>(3) { (int)tr.V0, (int)tr.V1, (int)tr.V2 };
-            }
-        }
         //Vertex
+        /// <summary>
+        /// Получение отдельной точки
+        /// </summary>
+        /// <param name="vertex_index"></param>
+        /// <returns></returns>
         public object GetVertex(int vertex_index)
         {
             if (vertex_index < 0 | vertex_index > this.grid.VertexCount) return null;
             else return this.grid.GetVertex(vertex_index);
         }
+        /// <summary>
+        /// Получение отдельной точки как Dynamo Point
+        /// </summary>
+        /// <param name="vertex_obj"></param>
+        /// <returns></returns>
         public static dg.Point GetDynamoPointByVertex (object vertex_obj)
         {
             return dg.Point.ByCoordinates(
@@ -86,6 +132,11 @@ namespace DynRenga.DynObjects.Geometry
                 ((Renga.FloatPoint3D)vertex_obj).Y,
                 ((Renga.FloatPoint3D)vertex_obj).Z);
         }
+        /// <summary>
+        /// Получение координат точки
+        /// </summary>
+        /// <param name="vertex_index"></param>
+        /// <returns></returns>
         public List<double> GetVertexComponents(int vertex_index)
         {
             Renga.FloatPoint3D p = this.grid.GetVertex(vertex_index);

@@ -19,7 +19,7 @@ namespace DynRenga.DynDocument.StylesManager
     {
         public Renga.IReinforcementUnitStyleManager man;
         /// <summary>
-        /// Получение мененджера свойств арматуры и арматурных блоков из Проекта
+        /// Инициализация класса (получение менеджера свойств) из Проекта
         /// </summary>
         /// <param name="renga_project"></param>
         public ReinforcementUnitStyleManager(DynDocument.Project.Project renga_project)
