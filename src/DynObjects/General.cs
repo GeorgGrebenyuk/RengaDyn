@@ -27,6 +27,43 @@ namespace DynRenga.DynObjects
             return ObjectTypes().Select(a => a.Value).ToList();
         }
         /// <summary>
+        /// Типы объектов Ренга, для которых есть 3д-представление
+        /// </summary>
+        /// <returns></returns>
+        private static List<Guid> Objects3dTypes()
+        {
+            List<Guid> objects = new List<Guid>();
+            Dictionary<string, Guid> types = ObjectTypes();
+            objects.Add(types["Beam"]);
+            objects.Add(types["Column"]);
+            objects.Add(types["Door"]);
+            objects.Add(types["Duct"]); //
+            objects.Add(types["Element"]);
+            objects.Add(types["Equipment"]);
+            objects.Add(types["Floor"]);
+            objects.Add(types["IfcObject"]);
+            objects.Add(types["IsolatedFoundation"]);
+            objects.Add(types["MechanicalEquipment"]);
+            objects.Add(types["Opening"]);
+            objects.Add(types["Pipe"]);
+            objects.Add(types["PipeAccessory"]);
+            objects.Add(types["Plate"]);
+            objects.Add(types["PlumbingFixture"]);
+            objects.Add(types["Railing"]); //
+            objects.Add(types["Ramp"]);
+            objects.Add(types["Rebar"]);
+            objects.Add(types["Roof"]);
+            objects.Add(types["Room"]);
+            objects.Add(types["Stair"]);
+            objects.Add(types["Wall"]);
+            objects.Add(types["WallFoundation"]);
+            objects.Add(types["Window"]);
+            objects.Add(types["PipeAccessory"]);
+            objects.Add(types["PipeAccessory"]);
+
+            return objects;
+        }
+        /// <summary>
         /// Типы объектов (перечисление)
         /// </summary>
         /// <returns>Словарь с типами объектов</returns>
