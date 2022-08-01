@@ -14,7 +14,7 @@ namespace DynRenga.DynStyles
     /// <summary>
     /// Класс для работы с описанием инженерной системы, интерфейсом Renga.ISystemStyle
     /// </summary>
-    public class SystemStyle
+    public class SystemStyle : Other.Technical.ICOM_Tools
     {
         public Renga.ISystemStyle style;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynStyles
         public SystemStyle(object SystemStyle_object)
         {
             this.style = SystemStyle_object as Renga.ISystemStyle;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.style == null) return false;
+            else return true;
         }
         //properties
         /// <summary>

@@ -16,7 +16,7 @@ namespace DynRenga.DynGeometry
     /// Класс для работы с интерфейсом Renga.IRegion2D 
     /// (область в двумерном пространстве)
     /// </summary>
-    public class Region2D
+    public class Region2D : Other.Technical.ICOM_Tools
     {
         public Renga.IRegion2D reg2d;
         /// <summary>
@@ -32,6 +32,15 @@ namespace DynRenga.DynGeometry
         public Region2D(object Region2D_object)
         {
             this.reg2d = Region2D_object as Renga.IRegion2D;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.reg2d == null) return false;
+            else return true;
         }
         //functions
         /// <summary>

@@ -15,7 +15,7 @@ namespace DynRenga.DynDocument
     /// <summary>
     /// Класс для работы с Уровнями модели проекта (интерфейсов Renga.ILevel)
     /// </summary>
-    public class Level
+    public class Level : Other.Technical.ICOM_Tools
     {
         public Renga.ILevel level;
         /// <summary>
@@ -37,6 +37,15 @@ namespace DynRenga.DynDocument
                 }
             }
             return objects_need;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.level== null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение уровня в модели проекта по его идентификатору (актуально для свойства GetLevelObjectInfo)

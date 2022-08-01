@@ -15,7 +15,7 @@ namespace DynRenga.Other.Material
     /// <summary>
     /// Класс для работы с объектом Renga.Material. Предсставляет однослойный материал
     /// </summary>
-    public class Material
+    public class Material : Other.Technical.ICOM_Tools
     {
         public Renga.IMaterial material;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.Other.Material
         public Material(object material_obj)
         {
             this.material = material_obj as Renga.IMaterial;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.material == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получает сущность материала по его идентификатору (встречается в GridMaterial)

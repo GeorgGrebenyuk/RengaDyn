@@ -15,7 +15,7 @@ namespace DynRenga.DynProperties.Properties
     /// <summary>
     /// Класс для работы с контейнером свойств (Renga.IPropertyContainer)
     /// </summary>
-    public class PropertyContainer
+    public class PropertyContainer : Other.Technical.ICOM_Tools
     {
         public Renga.IPropertyContainer prop_cont;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynProperties.Properties
         public PropertyContainer (object PropertyContainer_obj)
         {
             this.prop_cont = PropertyContainer_obj as Renga.IPropertyContainer;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.prop_cont == null) return false;
+            else return true;
         }
         /// <summary>
         /// Проверка, содержит ли набор свойств свойство с данным идентификаторов в форме Guid

@@ -15,7 +15,7 @@ namespace DynRenga.DynDocument.StylesManager
     /// Класс для работы с менеджером свойств инженерных систем, 
     /// интерфейсом Renga.ISystemStyleManager
     /// </summary>
-    public class SystemStyleManager
+    public class SystemStyleManager : Other.Technical.ICOM_Tools
     {
         public Renga.ISystemStyleManager man;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynDocument.StylesManager
         public SystemStyleManager(DynDocument.Project.Project renga_project)
         {
             this.man = renga_project.project.SystemStyleManager;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.man == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение всех стилей как интерфейсов Renga.ISystemStyleManager

@@ -15,7 +15,7 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Beam
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IBeamParams (расширенные свойства Балки)
     /// </summary>
-    public class BeamParams
+    public class BeamParams : Other.Technical.ICOM_Tools
     {
         public Renga.IBeamParams beam_params;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Beam
         public BeamParams(object ModelObject_Beam)
         {
             this.beam_params = ModelObject_Beam  as Renga.IBeamParams;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.beam_params == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение базовой линии балки как объекта геометрии Curve3D (см. класс в DynGeometry)

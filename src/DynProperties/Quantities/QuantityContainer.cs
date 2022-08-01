@@ -14,7 +14,7 @@ namespace DynRenga.DynProperties.Quantities
     /// <summary>
     /// Класс для работы с перечнем расчетных свойств
     /// </summary>
-    public class QuantityContainer
+    public class QuantityContainer : Other.Technical.ICOM_Tools
     {
         public Renga.IQuantityContainer q_man;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynProperties.Quantities
         public QuantityContainer(object renga_QuantityContainer_obj)
         {
             this.q_man = renga_QuantityContainer_obj as Renga.IQuantityContainer;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.q_man == null) return false;
+            else return true;
         }
         /// <summary>
         /// Проверка, содержит ли данный набор расчетных свойств указанный Guid-идентификатор

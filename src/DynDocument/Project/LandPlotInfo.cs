@@ -14,7 +14,7 @@ namespace DynRenga.DynDocument.Project
     /// <summary>
     /// Класс для работы с интерфейсом Renga.ILandPlotInfo, свойствами участка
     /// </summary>
-    public class LandPlotInfo
+    public class LandPlotInfo : Other.Technical.ICOM_Tools
     {
         public Renga.ILandPlotInfo l_info;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynDocument.Project
         public LandPlotInfo(object LandPlotInfo_com)
         {
             this.l_info = LandPlotInfo_com as Renga.ILandPlotInfo;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.l_info == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение строкового представления номера участка

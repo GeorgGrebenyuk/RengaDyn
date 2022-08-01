@@ -14,7 +14,7 @@ namespace DynRenga.DynObjects.Geometry
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IGrid (триангулированная поверхность объекта)
     /// </summary>
-    public class Grid
+    public class Grid : Other.Technical.ICOM_Tools
     {
         public Renga.IGrid grid;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynObjects.Geometry
         public Grid(object grid_obj)
         {
             this.grid = grid_obj as Renga.IGrid;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.grid == null) return false;
+            else return true;
         }
         //Properties
         /// <summary>

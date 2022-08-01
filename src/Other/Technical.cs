@@ -20,5 +20,9 @@ namespace DynRenga.Other
         //    if (data.Any()) return data.First().Key;
         //    else return null;
         //}
+        public interface ICOM_Tools
+        {
+            public bool CheckIsNotNull();
+        }
     }
 }

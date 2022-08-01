@@ -15,7 +15,7 @@ namespace DynRenga.DynObjects
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IGridWithMaterial
     /// </summary>
-    public class GridWithMaterial
+    public class GridWithMaterial : Other.Technical.ICOM_Tools
     {
         private Renga.IGridWithMaterial gr_mat;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynObjects
         public GridWithMaterial (object GridWithMaterial_obj)
         {
             this.gr_mat = GridWithMaterial_obj as Renga.IGridWithMaterial;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.gr_mat == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение IGrid

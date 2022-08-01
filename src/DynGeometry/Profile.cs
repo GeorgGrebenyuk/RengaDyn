@@ -14,7 +14,7 @@ namespace DynRenga.DynGeometry
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IProfile (свойственного балке и пластине)
     /// </summary>
-    public class Profile
+    public class Profile : Other.Technical.ICOM_Tools
     {
         public Renga.IProfile profile;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynGeometry
         public Profile (object Profile_object)
         {
             this.profile = Profile_object as Renga.IProfile;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.profile == null) return false;
+            else return true;
         }
         //properties
         /// <summary>

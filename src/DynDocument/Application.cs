@@ -17,7 +17,7 @@ namespace DynRenga.DynDocument
     /// <summary>
     /// Класс для работы с приложением Renga (интерфейсом Renga.IApplication)
     /// </summary>
-    public  class Application
+    public  class Application : Other.Technical.ICOM_Tools
     {
         public Renga.IApplication renga_app;
         /// <summary>
@@ -38,14 +38,22 @@ namespace DynRenga.DynDocument
                 this.renga_app = comObject as Renga.IApplication;
             }
         }
-
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.renga_app == null) return false;
+            else return true;
+        }
         /// <summary>
         /// Получает запущенный процесс Renga или создает его если такого нет, 
         /// и открывает проект по файловому пути к нему
         /// </summary>
         /// <param name="project_path">Файловый путь к проекту Renga</param>
         [dr.IsVisibleInDynamoLibrary(false)]
-        public Application(string project_path)
+        private Application(string project_path)
         {
             IRunningObjectTable rot;
             GetRunningObjectTable(0, out rot);

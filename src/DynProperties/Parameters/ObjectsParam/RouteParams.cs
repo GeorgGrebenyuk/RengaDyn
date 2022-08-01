@@ -14,7 +14,7 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Route
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IRouteParams
     /// </summary>
-    public class RouteParams
+    public class RouteParams : Other.Technical.ICOM_Tools
     {
         public Renga.IRouteParams route_params;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Route
         public RouteParams(object ModelObject_Route)
         {
             this.route_params = ModelObject_Route as Renga.IRouteParams;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.route_params == null) return false;
+            else return true;
         }
         //properties
         /// <summary>

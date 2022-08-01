@@ -14,7 +14,7 @@ namespace DynRenga.DynStyles
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IRebarStyle, стилем арматуры
     /// </summary>
-    public class RebarStyle
+    public class RebarStyle : Other.Technical.ICOM_Tools
     {
         public Renga.IRebarStyle rebar_style;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynStyles
         public RebarStyle(object RebarStyle_object)
         {
             this.rebar_style = RebarStyle_object as Renga.IRebarStyle;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.rebar_style == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение численного идентификатора стиля

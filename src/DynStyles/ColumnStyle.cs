@@ -14,7 +14,7 @@ namespace DynRenga.DynStyles
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IColumnStyle, одиночным стилем колонны
     /// </summary>
-    public class ColumnStyle
+    public class ColumnStyle : Other.Technical.ICOM_Tools
     {
         public Renga.IColumnStyle column_style;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynStyles
         public ColumnStyle(object ColumnStyle_object)
         {
             this.column_style = ColumnStyle_object as Renga.IColumnStyle;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.column_style == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение целочисленного идентификатора стиля

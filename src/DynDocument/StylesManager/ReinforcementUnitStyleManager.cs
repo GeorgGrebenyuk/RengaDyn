@@ -15,7 +15,7 @@ namespace DynRenga.DynDocument.StylesManager
     /// Класс для работы с менеджером свойств арматуры и арматурных блоков, 
     /// интерфейсом Renga.IReinforcementUnitStyleManager
     /// </summary>
-    public class ReinforcementUnitStyleManager
+    public class ReinforcementUnitStyleManager : Other.Technical.ICOM_Tools
     {
         public Renga.IReinforcementUnitStyleManager man;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynDocument.StylesManager
         public ReinforcementUnitStyleManager(DynDocument.Project.Project renga_project)
         {
             this.man = renga_project.project.ReinforcementUnitStyleManager;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.man == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение интерфейса Renga.IRebarStyle по его численному (int) идентификатору

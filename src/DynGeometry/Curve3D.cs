@@ -14,7 +14,7 @@ namespace DynRenga.DynGeometry
     /// <summary>
     /// Класс для работы с интерфейсом Renga.ICurve3D
     /// </summary>
-    public class Curve3D
+    public class Curve3D : Other.Technical.ICOM_Tools
     {
         public Renga.ICurve3D curve_3d;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynGeometry
         public Curve3D(object Curve3D_object)
         {
             this.curve_3d = Curve3D_object as Renga.ICurve3D;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.curve_3d == null) return false;
+            else return true;
         }
         /// <summary>
         /// Все типы кривой (Curve3DType)

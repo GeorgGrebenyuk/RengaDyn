@@ -15,7 +15,7 @@ namespace DynRenga.DynProperties.Properties
     /// Класс для работы с менеджером свойств проекта 
     /// (интерфейсом Renga.IPropertyManager)
     /// </summary>
-    public class PropertyManager
+    public class PropertyManager : Other.Technical.ICOM_Tools
     {
         public Renga.IPropertyManager prop_manager;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynProperties.Properties
         public PropertyManager (DynDocument.Project.Project renga_project)
         {
             this.prop_manager = renga_project.project.PropertyManager;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.prop_manager== null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение общего количества зарегистрированных свойств в Renga (данном проекте)

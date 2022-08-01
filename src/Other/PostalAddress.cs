@@ -14,7 +14,7 @@ namespace DynRenga.Other
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IPostalAddress (встречается в BuildingInfo и LandPlotInfo)
     /// </summary>
-    public class PostalAddress
+    public class PostalAddress : Other.Technical.ICOM_Tools
     {
         public Renga.IPostalAddress p_add;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.Other
         public PostalAddress(object PostalAddress_object)
         {
             this.p_add = PostalAddress_object as Renga.IPostalAddress;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.p_add == null) return false;
+            else return true;
         }
         //Getting properties
         /// <summary>

@@ -14,7 +14,7 @@ namespace DynRenga.DynStyles
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IBeamStyle
     /// </summary>
-    public class BeamStyle
+    public class BeamStyle : Other.Technical.ICOM_Tools
     {
         public Renga.IBeamStyle beam_style;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynStyles
         public BeamStyle(object BeamStyle_object)
         {
             this.beam_style = BeamStyle_object as Renga.IBeamStyle;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.beam_style == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение целочисленного идентификатора стиля

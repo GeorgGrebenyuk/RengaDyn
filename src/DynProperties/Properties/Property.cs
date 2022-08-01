@@ -15,7 +15,7 @@ namespace DynRenga.DynProperties.Properties
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IProperty - одиночным свойством объекта
     /// </summary>
-    public class Property
+    public class Property : Other.Technical.ICOM_Tools
     {
         public Renga.IProperty prop;
         /// <summary>
@@ -26,7 +26,15 @@ namespace DynRenga.DynProperties.Properties
         {
             this.prop = Property_obj as Renga.IProperty;
         }
-        
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.prop == null) return false;
+            else return true;
+        }
         /// <summary>
         /// Типы данных свойств (единицы измерения)
         /// </summary>

@@ -14,7 +14,7 @@ namespace DynRenga.DynObjects
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IExportedObject3D (трехмерным представлением объекта)
     /// </summary>
-    public class ExportedObject3D
+    public class ExportedObject3D : Other.Technical.ICOM_Tools
     {
         private Renga.IExportedObject3D obj;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynObjects
         public ExportedObject3D (object ExportedObject3D_obj)
         {
             this.obj = ExportedObject3D_obj as IExportedObject3D;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.obj == null) return false;
+            else return true;
         }
         /// <summary>
         /// Инициализация класса через интерфейс Renga.IExportedObject3D по идентификатору объекта модели (Renga.IModelObject)

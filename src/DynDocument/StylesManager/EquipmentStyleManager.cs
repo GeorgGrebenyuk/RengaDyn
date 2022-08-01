@@ -15,7 +15,7 @@ namespace DynRenga.DynDocument.StylesManager
     /// Класс для работы с менеджером свойств оборудования, 
     /// интерфейсом Renga.IEquipmentStyleManager
     /// </summary>
-    public class EquipmentStyleManager
+    public class EquipmentStyleManager : Other.Technical.ICOM_Tools
     {
         public Renga.IEquipmentStyleManager man;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynDocument.StylesManager
         public EquipmentStyleManager(DynDocument.Project.Project renga_project)
         {
             this.man = renga_project.project.EquipmentStyleManager;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.man == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение всех стилей как интерфейсов Renga.IEquipmentStyle

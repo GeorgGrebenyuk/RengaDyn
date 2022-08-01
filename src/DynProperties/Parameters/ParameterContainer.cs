@@ -14,7 +14,7 @@ namespace DynRenga.DynProperties.Parameters
     /// <summary>
     /// Класс для работы с группой параметров (интерфейсом Renga.IParameterContainer)
     /// </summary>
-    public class ParameterContainer
+    public class ParameterContainer : Other.Technical.ICOM_Tools
     {
         public Renga.IParameterContainer p_cont;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynProperties.Parameters
         public ParameterContainer (object ParameterContainer_obj)
         {
             this.p_cont = ParameterContainer_obj as Renga.IParameterContainer;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.p_cont == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение набора идентификаторов отдельных параметров как сущности Renga.IGuidCollection

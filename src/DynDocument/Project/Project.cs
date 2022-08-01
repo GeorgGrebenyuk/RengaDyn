@@ -14,7 +14,7 @@ namespace DynRenga.DynDocument.Project
     /// <summary>
     /// Класс для работы с проектом Renga, интерфейсом Renga.IProject
     /// </summary>
-    public class Project
+    public class Project : Other.Technical.ICOM_Tools
     {
         public Renga.IProject project;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynDocument.Project
         {
 
             this.project = renga_application.renga_app.Project;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.project == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение файлового пути, по которому сохранен текущий проект или null если он не сохранен

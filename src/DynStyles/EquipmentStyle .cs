@@ -14,7 +14,7 @@ namespace DynRenga.DynStyles
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IEquipmentStyle, стилем оборудования
     /// </summary>
-    public class EquipmentStyle
+    public class EquipmentStyle : Other.Technical.ICOM_Tools
     {
         public Renga.IEquipmentStyle eq_style;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynStyles
         public EquipmentStyle(object EquipmentStyle_object)
         {
             this.eq_style = EquipmentStyle_object as Renga.IEquipmentStyle;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.eq_style == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение наименования класса

@@ -14,7 +14,7 @@ namespace DynRenga.DynDocument
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IModel (модель Проекта)
     /// </summary>
-    public class Model
+    public class Model : Other.Technical.ICOM_Tools
     {
         public Renga.IModel model;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynDocument
         public Model(Project.Project project)
         {
             this.model = project.project.Model;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.model == null) return false;
+            else return true;
         }
         /// <summary>
         /// Сведение к интерфейсу Renga.IModel объекта модели "Сборка"

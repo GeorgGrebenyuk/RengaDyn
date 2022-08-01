@@ -14,7 +14,7 @@ namespace DynRenga.Other
     /// <summary>
     /// Класс для работы со списком Guid'ов (Renga.IGuidCollection)
     /// </summary>
-    public class GuidCollection
+    public class GuidCollection : Other.Technical.ICOM_Tools
     {
         private Renga.IGuidCollection collection;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.Other
         public GuidCollection(object GuidCollection_obj)
         {
             this.collection = GuidCollection_obj as Renga.IGuidCollection;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.collection == null) return false;
+            else return true;
         }
         /// <summary>
         /// Количество вложенных элементов

@@ -14,7 +14,7 @@ namespace DynRenga.DynProperties.Quantities
     /// <summary>
     /// Класс для работы с отдельными расчетными свойствами Renga.IQuantity
     /// </summary>
-    public class Quantity
+    public class Quantity : Other.Technical.ICOM_Tools
     {
         public Renga.IQuantity quan;
         /// <summary>
@@ -25,7 +25,15 @@ namespace DynRenga.DynProperties.Quantities
         {
             this.quan = renga_Quantity_obj as Renga.IQuantity;
         }
-        
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.quan == null) return false;
+            else return true;
+        }
         /// <summary>
         /// Получение расшифровки для типа расчетного параметра
         /// </summary>

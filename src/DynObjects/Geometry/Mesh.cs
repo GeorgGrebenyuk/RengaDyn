@@ -15,7 +15,7 @@ namespace DynRenga.DynObjects.Geometry
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IMesh
     /// </summary>
-    public class Mesh
+    public class Mesh : Other.Technical.ICOM_Tools
     {
         private Renga.IMesh mesh;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynObjects.Geometry
         public Mesh(object mesh_obj)
         {
             this.mesh = mesh_obj as Renga.IMesh;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.mesh == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение количества Grid

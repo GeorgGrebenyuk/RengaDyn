@@ -14,7 +14,7 @@ namespace DynRenga.DynProperties.Parameters
     /// <summary>
     /// Класс для работы с одиночным параметром, интерфейсом Renga.IParameter
     /// </summary>
-    public class Parameter
+    public class Parameter : Other.Technical.ICOM_Tools
     {
         public Renga.IParameter param;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynProperties.Parameters
         public Parameter (object Parameter_obj_com)
         {
             this.param = Parameter_obj_com as Renga.IParameter;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.param== null) return false;
+            else return true;
         }
         /// <summary>
         /// Проверка, есть ли какое-либо значение у параметра

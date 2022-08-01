@@ -15,12 +15,21 @@ namespace DynRenga.DynGeometry
     /// Класс для работы с интерфейсом Renga.IPlacement3D - локальной системой координат 
     /// в трехмерном пространстве
     /// </summary>
-    public class Placement3D
+    public class Placement3D : Other.Technical.ICOM_Tools
     {
         public Renga.IPlacement3D pl3d;
         public Placement3D (object Placement3D_object)
         {
             this.pl3d = Placement3D_object as Renga.IPlacement3D;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.pl3d == null) return false;
+            else return true;
         }
         //properties
         /// <summary>

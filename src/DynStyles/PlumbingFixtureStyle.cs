@@ -14,7 +14,7 @@ namespace DynRenga.DynStyles
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IPlumbingFixtureStyle, стиля сантехнического оборудования
     /// </summary>
-    public class PlumbingFixtureStyle
+    public class PlumbingFixtureStyle : Other.Technical.ICOM_Tools
     {
         public Renga.IPlumbingFixtureStyle pl_style;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynStyles
         public PlumbingFixtureStyle (object PlumbingFixtureStyle_object)
         {
             this.pl_style = PlumbingFixtureStyle_object as Renga.IPlumbingFixtureStyle;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.pl_style == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение имени стиля

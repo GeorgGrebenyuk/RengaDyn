@@ -15,7 +15,7 @@ namespace DynRenga.DynGeometry
     /// Класс для работы с интерфейсом Renga.IPlacement3DCollection, 
     /// коллекцией отдельных Renga.IPlacement3D
     /// </summary>
-    public class Placement3DCollection
+    public class Placement3DCollection : Other.Technical.ICOM_Tools
     {
         public Renga.IPlacement3DCollection coll;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynGeometry
         public Placement3DCollection (object Placement3DCollection_object)
         {
             this.coll = Placement3DCollection_object as Renga.IPlacement3DCollection;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.coll == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение числа элементов в составе коллекции

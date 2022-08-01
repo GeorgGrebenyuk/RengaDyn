@@ -14,7 +14,7 @@ namespace DynRenga.DynDocument.Project
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IProjectInfo, свойствами проекта
     /// </summary>
-    public class ProjectInfo
+    public class ProjectInfo : Other.Technical.ICOM_Tools
     {
         public Renga.IProjectInfo p_info;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynDocument.Project
         public ProjectInfo(object ProjectInfo_com)
         {
             this.p_info = ProjectInfo_com as Renga.IProjectInfo;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.p_info == null) return false;
+            else return true;
         }
         //Getting properties
         /// <summary>

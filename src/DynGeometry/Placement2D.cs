@@ -15,12 +15,21 @@ namespace DynRenga.DynGeometry
     /// Класс для работы с интерфейсом Renga.IPlacement2D - локальной системой координат 
     /// в двухмерном пространстве
     /// </summary>
-    public class Placement2D
+    public class Placement2D : Other.Technical.ICOM_Tools
     {
         public Renga.IPlacement2D pl2d;
         public Placement2D(object Placement2D_object)
         {
             this.pl2d = Placement2D_object as Renga.IPlacement2D;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.pl2d == null) return false;
+            else return true;
         }
         //properties
         /// <summary>

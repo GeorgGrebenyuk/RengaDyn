@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,7 +14,7 @@ namespace DynRenga.DynProperties.Parameters
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IParameterDefinition 
     /// </summary>
-    public class ParameterDefinition
+    public class ParameterDefinition : Other.Technical.ICOM_Tools
     {
         public Renga.IParameterDefinition param_def;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynProperties.Parameters
         public ParameterDefinition(object ParameterDefinition_obj_com)
         {
             this.param_def = ParameterDefinition_obj_com as Renga.IParameterDefinition;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.param_def== null) return false;
+            else return true;
         }
         /// <summary>
         /// Получает наименование параметра

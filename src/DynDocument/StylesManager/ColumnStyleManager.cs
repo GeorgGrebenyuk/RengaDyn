@@ -15,7 +15,7 @@ namespace DynRenga.DynDocument.StylesManager
     /// Класс для работы с менеджером свойств колонн, 
     /// интерфейсом Renga.IColumnStyleManager
     /// </summary>
-    public class ColumnStyleManager
+    public class ColumnStyleManager : Other.Technical.ICOM_Tools
     {
         public Renga.IColumnStyleManager man;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynDocument.StylesManager
         public ColumnStyleManager(DynDocument.Project.Project renga_project)
         {
             this.man = renga_project.project.ColumnStyleManager;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.man == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение всех стилей как интерфейсов Renga.IColumnStyle

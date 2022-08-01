@@ -14,7 +14,7 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Column
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IColumnParams (расширенные свойства Колонны)
     /// </summary>
-    public class ColumnParams
+    public class ColumnParams : Other.Technical.ICOM_Tools
     {
         public Renga.IColumnParams column_params;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Column
         public ColumnParams(object ModelObject_column)
         {
             this.column_params = ModelObject_column as Renga.IColumnParams;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.column_params == null) return false;
+            else return true;
         }
         //properties
         /// <summary>

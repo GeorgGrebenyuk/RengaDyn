@@ -15,7 +15,7 @@ namespace DynRenga.DynDocument.StylesManager
     /// Класс для работы с менеджером свойств сантехнического оборудования, 
     /// интерфейсом Renga.IPlumbingFixtureStyleManager
     /// </summary>
-    public class PlumbingFixtureStyleManager
+    public class PlumbingFixtureStyleManager : Other.Technical.ICOM_Tools
     {
         public Renga.IPlumbingFixtureStyleManager man;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynDocument.StylesManager
         public PlumbingFixtureStyleManager(DynDocument.Project.Project renga_project)
         {
             this.man = renga_project.project.PlumbingFixtureStyleManager;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.man == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение всех стилей как интерфейсов Renga.IPlumbingFixtureStyle

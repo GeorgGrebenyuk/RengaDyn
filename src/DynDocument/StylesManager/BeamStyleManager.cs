@@ -15,7 +15,7 @@ namespace DynRenga.DynDocument.StylesManager
     /// Класс для работы с менеджером свойств балок, 
     /// интерфейсом Renga.IBeamStyleManager
     /// </summary>
-    public class BeamStyleManager
+    public class BeamStyleManager : Other.Technical.ICOM_Tools
     {
         public Renga.IBeamStyleManager man;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynDocument.StylesManager
         public BeamStyleManager(DynDocument.Project.Project renga_project)
         {
             this.man = renga_project.project.BeamStyleManager;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.man== null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение всех стилей как интерфейсов Renga.IBeamStyle

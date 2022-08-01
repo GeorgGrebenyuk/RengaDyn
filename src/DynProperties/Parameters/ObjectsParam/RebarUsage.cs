@@ -15,7 +15,7 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam
     /// Класс для работы с интерфейсом Renga.IRebarUsage 
     /// (использование арматуры в арматурном узле или армируемом объекте)
     /// </summary>
-    public class RebarUsage
+    public class RebarUsage : Other.Technical.ICOM_Tools
     {
         public Renga.IRebarUsage r_usage;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam
         public RebarUsage(object RebarUsage_object)
         {
             this.r_usage = RebarUsage_object as Renga.IRebarUsage;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.r_usage == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение интерфейса Renga.IQuantityContainer (расчетных свойств)

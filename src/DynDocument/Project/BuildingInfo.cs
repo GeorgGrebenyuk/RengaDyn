@@ -14,7 +14,7 @@ namespace DynRenga.DynDocument.Project
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IBuildingInfo, свойствами здания
     /// </summary>
-    public class BuildingInfo
+    public class BuildingInfo : Other.Technical.ICOM_Tools
     {
         public Renga.IBuildingInfo b_info;
         /// <summary>
@@ -24,6 +24,15 @@ namespace DynRenga.DynDocument.Project
         public BuildingInfo(object BuildingInfo_com)
         {
             this.b_info = BuildingInfo_com as Renga.IBuildingInfo;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.b_info == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение строкового представления номера здания

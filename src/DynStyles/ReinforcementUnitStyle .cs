@@ -13,7 +13,7 @@ namespace DynRenga.DynStyles
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IReinforcementUnitStyle, стилем арматурного элемента
     /// </summary>
-    public class ReinforcementUnitStyle
+    public class ReinforcementUnitStyle : Other.Technical.ICOM_Tools
     {
         public Renga.IReinforcementUnitStyle rein_style;
         /// <summary>
@@ -23,6 +23,15 @@ namespace DynRenga.DynStyles
         public ReinforcementUnitStyle(object ReinforcementUnitStyle_object)
         {
             this.rein_style = ReinforcementUnitStyle_object as Renga.IReinforcementUnitStyle;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.rein_style == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение идентификатора стиля

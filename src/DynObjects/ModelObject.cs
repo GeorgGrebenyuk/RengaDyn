@@ -15,7 +15,7 @@ namespace DynRenga.DynObjects
     /// <summary>
     /// Класс для работы с объектом модели Renga.IModelObject
     /// </summary>
-    public class ModelObject
+    public class ModelObject : Other.Technical.ICOM_Tools
     {
         public Renga.IModelObject obj;
         /// <summary>
@@ -25,6 +25,15 @@ namespace DynRenga.DynObjects
         public ModelObject (object model_object_com)
         {
             this.obj = model_object_com as Renga.IModelObject;
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.obj == null) return false;
+            else return true;
         }
         /// <summary>
         /// Получение типа объекта как Guid

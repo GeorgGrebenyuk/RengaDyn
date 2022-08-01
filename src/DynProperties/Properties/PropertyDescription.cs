@@ -15,7 +15,7 @@ namespace DynRenga.DynProperties.Properties
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IPropertyDescription и классом Renga.PropertyDescription
     /// </summary>
-    public class PropertyDescription
+    public class PropertyDescription : Other.Technical.ICOM_Tools
     {
         //Для IPropertyDescription
         public Renga.IPropertyDescription prop_descr;
@@ -27,7 +27,17 @@ namespace DynRenga.DynProperties.Properties
         public PropertyDescription (object PropertyDescription_obj)
         {
             this.prop_descr = PropertyDescription_obj as Renga.IPropertyDescription;
-        }/// <summary>
+        }
+        /// <summary>
+        /// Проверка на null полученного интерфейса
+        /// </summary>
+        /// <returns></returns>
+        public bool CheckIsNotNull()
+        {
+            if (this.prop_descr == null) return false;
+            else return true;
+        }
+        /// <summary>
         /// Получение наименования определения свойства
         /// </summary>
         /// <returns></returns>
