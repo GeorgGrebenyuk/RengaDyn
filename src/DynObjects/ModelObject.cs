@@ -44,14 +44,6 @@ namespace DynRenga.DynObjects
             return this.obj.ObjectType;
         }
         /// <summary>
-        /// Получение типа объекта в строчном виде от Guid
-        /// </summary>
-        /// <returns></returns>
-        public string ObjectTypeS()
-        {
-            return this.obj.ObjectTypeS;
-        }
-        /// <summary>
         /// Получение целочисленного идентификатора объекта
         /// </summary>
         /// <returns></returns>
@@ -74,14 +66,6 @@ namespace DynRenga.DynObjects
         public Guid UniqueId()
         {
             return this.obj.uniqueId;
-        }
-        /// <summary>
-        /// Получение внутреннего идентификатора объекта в Renga как строчный Guid
-        /// </summary>
-        /// <returns></returns>
-        public string UniqueIdS()
-        {
-            return this.obj.UniqueIdS;
         }
         /// <summary>
         /// Приведение объекта модели к интерфейсу Renga.IObjectWithMaterial для получения материала, если таковой вообще назначен.

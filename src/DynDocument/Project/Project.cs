@@ -67,14 +67,6 @@ namespace DynRenga.DynDocument.Project
         {
             return this.project.LandPlotInfo;
         }
-        /// <summary>
-        /// Получение интерфейса Renga.IModel
-        /// </summary>
-        /// <returns>Интерфейс Renga.IModel</returns>
-        public object IModel()
-        {
-            return this.project.Model;
-        }
 
 
 
