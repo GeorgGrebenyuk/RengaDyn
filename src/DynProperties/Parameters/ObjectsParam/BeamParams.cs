@@ -39,18 +39,12 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Beam
         /// Получение базовой линии балки как объекта геометрии Curve3D (см. класс в DynGeometry)
         /// </summary>
         /// <returns></returns>
-        public object GetBaseline()
-        {
-            return this.beam_params.GetBaseline();
-        }
+        public object GetBaseline => this.beam_params.GetBaseline();
         /// <summary>
         /// Получение расположения профиля балки (объект Placement2D)
         /// </summary>
         /// <returns></returns>
-        public object GetProfilePlacement()
-        {
-            return this.beam_params.GetProfilePlacement();
-        }
+        public object GetProfilePlacement => this.beam_params.GetProfilePlacement();
         /// <summary>
         /// Получение трехмерного расположения профиля балки (объект Placement3D) 
         /// по заданному параметру кривой
@@ -66,18 +60,12 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Beam
         /// Получение целочисленного идентификатора стиля балки
         /// </summary>
         /// <returns></returns>
-        public int StyleId()
-        {
-            return this.beam_params.StyleId;
-        }
+        public int StyleId => this.beam_params.StyleId;
         /// <summary>
         /// Получение значения вертикального смещения балки
         /// </summary>
         /// <returns></returns>
-        public double VerticalOffset()
-        {
-            return this.beam_params.VerticalOffset;
-        }
+        public double VerticalOffset => this.beam_params.VerticalOffset;
 
     }
     

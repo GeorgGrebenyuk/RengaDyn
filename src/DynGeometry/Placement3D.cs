@@ -81,42 +81,27 @@ namespace DynRenga.DynGeometry
         /// Проверка, является ли ортогональной данная СК
         /// </summary>
         /// <returns></returns>
-        public bool IsOrthogonal()
-        {
-            return this.pl3d.IsOrthogonal();
-        }
+        public bool IsOrthogonal => this.pl3d.IsOrthogonal();
         /// <summary>
         /// Проверка, является ли нормальной данная СК
         /// </summary>
         /// <returns></returns>
-        public bool IsNormal()
-        {
-            return this.pl3d.IsNormal();
-        }
+        public bool IsNormal => this.pl3d.IsNormal();
         /// <summary>
         /// Проверка, является ли данная СК левосторонней
         /// </summary>
         /// <returns></returns>
-        public bool IsLeft()
-        {
-            return this.pl3d.IsLeft();
-        }
+        public bool IsLeft => this.pl3d.IsLeft();
         /// <summary>
         /// Получение Renga.ITransform3D из текущей СК в глобальную
         /// </summary>
         /// <returns></returns>
-        public object GetTransformFrom()
-        {
-            return this.pl3d.GetTransformFrom();
-        }
+        public object GetTransformFrom => this.pl3d.GetTransformFrom();
         /// <summary>
         /// Получение Renga.ITransform3D из глобальной СК в текущую
         /// </summary>
         /// <returns></returns>
-        public object GetTransformInto()
-        {
-            return this.pl3d.GetTransformInto();
-        }
+        public object GetTransformInto => this.pl3d.GetTransformInto();
         /// <summary>
         /// Перемещение на указанный вектор
         /// </summary>
@@ -153,10 +138,7 @@ namespace DynRenga.DynGeometry
         /// Получение копии текущей СК
         /// </summary>
         /// <returns></returns>
-        public object GetCopy()
-        {
-            return this.pl3d.GetCopy();
-        }
+        public object GetCopy => this.pl3d.GetCopy();
 
     }
 }

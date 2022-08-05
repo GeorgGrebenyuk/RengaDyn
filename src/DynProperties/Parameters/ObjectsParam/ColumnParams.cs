@@ -39,18 +39,12 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Column
         /// Получение высоты колонны
         /// </summary>
         /// <returns></returns>
-        public double Height()
-        {
-            return this.column_params.Height;
-        }
+        public double Height => this.column_params.Height;
         /// <summary>
         /// Получение идентификатора (int) стиля колонны
         /// </summary>
         /// <returns></returns>
-        public int StyleId()
-        {
-            return this.column_params.StyleId;
-        }
+        public int StyleId => this.column_params.StyleId;
         /// <summary>
         /// Получение точки в 3D-места установкиколонны
         /// </summary>
@@ -64,19 +58,13 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Column
         /// Получение вертикального смещения объекта.
         /// </summary>
         /// <returns></returns>
-        public double VerticalOffset()
-        {
-            return this.column_params.VerticalOffset;
-        }
+        public double VerticalOffset => this.column_params.VerticalOffset;
         //functions
         /// <summary>
         /// Получение локальной системы координат для проиля колонны
         /// </summary>
         /// <returns></returns>
-        public object GetProfilePlacement()
-        {
-            return this.column_params.GetProfilePlacement();
-        }
+        public object GetProfilePlacement=> this.column_params.GetProfilePlacement();
     }
     
 }

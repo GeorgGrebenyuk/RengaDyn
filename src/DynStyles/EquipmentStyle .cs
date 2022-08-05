@@ -38,10 +38,7 @@ namespace DynRenga.DynStyles
         /// Получение наименования класса
         /// </summary>
         /// <returns></returns>
-        public string Name()
-        {
-            return this.eq_style.Name;
-        }
+        public string Name => this.eq_style.Name;
         /// <summary>
         /// Получение строкового типа оборудования (Renga.EquipmentCategory)
         /// </summary>

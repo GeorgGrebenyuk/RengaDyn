@@ -39,58 +39,37 @@ namespace DynRenga.Other
         /// Получение строкового представления графы "Адресат"
         /// </summary>
         /// <returns></returns>
-        public string Addressee()
-        {
-            return this.p_add.Addressee;
-        }
+        public string Addressee => this.p_add.Addressee;
         /// <summary>
         /// Получение строкового представления (списка) графы "Адрес"
         /// </summary>
         /// <returns></returns>
-        public List<string> AddressLines()
-        {
-            return this.p_add.AddressLines.OfType<string>().ToList();
-        }
+        public List<string> AddressLines => this.p_add.AddressLines.OfType<string>().ToList();
         /// <summary>
         /// Получение строкового представления графы "Абонентский ящик"
         /// </summary>
         /// <returns></returns>
-        public string PostalBox()
-        {
-            return this.p_add.PostalBox;
-        }
+        public string PostalBox => this.p_add.PostalBox;
         /// <summary>
         /// Получение строкового представления графы "Населенный пункт"
         /// </summary>
         /// <returns></returns>
-        public string Town()
-        {
-            return this.p_add.Town;
-        }
+        public string Town => this.p_add.Town;
         /// <summary>
         /// Получение строкового представления графы "Регион"
         /// </summary>
         /// <returns></returns>
-        public string Region()
-        {
-            return this.p_add.Region;
-        }
+        public string Region => this.p_add.Region;
         /// <summary>
         /// Получение строкового представления графы "Почтовый индекс"
         /// </summary>
         /// <returns></returns>
-        public string Postcode()
-        {
-            return this.p_add.Postcode;
-        }
+        public string Postcode => this.p_add.Postcode;
         /// <summary>
         /// Получение строкового представления графы "Страна"
         /// </summary>
         /// <returns></returns>
-        public string Country()
-        {
-            return this.p_add.Country;
-        }
+        public string Country => this.p_add.Country;
         //Setting properties
         /// <summary>
         /// Заполнение строкового представления графы "Адресат"

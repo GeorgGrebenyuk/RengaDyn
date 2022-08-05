@@ -38,10 +38,7 @@ namespace DynRenga.Other
         /// Количество вложенных элементов
         /// </summary>
         /// <returns></returns>
-        public int Count()
-        {
-            return this.collection.Count;
-        }
+        public int Count => this.collection.Count;
         /// <summary>
         /// Получение списка идентификаторов в форме Guid
         /// </summary>
@@ -52,19 +49,6 @@ namespace DynRenga.Other
             for (int i =0; i< this.collection.Count; i++)
             {
                 guids.Add(collection.Get(i));
-            }
-            return guids;
-        }
-        /// <summary>
-        /// Получение списка идентификаторов в строчной форме
-        /// </summary>
-        /// <returns></returns>
-        public List<string> GetGuidsS()
-        {
-            List<string> guids = new List<string>();
-            for (int i = 0; i < this.collection.Count; i++)
-            {
-                guids.Add(collection.GetS(i));
             }
             return guids;
         }

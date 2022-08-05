@@ -38,25 +38,16 @@ namespace DynRenga.DynStyles
         /// Получение целочисленного идентификатора стиля
         /// </summary>
         /// <returns></returns>
-        public int Id()
-        {
-            return this.column_style.Id;
-        }
+        public int Id => this.column_style.Id;
         /// <summary>
         /// Получение наименования стиля
         /// </summary>
         /// <returns></returns>
-        public string Name()
-        {
-            return this.column_style.Name;
-        }
+        public string Name => this.column_style.Name;
         /// <summary>
         /// Получение интерфейса Renga.IProfile
         /// </summary>
         /// <returns></returns>
-        public object Profile()
-        {
-            return this.column_style.Profile;
-        }
+        public object Profile => this.column_style.Profile;
     }
 }

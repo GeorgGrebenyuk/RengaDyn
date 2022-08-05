@@ -39,26 +39,17 @@ namespace DynRenga.DynDocument.Project
         /// Получение строкового представления параметра "Обозначение проекта"
         /// </summary>
         /// <returns></returns>
-        public string Code()
-        {
-            return this.p_info.Code;
-        }
+        public string Code => this.p_info.Code;
         /// <summary>
         /// Получение строкового представления параметра "Наименование проекта"
         /// </summary>
         /// <returns></returns>
-        public string Name()
-        {
-            return this.p_info.Name;
-        }
+        public string Name => this.p_info.Name;
         /// <summary>
         /// Получение строкового представления параметра "Стадия"
         /// </summary>
         /// <returns></returns>
-        public string Stage()
-        {
-            return this.p_info.Stage;
-        }
+        public string Stage => this.p_info.Stage;
 
         //Set properties
         /// <summary>
@@ -98,9 +89,6 @@ namespace DynRenga.DynDocument.Project
         /// со свойствами BuildingInfo
         /// </summary>
         /// <returns></returns>
-        public object GetProperties()
-        {
-            return this.p_info.GetProperties();
-        }
+        public object GetProperties => this.p_info.GetProperties();
     }
 }

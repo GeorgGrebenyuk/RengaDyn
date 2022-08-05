@@ -38,10 +38,7 @@ namespace DynRenga.DynProperties.Parameters
         /// Проверка, есть ли какое-либо значение у параметра
         /// </summary>
         /// <returns></returns>
-        public bool HasValue()
-        {
-            return this.param.HasValue();
-        }
+        public bool HasValue => this.param.HasValue();
         //getting data
         /// <summary>
         /// Получает булево значение параметра
@@ -117,26 +114,17 @@ namespace DynRenga.DynProperties.Parameters
         /// Получение Guid-идентификатора параметра
         /// </summary>
         /// <returns></returns>
-        public Guid Id()
-        {
-            return this.param.Id;
-        }
+        public Guid Id => this.param.Id;
         /// <summary>
         /// Получение интерфейса Renga.IParameterDefinition
         /// </summary>
         /// <returns></returns>
-        public object Definition()
-        {
-            return this.param.Definition;
-        }
+        public object Definition => this.param.Definition;
         /// <summary>
         /// Получение численного значения типа параметра Renga.ParameterValueType
         /// </summary>
         /// <returns></returns>
-        public object ValueType()
-        {
-            return this.param.ValueType;
-        }
+        public object ValueType => this.param.ValueType;
         //My
         /// <summary>
         /// Присвоение параметру значению по его типу (значение типа)

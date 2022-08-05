@@ -39,18 +39,12 @@ namespace DynRenga.DynObjects.Geometry
         /// Получение количества Grid
         /// </summary>
         /// <returns></returns>
-        public int GridCount()
-        {
-            return this.mesh.GridCount;
-        }
+        public int GridCount => this.mesh.GridCount;
         /// <summary>
         /// Получение типа Мэша
         /// </summary>
         /// <returns></returns>
-        public Guid MeshType()
-        {
-            return this.mesh.MeshType;
-        }
+        public Guid MeshType => this.mesh.MeshType;
         /// <summary>
         /// Получение отдельной Grid по её порядковому номеру в составе Мэша
         /// </summary>

@@ -57,10 +57,7 @@ namespace DynRenga.DynProperties.Properties
         /// Получение списка идентификаторов свойств в форме Guid'ов (Renga.IGuidCollection)
         /// </summary>
         /// <returns></returns>
-        public object GetIds()
-        {
-            return this.prop_cont.GetIds();
-        }
+        public object GetIds => this.prop_cont.GetIds();
         /// <summary>
         /// Получение одиночного свойства (Renga.IProperty) по идентификатору в форме Guid
         /// </summary>

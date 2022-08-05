@@ -78,25 +78,16 @@ namespace DynRenga.DynDocument
         /// Получение имени уровня
         /// </summary>
         /// <returns></returns>
-        public string LevelName()
-        {
-            return this.level.LevelName;
-        }
+        public string LevelName => this.level.LevelName;
         /// <summary>
         /// Получение отметки уровня
         /// </summary>
         /// <returns></returns>
-        public double Elevation()
-        {
-            return this.level.Elevation;
-        }
+        public double Elevation => this.level.Elevation;
         /// <summary>
         /// Получение интерфейса Renga.IPlacement3D
         /// </summary>
         /// <returns></returns>
-        public object Placement()
-        {
-            return this.level.Placement;
-        }
+        public object Placement => this.level.Placement;
     }
 }

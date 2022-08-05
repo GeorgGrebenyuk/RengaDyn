@@ -38,49 +38,31 @@ namespace DynRenga.DynStyles
         /// Получение численного идентификатора стиля
         /// </summary>
         /// <returns></returns>
-        public int Id()
-        {
-            return this.rebar_style.Id;
-        }
+        public int Id => this.rebar_style.Id;
         /// <summary>
         /// Получение имени стиля
         /// </summary>
         /// <returns></returns>
-        public string Name()
-        {
-            return this.rebar_style.Name;
-        }
+        public string Name => this.rebar_style.Name;
         /// <summary>
         /// Получение марки арматуры
         /// </summary>
         /// <returns></returns>
-        public string GradeName()
-        {
-            return this.rebar_style.GradeName;
-        }
+        public string GradeName => this.rebar_style.GradeName;
         /// <summary>
         /// Получение диаметра рамтуры в милиметрах
         /// </summary>
         /// <returns></returns>
-        public double Diameter()
-        {
-            return this.rebar_style.Diameter;
-        }
+        public double Diameter => this.rebar_style.Diameter;
         /// <summary>
         /// Получение численного идентификатора материала арматуры
         /// </summary>
         /// <returns></returns>
-        public int MaterialId()
-        {
-            return this.rebar_style.MaterialId;
-        }
+        public int MaterialId => this.rebar_style.MaterialId;
         /// <summary>
         /// Предел прочности арматуры при растяжении
         /// </summary>
         /// <returns></returns>
-        public double GradeTensileStrength()
-        {
-            return this.rebar_style.GradeTensileStrength;
-        }
+        public double GradeTensileStrength => this.rebar_style.GradeTensileStrength;
     }
 }

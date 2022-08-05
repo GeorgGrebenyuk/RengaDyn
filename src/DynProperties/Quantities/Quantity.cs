@@ -54,18 +54,12 @@ namespace DynRenga.DynProperties.Quantities
         /// см. нод Quantity.GetTypeAsString
         /// </summary>
         /// <returns></returns>
-        public object Type()
-        {
-            return this.quan.Type;
-        }
+        public object Type => this.quan.Type;
         /// <summary>
         /// Проверка, имеет ли расчетный параметр значение
         /// </summary>
         /// <returns></returns>
-        public bool HasValue()
-        {
-            return this.quan.HasValue();
-        }
+        public bool HasValue => this.quan.HasValue();
         /// <summary>
         /// Получение значения расчетного параметра как целочисленного значения (int)
         /// </summary>

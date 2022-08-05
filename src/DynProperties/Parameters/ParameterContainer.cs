@@ -38,10 +38,7 @@ namespace DynRenga.DynProperties.Parameters
         /// Получение набора идентификаторов отдельных параметров как сущности Renga.IGuidCollection
         /// </summary>
         /// <returns></returns>
-        public object GetIds()
-        {
-            return this.p_cont.GetIds();
-        }
+        public object GetIds => this.p_cont.GetIds();
         /// <summary>
         /// Проверка, содержит ли данный набор параметров нужный параметр по его Guid-идентификатору
         /// </summary>

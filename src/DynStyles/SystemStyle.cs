@@ -47,34 +47,22 @@ namespace DynRenga.DynStyles
         /// Получение строкового обозначения системы
         /// </summary>
         /// <returns></returns>
-        public string Designation()
-        {
-            return this.style.Designation;
-        }
+        public string Designation => this.style.Designation;
         /// <summary>
         /// Получение идентификатора стиля
         /// </summary>
         /// <returns></returns>
-        public int Id()
-        {
-            return this.style.Id;
-        }
+        public int Id => this.style.Id;
         /// <summary>
         /// Получение наименования стиля
         /// </summary>
         /// <returns></returns>
-        public string Name()
-        {
-            return this.style.Name;
-        }
+        public string Name => this.style.Name;
         /// <summary>
         /// Получение цвета стиля, используйте нод Other.RengaSimpleInterfaces.GetColorDataByRengaColor
         /// </summary>
         /// <returns></returns>
-        public object Color()
-        {
-            return this.style.Color;
-        }
+        public object Color => this.style.Color;
 
         private static Dictionary<string, object> SystemTypes()
         {

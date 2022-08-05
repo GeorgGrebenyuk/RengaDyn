@@ -39,27 +39,18 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam
         /// Получение интерфейса Renga.IQuantityContainer (расчетных свойств)
         /// </summary>
         /// <returns></returns>
-        public object GetQuantities()
-        {
-            return this.r_usage.GetQuantities();
-        }
+        public object GetQuantities => this.r_usage.GetQuantities();
         /// <summary>
         /// Получение геометрии в виде интерфейса Renga.ICurve3D
         /// </summary>
         /// <returns></returns>
-        public object GetRebarGeometry()
-        {
-            return this.r_usage.GetRebarGeometry();
-        }
+        public object GetRebarGeometry => this.r_usage.GetRebarGeometry();
         /// <summary>
         /// Получение наборов систем координат арматурных объектов. 
         /// Если армирование проиходит на уровне - то относительно уровня; 
         /// если в составе объекта -- то относительно этого объекта
         /// </summary>
         /// <returns>Интерфейс Renga.IPlacement3DCollection</returns>
-        public object GetPlacements()
-        {
-            return this.r_usage.GetPlacements();
-        }
+        public object GetPlacements => this.r_usage.GetPlacements();
     }
 }

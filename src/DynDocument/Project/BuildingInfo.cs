@@ -38,10 +38,7 @@ namespace DynRenga.DynDocument.Project
         /// Получение строкового представления номера здания
         /// </summary>
         /// <returns></returns>
-        public string Number()
-        {
-            return this.b_info.Number;
-        }
+        public string Number => this.b_info.Number;
         /// <summary>
         /// Присвоение номера здания из строкового представления
         /// </summary>
@@ -54,10 +51,7 @@ namespace DynRenga.DynDocument.Project
         /// Получение строкового представления имени здания
         /// </summary>
         /// <returns></returns>
-        public string Name()
-        {
-            return this.b_info.Name;
-        }
+        public string Name => this.b_info.Name;
         /// <summary>
         /// Присвоение наименования здания из строкового представления
         /// </summary>
@@ -70,10 +64,7 @@ namespace DynRenga.DynDocument.Project
         /// Получение строкового представления описания здания
         /// </summary>
         /// <returns></returns>
-        public string Description()
-        {
-            return this.b_info.Description;
-        }
+        public string Description => this.b_info.Description;
         /// <summary>
         /// Присвоение описания здания из строкового представления
         /// </summary>
@@ -87,17 +78,11 @@ namespace DynRenga.DynDocument.Project
         /// со свойствами BuildingInfo
         /// </summary>
         /// <returns></returns>
-        public object GetProperties()
-        {
-            return this.b_info.GetProperties();
-        }
+        public object GetProperties => this.b_info.GetProperties();
         /// <summary>
         /// Получение интерфейса Renga.IPostalAddress
         /// </summary>
         /// <returns></returns>
-        public object GetAddress()
-        {
-            return this.b_info.GetAddress();
-        }
+        public object GetAddress => this.b_info.GetAddress();
     }
 }

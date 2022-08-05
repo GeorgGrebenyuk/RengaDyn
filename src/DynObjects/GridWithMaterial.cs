@@ -39,18 +39,12 @@ namespace DynRenga.DynObjects
         /// Получение IGrid
         /// </summary>
         /// <returns></returns>
-        public object IGrid()
-        {
-            return this.gr_mat.Grid;
-        }
+        public object IGrid => this.gr_mat.Grid;
         /// <summary>
         /// Получение материала свойственного IGrid
         /// </summary>
         /// <returns></returns>
-        public object IGridMaterial()
-        {
-            return this.gr_mat.Material;
-        }
+        public object IGridMaterial => this.gr_mat.Material;
     }
 
 }

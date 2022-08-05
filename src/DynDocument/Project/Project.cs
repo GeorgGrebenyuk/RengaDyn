@@ -39,37 +39,22 @@ namespace DynRenga.DynDocument.Project
         /// Получение файлового пути, по которому сохранен текущий проект или null если он не сохранен
         /// </summary>
         /// <returns>Строковый файловый путь</returns>
-        public string FilePath()
-        {
-            return this.project.FilePath;
-        }
+        public string FilePath => this.project.FilePath;
         /// <summary>
         /// Получение инфрмации о проекте ProjectInfo, в виде интерфейса IPropertyContainer
         /// </summary>
         /// <returns></returns>
-        public object IProjectInfo()
-        {
-            return this.project.ProjectInfo;
-        }
+        public object IProjectInfo => this.project.ProjectInfo;
         /// <summary>
         /// Получение инфрмации о здании BuildingInfo, в виде интерфейса IPropertyContainer
         /// </summary>
         /// <returns></returns>
-        public object IBuildingInfo()
-        {
-            return this.project.BuildingInfo;
-        }
+        public object IBuildingInfo => this.project.BuildingInfo;
         /// <summary>
         /// Получение инфрмации об участке LandPlotInfo, в виде интерфейса IPropertyContainer
         /// </summary>
         /// <returns></returns>
-        public object ILandPlotInfo()
-        {
-            return this.project.LandPlotInfo;
-        }
-
-
-
+        public object ILandPlotInfo => this.project.LandPlotInfo;
     }
     
 }

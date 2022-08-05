@@ -39,18 +39,12 @@ namespace DynRenga.DynGeometry
         /// Получение идентификатора описания свойства
         /// </summary>
         /// <returns></returns>
-        public int DescriptionId()
-        {
-            return this.profile.DescriptionId;
-        }
+        public int DescriptionId => this.profile.DescriptionId;
         /// <summary>
         /// Получение набора параметров (интерфейса IParameterContainer)
         /// </summary>
         /// <returns></returns>
-        public object Parameters()
-        {
-            return this.profile.Parameters;
-        }
+        public object Parameters => this.profile.Parameters;
         /// <summary>
         /// Получение списка интерфейсов Renga.IRegion2D из данного профиля
         /// </summary>
@@ -122,17 +116,11 @@ namespace DynRenga.DynGeometry
         /// Получение целочисленного идентификатора данного описания профиля
         /// </summary>
         /// <returns></returns>
-        public int Id()
-        {
-            return this.pr_d.Id;
-        }
+        public int Id => this.pr_d.Id;
         /// <summary>
         /// Получение строкого наименования данного описания профиля
         /// </summary>
         /// <returns></returns>
-        public string Name()
-        {
-            return this.pr_d.Name;
-        }
+        public string Name => this.pr_d.Name;
     }
 }

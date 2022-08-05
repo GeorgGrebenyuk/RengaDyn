@@ -39,10 +39,7 @@ namespace DynRenga.DynGeometry
         /// Получение числа элементов в составе коллекции
         /// </summary>
         /// <returns></returns>
-        public int Count()
-        {
-            return this.coll.Count;
-        }
+        public int Count => this.coll.Count;
         /// <summary>
         /// Получение отдельного интерфейса Renga.IPlacement3D
         /// по его внутреннему идентификатору в этой коллекции

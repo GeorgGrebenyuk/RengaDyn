@@ -41,18 +41,12 @@ namespace DynRenga.DynProperties.Properties
         /// Получение наименования определения свойства
         /// </summary>
         /// <returns></returns>
-        public string Name ()
-        {
-            return this.prop_descr.Name;
-        }
+        public string Name  => this.prop_descr.Name;
         /// <summary>
         /// Получение типа определения свойства
         /// </summary>
         /// <returns></returns>
-        public object Type()
-        {
-            return this.prop_descr.Type;
-        }
+        public object Type => this.prop_descr.Type;
         /// <summary>
         /// Присвоение определению свойства перечня значений 
         /// (только для свойства с типом Enumeration)

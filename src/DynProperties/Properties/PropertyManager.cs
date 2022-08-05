@@ -39,10 +39,7 @@ namespace DynRenga.DynProperties.Properties
         /// Получение общего количества зарегистрированных свойств в Renga (данном проекте)
         /// </summary>
         /// <returns></returns>
-        public int PropertyCount()
-        {
-            return this.prop_manager.PropertyCount;
-        }
+        public int PropertyCount => this.prop_manager.PropertyCount;
 
         /// <summary>
         /// Удаление свойства из Renga по его Guid-идентификатору

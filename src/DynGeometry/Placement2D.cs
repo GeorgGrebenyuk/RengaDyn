@@ -72,50 +72,32 @@ namespace DynRenga.DynGeometry
         /// Проверка, является ли ортогональной данная СК
         /// </summary>
         /// <returns></returns>
-        public bool IsOrthogonal()
-        {
-            return this.pl2d.IsOrthogonal();
-        }
+        public bool IsOrthogonal => this.pl2d.IsOrthogonal();
         /// <summary>
         /// Проверка, является ли нормальной данная СК
         /// </summary>
         /// <returns></returns>
-        public bool IsNormal()
-        {
-            return this.pl2d.IsNormal();
-        }
+        public bool IsNormal => this.pl2d.IsNormal();
         /// <summary>
         /// Проверка, является ли данная СК левосторонней
         /// </summary>
         /// <returns></returns>
-        public bool IsLeft()
-        {
-            return this.pl2d.IsLeft();
-        }
+        public bool IsLeft => this.pl2d.IsLeft();
         /// <summary>
         /// Получение Renga.ITransform3D из текущей СК в глобальную
         /// </summary>
         /// <returns></returns>
-        public object GetTransformFrom()
-        {
-            return this.pl2d.GetTransformFrom();
-        }
+        public object GetTransformFrom => this.pl2d.GetTransformFrom();
         /// <summary>
         /// Получение Renga.ITransform3D из глобальной СК в текущую
         /// </summary>
         /// <returns></returns>
-        public object GetTransformInto()
-        {
-            return this.pl2d.GetTransformInto();
-        }
+        public object GetTransformInto => this.pl2d.GetTransformInto();
         /// <summary>
         /// Получение копии текущей СК
         /// </summary>
         /// <returns></returns>
-        public object GetCopy()
-        {
-            return this.pl2d.GetCopy();
-        }
+        public object GetCopy => this.pl2d.GetCopy();
 
     }
 }

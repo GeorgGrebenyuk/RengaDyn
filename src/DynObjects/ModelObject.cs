@@ -39,34 +39,22 @@ namespace DynRenga.DynObjects
         /// Получение типа объекта как Guid
         /// </summary>
         /// <returns></returns>
-        public Guid ObjectType()
-        {
-            return this.obj.ObjectType;
-        }
+        public Guid ObjectType => this.obj.ObjectType;
         /// <summary>
         /// Получение целочисленного идентификатора объекта
         /// </summary>
         /// <returns></returns>
-        public int Id()
-        {
-            return this.obj.Id;
-        }
+        public int Id => this.obj.Id;
         /// <summary>
         /// Получение наименования объекта в Renga
         /// </summary>
         /// <returns></returns>
-        public string Name()
-        {
-            return this.obj.Name;
-        }
+        public string Name => this.obj.Name;
         /// <summary>
         /// Получение внутреннего идентификатора объекта в Renga как Guid
         /// </summary>
         /// <returns></returns>
-        public Guid UniqueId()
-        {
-            return this.obj.uniqueId;
-        }
+        public Guid UniqueId => this.obj.uniqueId;
         /// <summary>
         /// Приведение объекта модели к интерфейсу Renga.IObjectWithMaterial для получения материала, если таковой вообще назначен.
         /// Если не назначен - будет возвращено "-1"

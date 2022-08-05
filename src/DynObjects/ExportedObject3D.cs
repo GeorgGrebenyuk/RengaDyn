@@ -59,18 +59,12 @@ namespace DynRenga.DynObjects
         /// свойственного данному трехмерному представлению
         /// </summary>
         /// <returns></returns>
-        public int ModelObjectId()
-        {
-            return this.obj.ModelObjectId;
-        }
+        public int ModelObjectId => this.obj.ModelObjectId;
         /// <summary>
         /// Получение количества мэшей
         /// </summary>
         /// <returns></returns>
-        public int MeshCount()
-        {
-            return this.obj.MeshCount;
-        }
+        public int MeshCount => this.obj.MeshCount;
         /// <summary>
         /// Получение мэша по внутреннему индексу
         /// </summary>

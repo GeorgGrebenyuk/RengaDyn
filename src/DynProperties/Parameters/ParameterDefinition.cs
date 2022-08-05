@@ -38,18 +38,12 @@ namespace DynRenga.DynProperties.Parameters
         /// Получает наименование параметра
         /// </summary>
         /// <returns></returns>
-        public string Name()
-        {
-            return this.param_def.Name;
-        }
+        public string Name => this.param_def.Name;
         /// <summary>
         /// Получает тип параметра в виде Enum (числа)
         /// </summary>
         /// <returns></returns>
-        public object ParameterType()
-        {
-            return this.param_def.ParameterType;
-        }
+        public object ParameterType => this.param_def.ParameterType;
         /// <summary>
         /// Получает строковое наименование типа параметра
         /// </summary>

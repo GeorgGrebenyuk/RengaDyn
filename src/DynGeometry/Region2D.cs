@@ -47,10 +47,7 @@ namespace DynRenga.DynGeometry
         /// Получение внешнего контура профиля как интерфейса Renga.ICurve2D
         /// </summary>
         /// <returns></returns>
-        public object GetOuterContour()
-        {
-            return this.reg2d.GetOuterContour();
-        }
+        public object GetOuterContour => this.reg2d.GetOuterContour();
         /// <summary>
         /// Получение набора контуров профиля как списка интерфейсов Renga.ICurve2D
         /// </summary>

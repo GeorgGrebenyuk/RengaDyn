@@ -37,18 +37,12 @@ namespace DynRenga.DynStyles
         /// Получение идентификатора стиля
         /// </summary>
         /// <returns></returns>
-        public int Id()
-        {
-            return this.rein_style.Id;
-        }
+        public int Id => this.rein_style.Id;
         /// <summary>
         /// Получение наименования стиля
         /// </summary>
         /// <returns></returns>
-        public string Name()
-        {
-            return this.rein_style.Name;
-        }
+        public string Name => this.rein_style.Name;
         /// <summary>
         /// Получение типа (Renga.ReinforcementUnitType)
         /// </summary>

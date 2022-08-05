@@ -54,10 +54,7 @@ namespace DynRenga.DynGeometry
         /// Получение Curve3DType
         /// </summary>
         /// <returns></returns>
-        public object Curve3DType()
-        {
-            return this.curve_3d.Curve3DType;
-        }
+        public object Curve3DType => this.curve_3d.Curve3DType;
         /// <summary>
         /// Получение Curve3DType как строкого значения (наименования типа)
         /// </summary>
@@ -72,18 +69,12 @@ namespace DynRenga.DynGeometry
         /// Получение минимального параметра кривой
         /// </summary>
         /// <returns></returns>
-        public double MinParameter()
-        {
-            return this.curve_3d.MinParameter;
-        }
+        public double MinParameter => this.curve_3d.MinParameter;
         /// <summary>
         /// Получение максимального параметра кривой
         /// </summary>
         /// <returns></returns>
-        public double MaxParameter()
-        {
-            return this.curve_3d.MaxParameter;
-        }
+        public double MaxParameter => this.curve_3d.MaxParameter;
         //functions
         /// <summary>
         /// Получение начальной точки кривой
@@ -119,10 +110,7 @@ namespace DynRenga.DynGeometry
         /// Вычисление длины кривой (в м.)
         /// </summary>
         /// <returns></returns>
-        public double GetLength()
-        {
-            return this.curve_3d.GetLength();
-        }
+        public double GetLength => this.curve_3d.GetLength();
         /// <summary>
         /// Получает ограничивающий BoundingBox вокруг кривой
         /// </summary>
@@ -138,10 +126,7 @@ namespace DynRenga.DynGeometry
         /// Проверка, замкнутая ли кривая
         /// </summary>
         /// <returns></returns>
-        public bool IsClosed()
-        {
-            return this.curve_3d.IsClosed();
-        }
+        public bool IsClosed => this.curve_3d.IsClosed();
         /// <summary>
         /// Вычисляет точку на кривой по смешению и расстоянию от кривой
         /// </summary>

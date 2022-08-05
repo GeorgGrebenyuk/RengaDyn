@@ -39,50 +39,32 @@ namespace DynRenga.DynObjects.Geometry
         /// Получение числа граней триангуляции
         /// </summary>
         /// <returns></returns>
-        public int TriangleCount()
-        {
-            return this.grid.TriangleCount;
-        }
+        public int TriangleCount => this.grid.TriangleCount;
         /// <summary>
         /// Получение числа вершин поверхности
         /// </summary>
         /// <returns></returns>
-        public int VertexCount()
-        {
-            return this.grid.VertexCount;
-        }
+        public int VertexCount => this.grid.VertexCount;
         /// <summary>
         /// Получение числа нормалей поверхности
         /// </summary>
         /// <returns></returns>
-        public int NormalCount()
-        {
-            return this.grid.NormalCount;
-        }
+        public int NormalCount => this.grid.NormalCount;
         /// <summary>
         /// Получение числа координат текстур (?) поверхности
         /// </summary>
         /// <returns></returns>
-        public int TextureCoordinateCount()
-        {
-            return this.grid.TextureCoordinateCount;
-        }
+        public int TextureCoordinateCount => this.grid.TextureCoordinateCount;
         /// <summary>
         /// Получение типа Grid
         /// </summary>
         /// <returns></returns>
-        public object GridType()
-        {
-            return this.grid.GridType;
-        }
+        public object GridType => this.grid.GridType;
         /// <summary>
         /// Проверка, является ли поверхность двухсторонней
         /// </summary>
         /// <returns></returns>
-        public bool DoubleSided()
-        {
-            return this.grid.DoubleSided;
-        }
+        public bool DoubleSided => this.grid.DoubleSided;
         //Triangle
         /// <summary>
         /// Получение отдельной грани триангуляции по индексу

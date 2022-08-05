@@ -38,10 +38,7 @@ namespace DynRenga.DynStyles
         /// Получение имени стиля
         /// </summary>
         /// <returns></returns>
-        public string Name()
-        {
-            return this.pl_style.Name;
-        }
+        public string Name => this.pl_style.Name;
         /// <summary>
         /// Получение строкового типа оборудования (Renga.PlumbingFixtureCategory)
         /// </summary>

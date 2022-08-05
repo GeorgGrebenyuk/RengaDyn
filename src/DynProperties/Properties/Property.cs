@@ -115,10 +115,7 @@ namespace DynRenga.DynProperties.Properties
         /// Получение типа свойства
         /// </summary>
         /// <returns></returns>
-        public object Type()
-        {
-            return this.prop.Type;
-        }
+        public object Type => this.prop.Type;
         /// <summary>
         /// Получение значения свойства для фиксированных типов СИ (метры, кв.м, кг)
         /// </summary>
@@ -177,18 +174,12 @@ namespace DynRenga.DynProperties.Properties
         /// Получение строкового наименования свойства
         /// </summary>
         /// <returns></returns>
-        public string Name()
-        {
-            return this.prop.Name;
-        }
+        public string Name => this.prop.Name;
         /// <summary>
         /// Получение Guid-идентификатора свойства
         /// </summary>
         /// <returns></returns>
-        public Guid Id()
-        {
-            return this.prop.Id;
-        }
+        public Guid Id => this.prop.Id;
         /// <summary>
         /// Получение значения свойства как дробного числа double
         /// </summary>
@@ -210,18 +201,12 @@ namespace DynRenga.DynProperties.Properties
         /// <summary>
         /// Сброс значения свойства
         /// </summary>
-        public void ResetValue()
-        {
-            this.prop.ResetValue();
-        }
+        public void ResetValue() => this.prop.ResetValue();
         /// <summary>
         /// Проверка, имеет ли свойство какое-либо значение
         /// </summary>
         /// <returns></returns>
-        public bool HasValue()
-        {
-            return this.prop.HasValue();
-        }
+        public bool HasValue => this.prop.HasValue();
         /// <summary>
         /// Получение значения свойства как величины угла
         /// </summary>

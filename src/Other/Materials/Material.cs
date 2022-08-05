@@ -65,34 +65,22 @@ namespace DynRenga.Other.Material
         /// Идентификатор материала
         /// </summary>
         /// <returns></returns>
-        public int Id()
-        {
-            return this.material.Id;
-        }
+        public int Id => this.material.Id;
         /// <summary>
         /// Наименование материала
         /// </summary>
         /// <returns></returns>
-        public string Name()
-        {
-            return this.material.Name;
-        }
+        public string Name => this.material.Name;
         /// <summary>
         /// Плотность материала в кг/м3
         /// </summary>
         /// <returns></returns>
-        public double Density()
-        {
-            return this.material.Density;
-        }
+        public double Density => this.material.Density;
         /// <summary>
-        /// Цвет материала. ДЛя получения кода использовать нод RengaSimpleInterfaces.GetColorDataByRengaColor
+        /// Цвет материала. Ддя получения кода использовать нод RengaSimpleInterfaces.GetColorDataByRengaColor
         /// </summary>
         /// <returns></returns>
-        public object Color()
-        {
-            return this.material.Color;
-        }
+        public object Color => this.material.Color;
     }
     /// <summary>
     /// Класс для работы с материалом, свойственным Renga.IGrid
@@ -100,18 +88,16 @@ namespace DynRenga.Other.Material
     public class GridMaterial
     {
         public Renga.IGridMaterial gr_mat;
+        /// <summary>
+        /// Инициация класса из интерфейса Renga.IGridMaterial
+        /// </summary>
+        /// <param name="GridMaterial_obj"></param>
         public GridMaterial(object GridMaterial_obj)
         {
             this.gr_mat = GridMaterial_obj as Renga.IGridMaterial;
         }
-        public int Id()
-        {
-            return this.gr_mat.Id;
-        }
-        public object Color()
-        {
-            return this.gr_mat.Color;
-        }
+        public int Id => this.gr_mat.Id;
+        public object Color => this.gr_mat.Color;
     }
     /// <summary>
     /// Класс для работы с многослойной конструкцией (материалами слоев сложных объектов - Стен, Перекрытий, Крыш)
@@ -132,34 +118,22 @@ namespace DynRenga.Other.Material
         /// Наименование многослойного материала
         /// </summary>
         /// <returns></returns>
-        public string Name()
-        {
-            return this.lay_mat.Name;
-        }
+        public string Name => this.lay_mat.Name;
         /// <summary>
         /// Получение интерфейса Renga.IMaterialLayerCollection, то есть коллекции слоев материалов
         /// </summary>
         /// <returns></returns>
-        public object Layers()
-        {
-            return this.lay_mat.Layers;
-        }
+        public object Layers => this.lay_mat.Layers;
         /// <summary>
         /// Получение идентификатора базового слоя
         /// </summary>
         /// <returns></returns>
-        public int BaseLayerIndex()
-        {
-            return this.lay_mat.BaseLayerIndex;
-        }
+        public int BaseLayerIndex => this.lay_mat.BaseLayerIndex;
         /// <summary>
         /// Получение идентификатора для класса (интерейса Renga.ILayeredMaterial)
         /// </summary>
         /// <returns></returns>
-        public int Id()
-        {
-            return this.lay_mat.Id;
-        }
+        public int Id => this.lay_mat.Id;
         /// <summary>
         /// Получение группы Renga.MaterialLayer из данного многослойного материала
         /// </summary>
@@ -194,26 +168,17 @@ namespace DynRenga.Other.Material
         /// Получение идентификатора для материала Renga.IMaterial
         /// </summary>
         /// <returns></returns>
-        public int Id()
-        {
-            return this.lay_mat.Id;
-        }
+        public int Id => this.lay_mat.Id;
         /// <summary>
         /// Получение толщины материала
         /// </summary>
         /// <returns></returns>
-        public double Thickness()
-        {
-            return this.lay_mat.Thickness;
-        }
+        public double Thickness => this.lay_mat.Thickness;
         /// <summary>
         /// Получает материал (Renga.IMaterial) свойственный данному Renga.IMaterialLayer
         /// </summary>
         /// <returns></returns>
-        public object Material()
-        {
-            return this.lay_mat.Material;
-        }
+        public object Material => this.lay_mat.Material;
     }
 
 }
