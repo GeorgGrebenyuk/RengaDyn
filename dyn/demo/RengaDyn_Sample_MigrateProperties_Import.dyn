@@ -1,0 +1,875 @@
+{
+  "Uuid": "c45c0198-f630-4b86-ab7b-a930d54fcb5b",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "RengaDyn_Sample_MigrateProperties_Import",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "E:\\Temp\\props_out.csv",
+      "InputValue": "E:\\Temp\\props_out.csv",
+      "NodeType": "ExtensionNode",
+      "Id": "3f724c43c15c4825bcee7c8d5ab34cf9",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ddf5c09fb86d4a3c819181b106f6cccd",
+          "Name": "",
+          "Description": "Путь к файлу",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Возможность выбрать файл в системе и получить путь к нему."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "file_path = IN[0]\r\nrow_file = list()\r\nwith open(file_path, encoding=\"utf8\") as file:\r\n    for line in file:\r\n        row_file.append(line)\r\n    file.close()\r\nids = list()\r\nnames = list()\r\ntypes = list()\r\nto_assign = list()\r\n\r\nfor one_property in row_file:\r\n    prop_list = one_property.split(',')\r\n    ids.append(prop_list[0])\r\n    #find name\r\n    kav = '\"'\r\n    index_start = one_property.find(kav)\r\n    index_end = one_property[index_start + 1:].find(kav)\r\n    names.append(one_property[index_start + 1:index_end + index_start + 1])\r\n    prop_list = one_property[index_end + index_start + 3:].split(',')\r\n    #other\r\n    types.append(prop_list[0])\r\n    to_assign.append(prop_list[1].split(';'))\r\nOUT = ids,names,types,to_assign",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "be32206141bf4d9cbcc5ef2af622e75f",
+      "Inputs": [
+        {
+          "Id": "94c13cbbf1664fc2a8763966d36c0ae2",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8f3752e0e66541199dd9d87fc8f3e951",
+          "Name": "OUT",
+          "Description": "Результат сценария Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выполнение встроенного сценария Python."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DynRenga.DynProperties.Properties.PropertyManager.PropertyManager@DynRenga.DynDocument.Project.Project",
+      "Id": "6a29ea3f816d4fc2a07a12ba86d06c3c",
+      "Inputs": [
+        {
+          "Id": "c62ed4ca384145a8ab62b980d0690e6f",
+          "Name": "renga_project",
+          "Description": "Project",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5c5f667503af4650bff1c546220fc5cb",
+          "Name": "PropertyManager",
+          "Description": "PropertyManager",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение менеджера свойств (интерфейса Renga.IPropertyManager) из данного проекта\n\nPropertyManager.PropertyManager (renga_project: Project): PropertyManager"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DynRenga.DynDocument.Application.Application",
+      "Id": "38175799c5a54c19a375bb09f9babf37",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "74d5e8efb74246b1aacc52d50b193c69",
+          "Name": "Application",
+          "Description": "Application",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получает первый запущенный процесс Renga в системе и фиксирует интерфейс Renga.IApplication\n\nApplication.Application ( ): Application"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DynRenga.DynDocument.Project.Project.Project@DynRenga.DynDocument.Application",
+      "Id": "c47db05f67544085bde036a57766632e",
+      "Inputs": [
+        {
+          "Id": "606a3d5538a043e8a12eecd1a8d2d508",
+          "Name": "renga_application",
+          "Description": "Application",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5186dc8c9a1640b5876ac7e0fa59f530",
+          "Name": "Project",
+          "Description": "Project",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получает текущий проект (интерфейс Renga.Project) от интерфейса Renga.IApplication\n\nProject.Project (renga_application: Application): Project"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DynRenga.DynProperties.Properties.PropertyManager.CreatePropertyDescription@string,var",
+      "Id": "c451964fa0de4cf190714c0087df9ae6",
+      "Inputs": [
+        {
+          "Id": "05a1d7c4905340b9ac95e107d3e43f22",
+          "Name": "propertyManager",
+          "Description": "DynRenga.DynProperties.Properties.PropertyManager",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cfcd8fae1cba4c698b1ad1548707bc3e",
+          "Name": "name",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8a36950812d44dd2923bd25e722bfdc6",
+          "Name": "property_type",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2d65f68413734751ad57c246f922af99",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Создание интерфейса Renga.IPropertyDescription по имени и значению свойства\n\nPropertyManager.CreatePropertyDescription (name: string, property_type: var): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a[0];\na[1];\na[2];\na[3];",
+      "Id": "2808993ac5704e39a5c913542d27952a",
+      "Inputs": [
+        {
+          "Id": "b669d5f152514bfa82dba1b13e3a223c",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f252b48503fc424da08b69ee7a3164b6",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9d6d0548477241e6ab909b54f3ec8234",
+          "Name": "",
+          "Description": "Значение выражения в строке 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8219e6d6dd524bb28c3acded5e933e0d",
+          "Name": "",
+          "Description": "Значение выражения в строке 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "94116dd0897542b99d5ad3dd152487a9",
+          "Name": "",
+          "Description": "Значение выражения в строке 4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DynRenga.Other.RengaSimpleInterfaces.GuidByString@string",
+      "Id": "dc0cda3648c74c30867e1bb0ed96c7d5",
+      "Inputs": [
+        {
+          "Id": "19afa779c6464dd7898f77e8cb605cf3",
+          "Name": "guid_str",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "816fdb1f2c4844f2933f0b03a06864c9",
+          "Name": "var",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение Guid из строки (Guid.Parse(string))\n\nRengaSimpleInterfaces.GuidByString (guid_str: string): var"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DynRenga.DynProperties.Properties.Property.GetPropertyTypeByString@string",
+      "Id": "84eeb47ec2694c77b873cd926698b1cb",
+      "Inputs": [
+        {
+          "Id": "32cbb6c0df3849ebb1839071bcf80278",
+          "Name": "prop_type",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "dd4d34e4e1a54d558127cb85ed9e89aa",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получает тип свойства (Renga.PropertyType) по его строковому наименованию\n\nProperty.GetPropertyTypeByString (prop_type: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DynRenga.DynProperties.Properties.PropertyManager.RegisterProperty2@var,DynRenga.DynProperties.Properties.PropertyDescription",
+      "Id": "de4d5bf3b691476389a881127ee38c93",
+      "Inputs": [
+        {
+          "Id": "faf43eba707d45e988ecf1c427a8c22a",
+          "Name": "propertyManager",
+          "Description": "DynRenga.DynProperties.Properties.PropertyManager",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "78b3a7c418f242b7bbd116b1cce65a3b",
+          "Name": "property_id",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "96352e79e0aa401ca7850667ea788c6e",
+          "Name": "prop_description_existed",
+          "Description": "PropertyDescription",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "adafa7c225ef4b72a87d7b77c9899b4c",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Регистрация созданного Renga.IPropertyDescription в Renga по его Guid\n\nPropertyManager.RegisterProperty2 (property_id: var, prop_description_existed: PropertyDescription): void"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "wait;\nmanager;",
+      "Id": "11f7531315a74aa193d287af30a11449",
+      "Inputs": [
+        {
+          "Id": "c620534b01864e92ae61b398598bbb45",
+          "Name": "wait",
+          "Description": "wait",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cc9446e5444a4dcaaaa70ecad9e71cff",
+          "Name": "manager",
+          "Description": "manager",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "97077506666049fe9057890836de9ef8",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8bcc427975fc47a98afb27c8f0b49338",
+          "Name": "",
+          "Description": "Значение выражения в строке 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DynRenga.DynProperties.Properties.PropertyManager.AssignPropertyToTypes@var,var[]",
+      "Id": "a7ccf612e425443eb680ba435f194a76",
+      "Inputs": [
+        {
+          "Id": "bc2fa9b36be2497c93c71de9ec2b1338",
+          "Name": "propertyManager",
+          "Description": "DynRenga.DynProperties.Properties.PropertyManager",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fbfdb593c64f4ed98ce98c313967ab40",
+          "Name": "property_id",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b1ea80097c974925a4d45e4ed7ea6be2",
+          "Name": "object_types",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3ea3b3997c8041408a32fcb788f474d8",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Ассоциация свойства со списком Guid-идентификаторов категорий объекта Renga\n\nPropertyManager.AssignPropertyToTypes (property_id: var, object_types: var[]): void"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DynRenga.DynProperties.Properties.PropertyDescription.PropertyDescription@var",
+      "Id": "eba68e213bd5432ea017bceee81f5b7f",
+      "Inputs": [
+        {
+          "Id": "46c5fa608fc94faa9637952d47b1bd34",
+          "Name": "PropertyDescription_obj",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3e27155948e64ac781c276af4d3e27c9",
+          "Name": "PropertyDescription",
+          "Description": "PropertyDescription",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Инициализация интерфейса Renga.IPropertyDescription из com-объекта\n\nPropertyDescription.PropertyDescription (PropertyDescription_obj: var): PropertyDescription"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DynRenga.Other.RengaSimpleInterfaces.GuidByString@string",
+      "Id": "648f683480a54fb89094ca7d4bb116b1",
+      "Inputs": [
+        {
+          "Id": "b350f40b2f91473591b4b18ad2638aed",
+          "Name": "guid_str",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2f544c2d1aaa40cf94d632ec391f0cfc",
+          "Name": "var",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение Guid из строки (Guid.Parse(string))\n\nRengaSimpleInterfaces.GuidByString (guid_str: string): var"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "ddf5c09fb86d4a3c819181b106f6cccd",
+      "End": "94c13cbbf1664fc2a8763966d36c0ae2",
+      "Id": "0213ee8e88334a0dbce7d8973ac021e6"
+    },
+    {
+      "Start": "8f3752e0e66541199dd9d87fc8f3e951",
+      "End": "b669d5f152514bfa82dba1b13e3a223c",
+      "Id": "77cdc936e95749a2a9427cb20efbd8ca"
+    },
+    {
+      "Start": "5c5f667503af4650bff1c546220fc5cb",
+      "End": "05a1d7c4905340b9ac95e107d3e43f22",
+      "Id": "dd3169ca3c934497af7ff4c24765ddff"
+    },
+    {
+      "Start": "5c5f667503af4650bff1c546220fc5cb",
+      "End": "faf43eba707d45e988ecf1c427a8c22a",
+      "Id": "aeaf22add4974f119d28f1e48c004800"
+    },
+    {
+      "Start": "5c5f667503af4650bff1c546220fc5cb",
+      "End": "cc9446e5444a4dcaaaa70ecad9e71cff",
+      "Id": "63844cb744764f718445c61d7ab1c26d"
+    },
+    {
+      "Start": "74d5e8efb74246b1aacc52d50b193c69",
+      "End": "606a3d5538a043e8a12eecd1a8d2d508",
+      "Id": "7988599ee6cc4c8ba673a99517932ffe"
+    },
+    {
+      "Start": "5186dc8c9a1640b5876ac7e0fa59f530",
+      "End": "c62ed4ca384145a8ab62b980d0690e6f",
+      "Id": "0d49feb3e67c4f65a5da1c8761880732"
+    },
+    {
+      "Start": "2d65f68413734751ad57c246f922af99",
+      "End": "46c5fa608fc94faa9637952d47b1bd34",
+      "Id": "9836c90cbe434db8b4642d3a6af423d0"
+    },
+    {
+      "Start": "f252b48503fc424da08b69ee7a3164b6",
+      "End": "19afa779c6464dd7898f77e8cb605cf3",
+      "Id": "65e6562553b14a9487900cfa91521fba"
+    },
+    {
+      "Start": "9d6d0548477241e6ab909b54f3ec8234",
+      "End": "cfcd8fae1cba4c698b1ad1548707bc3e",
+      "Id": "71ef136aeadd4e58b212ba5da897fece"
+    },
+    {
+      "Start": "8219e6d6dd524bb28c3acded5e933e0d",
+      "End": "32cbb6c0df3849ebb1839071bcf80278",
+      "Id": "4d639beb8de4445b968394c6e005c408"
+    },
+    {
+      "Start": "94116dd0897542b99d5ad3dd152487a9",
+      "End": "b350f40b2f91473591b4b18ad2638aed",
+      "Id": "2ac4a379574b4d7c8e828d8c3db791e9"
+    },
+    {
+      "Start": "816fdb1f2c4844f2933f0b03a06864c9",
+      "End": "fbfdb593c64f4ed98ce98c313967ab40",
+      "Id": "4407042e32324c079eb02f5e89c62013"
+    },
+    {
+      "Start": "816fdb1f2c4844f2933f0b03a06864c9",
+      "End": "78b3a7c418f242b7bbd116b1cce65a3b",
+      "Id": "8eb449b1c26b42cb8600ee9fb35d5e92"
+    },
+    {
+      "Start": "dd4d34e4e1a54d558127cb85ed9e89aa",
+      "End": "8a36950812d44dd2923bd25e722bfdc6",
+      "Id": "63895300002b439b92aaed8954b838ea"
+    },
+    {
+      "Start": "adafa7c225ef4b72a87d7b77c9899b4c",
+      "End": "c620534b01864e92ae61b398598bbb45",
+      "Id": "3a5aa30980e64c8087a9f76716ef9d1a"
+    },
+    {
+      "Start": "8bcc427975fc47a98afb27c8f0b49338",
+      "End": "bc2fa9b36be2497c93c71de9ec2b1338",
+      "Id": "14033e63089a4835bfc4ce68f90cecbb"
+    },
+    {
+      "Start": "3e27155948e64ac781c276af4d3e27c9",
+      "End": "96352e79e0aa401ca7850667ea788c6e",
+      "Id": "82856e9738094866a0de921a090519e6"
+    },
+    {
+      "Start": "2f544c2d1aaa40cf94d632ec391f0cfc",
+      "End": "b1ea80097c974925a4d45e4ed7ea6be2",
+      "Id": "e942c0244eff44c385bc69ece2c74916"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "Нет",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.1.8246",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "3f724c43c15c4825bcee7c8d5ab34cf9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 472.11983335413584,
+        "Y": 520.72217959919317
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Чтение csv",
+        "Id": "be32206141bf4d9cbcc5ef2af622e75f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 731.76503903373032,
+        "Y": 514.9050162754387
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PropertyManager.PropertyManager",
+        "Id": "6a29ea3f816d4fc2a07a12ba86d06c3c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1147.4257026305136,
+        "Y": 255.17066106150281
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Application.Application",
+        "Id": "38175799c5a54c19a375bb09f9babf37",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 473.691274991927,
+        "Y": 248.30084219609768
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Project.Project",
+        "Id": "c47db05f67544085bde036a57766632e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 762.529923593904,
+        "Y": 251.06854861001983
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PropertyManager.CreatePropertyDescription",
+        "Id": "c451964fa0de4cf190714c0087df9ae6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1670.9640369522126,
+        "Y": 509.55614307404687
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "2808993ac5704e39a5c913542d27952a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1020.3160988308778,
+        "Y": 514.84212346063987
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "RengaSimpleInterfaces.GuidByString",
+        "Id": "dc0cda3648c74c30867e1bb0ed96c7d5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1271.6173089718118,
+        "Y": 497.8792540501405
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Property.GetPropertyTypeByString",
+        "Id": "84eeb47ec2694c77b873cd926698b1cb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1281.6672757076249,
+        "Y": 781.36921267541106
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PropertyManager.RegisterProperty2",
+        "Id": "de4d5bf3b691476389a881127ee38c93",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2519.8006585833432,
+        "Y": 599.88706658441015
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "11f7531315a74aa193d287af30a11449",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2987.7799520684184,
+        "Y": 646.719028255574
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PropertyManager.AssignPropertyToTypes",
+        "Id": "a7ccf612e425443eb680ba435f194a76",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3218.8316278776488,
+        "Y": 671.86593787479478
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "PropertyDescription.PropertyDescription",
+        "Id": "eba68e213bd5432ea017bceee81f5b7f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2038.6626570267849,
+        "Y": 514.08710603911334
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "RengaSimpleInterfaces.GuidByString",
+        "Id": "648f683480a54fb89094ca7d4bb116b1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1263.3964909315589,
+        "Y": 652.2261157479461
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "ce2e9d3c9f0f489fb0b7632960d0ec8f",
+        "Title": "Получение менеджера свойств",
+        "Nodes": [
+          "6a29ea3f816d4fc2a07a12ba86d06c3c",
+          "38175799c5a54c19a375bb09f9babf37",
+          "c47db05f67544085bde036a57766632e"
+        ],
+        "Left": 463.691274991927,
+        "Top": 195.30084219609768,
+        "Width": 1002.7344276385866,
+        "Height": 152.86981886540514,
+        "FontSize": 36.0,
+        "InitialTop": 248.30084219609768,
+        "InitialHeight": 129.86981886540514,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "47697c5675bd4324b00a698e3e879025",
+        "Title": "Чтение файла свойств",
+        "Nodes": [
+          "3f724c43c15c4825bcee7c8d5ab34cf9",
+          "be32206141bf4d9cbcc5ef2af622e75f",
+          "2808993ac5704e39a5c913542d27952a",
+          "dc0cda3648c74c30867e1bb0ed96c7d5",
+          "84eeb47ec2694c77b873cd926698b1cb",
+          "648f683480a54fb89094ca7d4bb116b1"
+        ],
+        "Left": 462.11983335413584,
+        "Top": 444.8792540501405,
+        "Width": 1065.4974756176759,
+        "Height": 429.48995862527056,
+        "FontSize": 36.0,
+        "InitialTop": 497.8792540501405,
+        "InitialHeight": 406.48995862527056,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "be33b962dd024cd19e50ed025e6d9c6d",
+        "Title": "1. Создание определения свойств",
+        "Nodes": [
+          "c451964fa0de4cf190714c0087df9ae6",
+          "eba68e213bd5432ea017bceee81f5b7f"
+        ],
+        "Left": 1660.9640369522126,
+        "Top": 456.55614307404687,
+        "Width": 775.69862007457232,
+        "Height": 198.0,
+        "FontSize": 36.0,
+        "InitialTop": 509.55614307404687,
+        "InitialHeight": 175.0,
+        "TextblockHeight": 43.0,
+        "Background": "#FFFF7BAC"
+      },
+      {
+        "Id": "a9a80c818e3f47c4a3b70b455b03c1d9",
+        "Title": "2. Регистрация свойств и назначение их категориям объектов Renga",
+        "Nodes": [
+          "de4d5bf3b691476389a881127ee38c93",
+          "11f7531315a74aa193d287af30a11449",
+          "a7ccf612e425443eb680ba435f194a76"
+        ],
+        "Left": 2509.8006585833432,
+        "Top": 503.88706658441015,
+        "Width": 996.03096929430558,
+        "Height": 312.97887129038463,
+        "FontSize": 36.0,
+        "InitialTop": 599.88706658441015,
+        "InitialHeight": 356.65146069903312,
+        "TextblockHeight": 86.0,
+        "Background": "#FFFF7BAC"
+      }
+    ],
+    "X": -178.19745977215393,
+    "Y": 198.87755186229577,
+    "Zoom": 0.43766633266173993
+  }
+}
