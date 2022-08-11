@@ -30,7 +30,7 @@ namespace DynRenga.DynObjects
         /// Типы объектов Ренга, для которых есть 3д-представление
         /// </summary>
         /// <returns></returns>
-        private static List<Guid> Objects3dTypes()
+        public static List<Guid> Objects3dTypes()
         {
             List<Guid> objects = new List<Guid>();
             Dictionary<string, Guid> types = ObjectTypes();
