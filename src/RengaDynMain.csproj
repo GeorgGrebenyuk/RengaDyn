@@ -77,6 +77,8 @@
     <Compile Include="DynDocument\StylesManager\PlumbingFixtureStyleManager.cs" />
     <Compile Include="DynDocument\StylesManager\ReinforcementUnitStyleManager.cs" />
     <Compile Include="DynDocument\StylesManager\SystemStyleManager.cs" />
+    <Compile Include="DynDocument\Views\ModelView.cs" />
+    <Compile Include="DynDocument\Views\View.cs" />
     <Compile Include="DynGeometry\Base.cs" />
     <Compile Include="DynGeometry\Curve3D.cs" />
     <Compile Include="DynGeometry\Placement2D.cs" />
@@ -113,6 +115,7 @@
     <Compile Include="DynStyles\RebarStyle.cs" />
     <Compile Include="DynStyles\ReinforcementUnitStyle .cs" />
     <Compile Include="DynStyles\SystemStyle.cs" />
+    <Compile Include="Other\Camera3D.cs" />
     <Compile Include="Other\GuidCollection.cs" />
     <Compile Include="Other\Materials\Material.cs" />
     <Compile Include="Other\PostalAddress.cs" />
