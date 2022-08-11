@@ -87,13 +87,26 @@ namespace DynRenga.DynProperties.Properties
             return this.prop_manager.IsPropertyRegistered(property_id);
         }
         /// <summary>
-        /// Ассоциация свойства с данным Guid-идентификаторов категории объекта Renga
+        /// Ассоциация свойства с данным Guid-идентификатором категории объекта Renga
         /// </summary>
         /// <param name="property_id"></param>
         /// <param name="object_type"></param>
         public void AssignPropertyToType(Guid property_id, object object_type)
         {
             this.prop_manager.AssignPropertyToType(property_id, (Guid)object_type);
+        }
+        /// <summary>
+        /// Ассоциация свойства со списком Guid-идентификаторов категорий объекта Renga
+        /// </summary>
+        /// <param name="property_id"></param>
+        /// <param name="object_types"></param>
+        public void AssignPropertyToTypes(Guid property_id, List<object> object_types)
+        {
+            foreach (object object_type in object_types)
+            {
+                this.prop_manager.AssignPropertyToType(property_id, (Guid)object_type);
+            }
+
         }
         /// <summary>
         /// Удаление ассоциации свойства с данным Guid-идентификатором от категории объекта в Renga
@@ -103,6 +116,18 @@ namespace DynRenga.DynProperties.Properties
         public void UnassignPropertyFromType(Guid property_id, object object_type)
         {
             this.prop_manager.UnassignPropertyFromType(property_id, (Guid)object_type);
+        }
+        /// <summary>
+        /// Удаление ассоциации свойства с данным Guid-идентификатором от категории объектов в Renga
+        /// </summary>
+        /// <param name="property_id"></param>
+        /// <param name="object_types"></param>
+        public void UnassignPropertyFromTypes(Guid property_id, List<object> object_types)
+        {
+            foreach (object object_type in object_types)
+            {
+                this.prop_manager.UnassignPropertyFromType(property_id, (Guid)object_type);
+            }
         }
         /// <summary>
         /// Проверка, назначено ли свойство с данным идентификатором данному типу объектов Renga

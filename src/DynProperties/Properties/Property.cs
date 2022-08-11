@@ -93,6 +93,15 @@ namespace DynRenga.DynProperties.Properties
             };
         }
         /// <summary>
+        /// Получает тип свойства (Renga.PropertyType) по его строковому наименованию
+        /// </summary>
+        /// <param name="prop_type"></param>
+        /// <returns></returns>
+        public static object GetPropertyTypeByString(string prop_type)
+        {
+            return PropertyTypes().Where(a => (a.Key) == prop_type).First().Value;
+        }
+        /// <summary>
         /// Получение строковой расшифровки свойства Renga
         /// </summary>
         /// <returns></returns>
