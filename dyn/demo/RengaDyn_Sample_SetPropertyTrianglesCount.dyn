@@ -400,7 +400,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Ассоциация свойства с данным Guid-идентификаторов категории объекта Renga\n\nPropertyManager.AssignPropertyToType (property_id: var, object_type: var): void"
+      "Description": "Ассоциация свойства с данным Guid-идентификатором категории объекта Renga\n\nPropertyManager.AssignPropertyToType (property_id: var, object_type: var): void"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -668,7 +668,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Получение целочисленного идентификатора объекта\n\nModelObject.Id ( ): int"
+      "Description": "Получение целочисленного идентификатора объекта\n\nModelObject.Id: int"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -1506,8 +1506,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2570.361711028821,
-        "Y": 660.63430003734913
+        "X": 2577.9896364107049,
+        "Y": 666.99090452225221
       },
       {
         "ShowGeometry": true,
@@ -1541,7 +1541,7 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "Code Block",
+        "Name": "Идентификатор свойства",
         "Id": "a6fd3fed250f4e798648d13b4c1b8313",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
@@ -1556,8 +1556,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2217.680802893512,
-        "Y": 576.29631253024058
+        "X": 2223.4203971058396,
+        "Y": 552.70020299067164
       },
       {
         "ShowGeometry": true,
@@ -1774,13 +1774,13 @@
           "1a0c0429ea6f4a02bb9c286acedd34ae"
         ],
         "Left": 1472.5281096765148,
-        "Top": 472.12832020380267,
-        "Width": 1404.8336013523062,
-        "Height": 494.21039596679213,
+        "Top": 449.12832020380267,
+        "Width": 1412.46152673419,
+        "Height": 517.21039596679213,
         "FontSize": 36.0,
         "InitialTop": 502.12832020380267,
         "InitialHeight": 347.78592295248916,
-        "TextblockHeight": 0.0,
+        "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       },
       {
@@ -1792,13 +1792,13 @@
           "1e5ef538f00144afb381b542cb0d700a"
         ],
         "Left": 2931.9017065146145,
-        "Top": 511.5070274531912,
+        "Top": 445.5070274531912,
         "Width": 796.03126244553641,
-        "Height": 224.80840465525841,
+        "Height": 290.80840465525841,
         "FontSize": 36.0,
         "InitialTop": 541.5070274531912,
         "InitialHeight": 236.80840465525841,
-        "TextblockHeight": 0.0,
+        "TextblockHeight": 86.0,
         "Background": "#FFC1D676"
       },
       {
@@ -1814,13 +1814,13 @@
           "270b4ccb7e8a4454b2f38bf30649e1aa"
         ],
         "Left": 4482.7449248573157,
-        "Top": 169.76976964262286,
+        "Top": 146.76976964262286,
         "Width": 2039.884036449952,
-        "Height": 294.39359955333731,
+        "Height": 317.39359955333731,
         "FontSize": 36.0,
         "InitialTop": 199.76976964262286,
         "InitialHeight": 316.39359955333731,
-        "TextblockHeight": 0.0,
+        "TextblockHeight": 43.0,
         "Background": "#FFB5B5B5"
       },
       {
@@ -1834,13 +1834,13 @@
           "993ec5b5805149859c1666bd11ecfd79"
         ],
         "Left": 6590.2671948997158,
-        "Top": 87.319541660467053,
+        "Top": 21.319541660467053,
         "Width": 1123.0803636596975,
-        "Height": 370.675621429245,
+        "Height": 436.675621429245,
         "FontSize": 36.0,
         "InitialTop": 117.31954166046705,
         "InitialHeight": 392.675621429245,
-        "TextblockHeight": 0.0,
+        "TextblockHeight": 86.0,
         "Background": "#FFFF7BAC"
       },
       {
@@ -1854,13 +1854,13 @@
           "e31493c4fe0a4d219b7cbb4b8970d66e"
         ],
         "Left": 7788.9885906610125,
-        "Top": 326.62715877485789,
+        "Top": 303.62715877485789,
         "Width": 1884.7694146327085,
-        "Height": 236.71723324063328,
+        "Height": 259.71723324063328,
         "FontSize": 36.0,
         "InitialTop": 356.62715877485789,
         "InitialHeight": 232.71723324063328,
-        "TextblockHeight": 0.0,
+        "TextblockHeight": 43.0,
         "Background": "#FF48B9FF"
       },
       {
@@ -1871,18 +1871,18 @@
           "1f901ac5b4364763b2937176e49c2c96"
         ],
         "Left": 3774.1729713170917,
-        "Top": 364.61712652767324,
+        "Top": 298.61712652767324,
         "Width": 456.45780964209462,
-        "Height": 284.58104492975951,
+        "Height": 350.58104492975951,
         "FontSize": 36.0,
         "InitialTop": 394.61712652767324,
         "InitialHeight": 306.58104492975951,
-        "TextblockHeight": 0.0,
+        "TextblockHeight": 86.0,
         "Background": "#FFBB87C6"
       }
     ],
-    "X": 109.04654962042639,
-    "Y": 381.98755790724721,
-    "Zoom": 0.16526217197366083
+    "X": -2814.2180576340247,
+    "Y": -569.95744749809262,
+    "Zoom": 1.5680551040820356
   }
 }
