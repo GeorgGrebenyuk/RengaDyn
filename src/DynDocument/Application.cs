@@ -48,6 +48,10 @@ namespace DynRenga.DynDocument
             else return true;
         }
         /// <summary>
+        /// Получение текущего активного вида в виде интерфейса Renga.IView
+        /// </summary>
+        public object ActiveView => this.renga_app.ActiveView;
+        /// <summary>
         /// Получает запущенный процесс Renga или создает его если такого нет, 
         /// и открывает проект по файловому пути к нему
         /// </summary>
