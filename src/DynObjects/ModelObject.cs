@@ -80,11 +80,12 @@ namespace DynRenga.DynObjects
         /// <summary>
         /// Получает строкое наименование метки, ассоциированной с объектом
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Если марка отсутствует, то возвращается пустая строка. В противном случае - марка.</returns>
         public string GetAssotiatedMark()
         {
             Renga.IObjectWithMark obj_mark = this.obj as Renga.IObjectWithMark;
-            return obj_mark.Mark;
+            if (obj_mark == null) return "";
+            else return obj_mark.Mark;
         }
         /// <summary>
         /// Получение свойств объекта - собственных свойств, количества и параметров 
