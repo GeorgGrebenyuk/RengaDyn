@@ -68,9 +68,12 @@
     <Compile Include="DynDocument\Project\BuildingInfo.cs" />
     <Compile Include="DynDocument\DataExporter.cs" />
     <Compile Include="DynDocument\Level.cs" />
+    <Compile Include="DynDocument\Project\DrawingCollection.cs" />
+    <Compile Include="DynDocument\Project\EntityCollection.cs" />
     <Compile Include="DynDocument\Project\LandPlotInfo.cs" />
     <Compile Include="DynDocument\Project\Project.cs" />
     <Compile Include="DynDocument\Project\ProjectInfo.cs" />
+    <Compile Include="DynDocument\Project\TitleBlockInstance.cs" />
     <Compile Include="DynDocument\StylesManager\BeamStyleManager.cs" />
     <Compile Include="DynDocument\StylesManager\ColumnStyleManager.cs" />
     <Compile Include="DynDocument\StylesManager\EquipmentStyleManager.cs" />
@@ -145,8 +148,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetDir)$(SolutionName).dll" "C:\Users\Georg\AppData\Roaming\Autodesk\C3D 2022\Dynamo\2.12\packages\RengaDyn\bin\$(SolutionName).dll"
-copy /Y "$(TargetDir)$(SolutionName).xml" "C:\Users\Georg\AppData\Roaming\Autodesk\C3D 2022\Dynamo\2.12\packages\RengaDyn\bin\$(SolutionName).xml"
-copy /Y "$(TargetDir)Renga.NET.PluginUtility.dll" "C:\Users\Georg\AppData\Roaming\Autodesk\C3D 2022\Dynamo\2.12\packages\RengaDyn\bin\Renga.NET.PluginUtility.dll"</PostBuildEvent>
+    <PostBuildEvent>::copy /Y "$(TargetDir)$(SolutionName).dll" "C:\Users\Georg\AppData\Roaming\Autodesk\C3D 2022\Dynamo\2.12\packages\RengaDyn\bin\$(SolutionName).dll"
+::copy /Y "$(TargetDir)$(SolutionName).xml" "C:\Users\Georg\AppData\Roaming\Autodesk\C3D 2022\Dynamo\2.12\packages\RengaDyn\bin\$(SolutionName).xml"
+::copy /Y "$(TargetDir)Renga.NET.PluginUtility.dll" "C:\Users\Georg\AppData\Roaming\Autodesk\C3D 2022\Dynamo\2.12\packages\RengaDyn\bin\Renga.NET.PluginUtility.dll"</PostBuildEvent>
   </PropertyGroup>
 </Project>
