@@ -14,40 +14,31 @@ namespace DynRenga.DynStyles
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IColumnStyle, одиночным стилем колонны
     /// </summary>
-    public class ColumnStyle : Other.Technical.ICOM_Tools
+    public class ColumnStyle
     {
-        public Renga.IColumnStyle column_style;
+        public Renga.IColumnStyle _i;
         /// <summary>
         /// Инициализация класса через интерфейс Renga.IBeamStyle
         /// </summary>
         /// <param name="ColumnStyle_object"></param>
-        public ColumnStyle(object ColumnStyle_object)
+        internal ColumnStyle(object ColumnStyle_object)
         {
-            this.column_style = ColumnStyle_object as Renga.IColumnStyle;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.column_style == null) return false;
-            else return true;
+            this._i = ColumnStyle_object as Renga.IColumnStyle;
         }
         /// <summary>
         /// Получение целочисленного идентификатора стиля
         /// </summary>
         /// <returns></returns>
-        public int Id => this.column_style.Id;
+        public int Id => this._i.Id;
         /// <summary>
         /// Получение наименования стиля
         /// </summary>
         /// <returns></returns>
-        public string Name => this.column_style.Name;
+        public string Name => this._i.Name;
         /// <summary>
         /// Получение интерфейса Renga.IProfile
         /// </summary>
         /// <returns></returns>
-        public object Profile => this.column_style.Profile;
+        public object Profile => this._i.Profile;
     }
 }

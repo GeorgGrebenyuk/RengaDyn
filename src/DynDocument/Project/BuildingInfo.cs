@@ -8,81 +8,73 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
+using DynRenga.DynProperties.Properties;
 
 namespace DynRenga.DynDocument.Project
 {
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IBuildingInfo, свойствами здания
     /// </summary>
-    public class BuildingInfo : Other.Technical.ICOM_Tools
+    public class BuildingInfo
     {
-        public Renga.IBuildingInfo b_info;
+        public Renga.IBuildingInfo _i;
         /// <summary>
         /// Инициализация класса из интерфейса Renga.IBuildingInfo
         /// </summary>
         /// <param name="BuildingInfo_com"></param>
-        public BuildingInfo(object BuildingInfo_com)
+        internal BuildingInfo(object BuildingInfo_com)
         {
-            this.b_info = BuildingInfo_com as Renga.IBuildingInfo;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.b_info == null) return false;
-            else return true;
+            this._i = BuildingInfo_com as Renga.IBuildingInfo;
         }
         /// <summary>
         /// Получение строкового представления номера здания
         /// </summary>
         /// <returns></returns>
-        public string Number => this.b_info.Number;
+        public string Number => this._i.Number;
         /// <summary>
         /// Присвоение номера здания из строкового представления
         /// </summary>
         /// <param name="number_string"></param>
         public void SetNumber(string number_string)
         {
-            this.b_info.Number = number_string;
+            this._i.Number = number_string;
         }
         /// <summary>
         /// Получение строкового представления имени здания
         /// </summary>
         /// <returns></returns>
-        public string Name => this.b_info.Name;
+        public string Name => this._i.Name;
         /// <summary>
         /// Присвоение наименования здания из строкового представления
         /// </summary>
         /// <param name="name_string"></param>
         public void SetName(string name_string)
         {
-            this.b_info.Name = name_string;
+            this._i.Name = name_string;
         }
         /// <summary>
         /// Получение строкового представления описания здания
         /// </summary>
         /// <returns></returns>
-        public string Description => this.b_info.Description;
+        public string Description => this._i.Description;
         /// <summary>
         /// Присвоение описания здания из строкового представления
         /// </summary>
         /// <param name="description_string"></param>
         public void SetDescription(string description_string)
         {
-            this.b_info.Description = description_string;
+            this._i.Description = description_string;
         }
         /// <summary>
         /// Получение интерфейса (com-объекта) Renga.IPropertyContainer 
         /// со свойствами BuildingInfo
         /// </summary>
         /// <returns></returns>
-        public object GetProperties => this.b_info.GetProperties();
+        public PropertyContainer GetProperties => new PropertyContainer(this._i.GetProperties());
         /// <summary>
         /// Получение интерфейса Renga.IPostalAddress
         /// </summary>
         /// <returns></returns>
-        public object GetAddress => this.b_info.GetAddress();
+        public PostalAddress GetAddress => new PostalAddress( this._i.GetAddress());
     }
 }

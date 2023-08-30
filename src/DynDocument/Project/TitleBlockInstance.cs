@@ -12,17 +12,20 @@ using Renga;
 
 namespace DynRenga.DynDocument.Project
 {
+    /// <summary>
+    /// Класс для описания штампа
+    /// </summary>
     public class TitleBlockInstance
     {
-        public Renga.ITitleBlockInstance block;
-        public TitleBlockInstance (object TitleBlockInstance_object)
+        public Renga.ITitleBlockInstance _i;
+        internal TitleBlockInstance (object TitleBlockInstance_object)
         {
-            this.block = TitleBlockInstance_object as Renga.ITitleBlockInstance;
+            this._i = TitleBlockInstance_object as Renga.ITitleBlockInstance;
         }
         //properties
-        public string Name => this.block.Name;
-        public int RowCount => this.block.RowCount;
-        public int ColumnCount => this.block.ColumnCount;
+        public string Name => this._i.Name;
+        public int RowCount => this._i.RowCount;
+        public int ColumnCount => this._i.ColumnCount;
 
         //functions
         /// <summary>
@@ -35,7 +38,7 @@ namespace DynRenga.DynDocument.Project
         {
             if (ColumnIndex <= ColumnCount && RowIndex <= RowCount)
             {
-                return this.block.GetCellValue(ColumnIndex, RowIndex);
+                return this._i.GetCellValue(ColumnIndex, RowIndex);
             }
             else return "";
         }
@@ -51,7 +54,7 @@ namespace DynRenga.DynDocument.Project
                 List<string> row_data = new List<string>();
                 for (int c = 0; c < ColumnCount; c++)
                 {
-                    row_data.Add(this.block.GetCellValue(c, r));
+                    row_data.Add(this._i.GetCellValue(c, r));
                 }
                 table_data.Add(row_data);
             }

@@ -8,6 +8,7 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
+using DynRenga.DynStyles;
 
 namespace DynRenga.DynDocument.StylesManager
 {
@@ -15,37 +16,28 @@ namespace DynRenga.DynDocument.StylesManager
     /// Класс для работы с менеджером свойств колонн, 
     /// интерфейсом Renga.IColumnStyleManager
     /// </summary>
-    public class ColumnStyleManager : Other.Technical.ICOM_Tools
+    public class ColumnStyleManager
     {
-        public Renga.IColumnStyleManager man;
+        public Renga.IColumnStyleManager _i;
         /// <summary>
         /// Инициализация класса (получение менеджера свойств) из Проекта
         /// </summary>
         /// <param name="renga_project"></param>
         public ColumnStyleManager(DynDocument.Project.Project renga_project)
         {
-            this.man = renga_project.project.ColumnStyleManager;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.man == null) return false;
-            else return true;
+            this._i = renga_project._i.ColumnStyleManager;
         }
         /// <summary>
         /// Получение всех стилей как интерфейсов Renga.IColumnStyle
         /// </summary>
         /// <returns></returns>
-        public List<object> GetColumnStyles()
+        public List<ColumnStyle> GetColumnStyles()
         {
-            List<object> styles = new List<object>();
-            List<int> ids = this.man.GetIds().OfType<int>().ToList();
+            List<ColumnStyle> styles = new List<ColumnStyle>();
+            List<int> ids = this._i.GetIds().OfType<int>().ToList();
             for (int i = 0; i < ids.Count; i++)
             {
-                styles.Add(this.man.GetColumnStyle(i));
+                styles.Add(new ColumnStyle(this._i.GetColumnStyle(i)));
             }
             return styles;
         }
@@ -55,16 +47,16 @@ namespace DynRenga.DynDocument.StylesManager
         /// <returns></returns>
         public List<int> GetIds()
         {
-            return this.man.GetIds().OfType<int>().ToList();
+            return this._i.GetIds().OfType<int>().ToList();
         }
         /// <summary>
         /// Получение интерфейса IColumnStyle по его идентификатору
         /// </summary>
         /// <param name="style_id">Численный (int) идентификатор стиля колонны</param>
         /// <returns></returns>
-        public object GetColumnStyle(int style_id)
+        public ColumnStyle GetColumnStyle(int style_id)
         {
-            return this.man.GetColumnStyle(style_id);
+            return new ColumnStyle(this._i.GetColumnStyle(style_id));
         }
         /// <summary>
         /// Проверяет, имеется ли стиль с таким идентификатором
@@ -73,7 +65,7 @@ namespace DynRenga.DynDocument.StylesManager
         /// <returns></returns>
         public bool Contains (int style_id)
         {
-            return this.man.Contains(style_id);
+            return this._i.Contains(style_id);
         }
     }
 }

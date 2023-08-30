@@ -14,57 +14,48 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Column
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IColumnParams (расширенные свойства Колонны)
     /// </summary>
-    public class ColumnParams : Other.Technical.ICOM_Tools
+    public class ColumnParams
     {
-        public Renga.IColumnParams column_params;
+        public Renga.IColumnParams _i;
         /// <summary>
         /// Инициация класса из объекта модели - колонны
         /// </summary>
         /// <param name="ModelObject_column"></param>
-        public ColumnParams(object ModelObject_column)
+        internal ColumnParams(object ModelObject_column)
         {
-            this.column_params = ModelObject_column as Renga.IColumnParams;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.column_params == null) return false;
-            else return true;
+            this._i = ModelObject_column as Renga.IColumnParams;
         }
         //properties
         /// <summary>
         /// Получение высоты колонны
         /// </summary>
         /// <returns></returns>
-        public double Height => this.column_params.Height;
+        public double Height => this._i.Height;
         /// <summary>
         /// Получение идентификатора (int) стиля колонны
         /// </summary>
         /// <returns></returns>
-        public int StyleId => this.column_params.StyleId;
+        public int StyleId => this._i.StyleId;
         /// <summary>
         /// Получение точки в 3D-места установкиколонны
         /// </summary>
         /// <returns></returns>
         public dg.Point Position()
         {
-            Renga.Point3D pos = this.column_params.Position;
+            Renga.Point3D pos = this._i.Position;
             return dg.Point.ByCoordinates(pos.X, pos.Y, pos.Z);
         }
         /// <summary>
         /// Получение вертикального смещения объекта.
         /// </summary>
         /// <returns></returns>
-        public double VerticalOffset => this.column_params.VerticalOffset;
+        public double VerticalOffset => this._i.VerticalOffset;
         //functions
         /// <summary>
         /// Получение локальной системы координат для проиля колонны
         /// </summary>
         /// <returns></returns>
-        public object GetProfilePlacement=> this.column_params.GetProfilePlacement();
+        public DynGeometry.Placement2D GetProfilePlacement => new DynGeometry.Placement2D(this._i.GetProfilePlacement());
     }
     
 }

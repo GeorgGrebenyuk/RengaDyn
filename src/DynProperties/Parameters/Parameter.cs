@@ -14,31 +14,22 @@ namespace DynRenga.DynProperties.Parameters
     /// <summary>
     /// Класс для работы с одиночным параметром, интерфейсом Renga.IParameter
     /// </summary>
-    public class Parameter : Other.Technical.ICOM_Tools
+    public class Parameter
     {
-        public Renga.IParameter param;
+        public Renga.IParameter _i;
         /// <summary>
         /// Инициация класса из интерфейса Renga.IParameter
         /// </summary>
-        /// <param name="Parameter_obj_com"></param>
-        public Parameter (object Parameter_obj_com)
+        /// <_i name="Parameter_obj_com"></_i>
+        internal Parameter (object Parameter_obj_com)
         {
-            this.param = Parameter_obj_com as Renga.IParameter;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.param== null) return false;
-            else return true;
+            this._i = Parameter_obj_com as Renga.IParameter;
         }
         /// <summary>
         /// Проверка, есть ли какое-либо значение у параметра
         /// </summary>
         /// <returns></returns>
-        public bool HasValue => this.param.HasValue();
+        public bool HasValue => this._i.HasValue();
         //getting data
         /// <summary>
         /// Получает булево значение параметра
@@ -46,7 +37,7 @@ namespace DynRenga.DynProperties.Parameters
         /// <returns></returns>
         public bool GetBoolValue()
         {
-            if (this.param.HasValue()) return this.param.GetBoolValue();
+            if (this._i.HasValue()) return this._i.GetBoolValue();
             else return false;
         }
         /// <summary>
@@ -55,7 +46,7 @@ namespace DynRenga.DynProperties.Parameters
         /// <returns></returns>
         public int GetIntValue()
         {
-            if (this.param.HasValue()) return this.param.GetIntValue();
+            if (this._i.HasValue()) return this._i.GetIntValue();
             else return -1;
         }
         /// <summary>
@@ -64,7 +55,7 @@ namespace DynRenga.DynProperties.Parameters
         /// <returns></returns>
         public double GetDoubleValue()
         {
-            if (this.param.HasValue()) return this.param.GetDoubleValue();
+            if (this._i.HasValue()) return this._i.GetDoubleValue();
             else return -1d;
         }
         /// <summary>
@@ -73,86 +64,86 @@ namespace DynRenga.DynProperties.Parameters
         /// <returns></returns>
         public string GetStringValue()
         {
-            if (this.param.HasValue()) return this.param.GetStringValue();
+            if (this._i.HasValue()) return this._i.GetStringValue();
             else return null;
         }
         //setting data
         /// <summary>
         /// Устаналивает значение параметра в виде булева значения
         /// </summary>
-        /// <param name="value_bool"></param>
+        /// <_i name="value_bool"></_i>
         public void SetBoolValue(bool value_bool)
         {
-            this.param.SetBoolValue(value_bool);
+            this._i.SetBoolValue(value_bool);
         }
         /// <summary>
         /// Устаналивает значение параметра в виде целочисленного числа
         /// </summary>
-        /// <param name="value_int"></param>
+        /// <_i name="value_int"></_i>
         public void SetIntValue (int value_int)
         {
-            this.param.SetIntValue(value_int);
+            this._i.SetIntValue(value_int);
         }
         /// <summary>
         /// Устаналивает значение параметра в виде числа double
         /// </summary>
-        /// <param name="value_double"></param>
+        /// <_i name="value_double"></_i>
         public void SetDoubleValue (double value_double)
         {
-            this.param.SetDoubleValue(value_double);
+            this._i.SetDoubleValue(value_double);
         }
         /// <summary>
         /// Устаналивает строкое значение параметра по входной строке
         /// </summary>
-        /// <param name="value_string"></param>
+        /// <_i name="value_string"></_i>
         public void SetStringValue (string value_string)
         {
-            this.param.SetStringValue(value_string);
+            this._i.SetStringValue(value_string);
         }
         //properties
         /// <summary>
         /// Получение Guid-идентификатора параметра
         /// </summary>
         /// <returns></returns>
-        public Guid Id => this.param.Id;
+        public Guid Id => this._i.Id;
         /// <summary>
         /// Получение интерфейса Renga.IParameterDefinition
         /// </summary>
         /// <returns></returns>
-        public object Definition => this.param.Definition;
+        public ParameterDefinition Definition => new ParameterDefinition(this._i.Definition);
         /// <summary>
         /// Получение численного значения типа параметра Renga.ParameterValueType
         /// </summary>
         /// <returns></returns>
-        public object ValueType => this.param.ValueType;
+        public object ValueType => this._i.ValueType;
         //My
         /// <summary>
         /// Присвоение параметру значению по его типу (значение типа)
         /// </summary>
-        /// <param name="assigned_value">Значение для присваивания</param>
+        /// <_i name="assigned_value">Значение для присваивания</_i>
         /// <returns></returns>
         public void SetValue(object assigned_value)
         {
-            switch (this.param.ValueType)
+            switch (this._i.ValueType)
             {
                 case ParameterValueType.ParameterValueType_Bool:
                     {
-                        this.param.SetBoolValue(Convert.ToBoolean(assigned_value));
+                        this._i.SetBoolValue(Convert.ToBoolean(assigned_value));
                         break;
                     }
                 case ParameterValueType.ParameterValueType_Int:
                     {
-                        this.param.SetIntValue(Convert.ToInt32(assigned_value));
+                        this._i.SetIntValue(Convert.ToInt32(assigned_value));
                         break;
                     }
                 case ParameterValueType.ParameterValueType_Double:
                     {
-                        this.param.SetDoubleValue(Convert.ToDouble(assigned_value));
+                        this._i.SetDoubleValue(Convert.ToDouble(assigned_value));
                         break;
                     }
                 case ParameterValueType.ParameterValueType_String:
                     {
-                        this.param.SetStringValue(Convert.ToString(assigned_value));
+                        this._i.SetStringValue(Convert.ToString(assigned_value));
                         break;
                     }
             }
@@ -164,23 +155,23 @@ namespace DynRenga.DynProperties.Parameters
         /// <returns>Значение параметра</returns>
         public object GetValue()
         {
-            switch (this.param.ValueType)
+            switch (this._i.ValueType)
             {
                 case ParameterValueType.ParameterValueType_Bool:
                     {
-                        return this.param.GetBoolValue();
+                        return this._i.GetBoolValue();
                     }
                 case ParameterValueType.ParameterValueType_Int:
                     {
-                        return this.param.GetIntValue();
+                        return this._i.GetIntValue();
                     }
                 case ParameterValueType.ParameterValueType_Double:
                     {
-                        return this.param.GetDoubleValue();
+                        return this._i.GetDoubleValue();
                     }
                 case ParameterValueType.ParameterValueType_String:
                     {
-                        return this.param.GetStringValue();
+                        return this._i.GetStringValue();
                     }
             }
             return null;
@@ -192,7 +183,7 @@ namespace DynRenga.DynProperties.Parameters
         public string GetValueTypeAsString()
         {
             IEnumerable<KeyValuePair<string, object>> data = ParameterValueTypes().
-                Where(a => (Renga.ParameterValueType)a.Value == this.param.ValueType);
+                Where(a => (Renga.ParameterValueType)a.Value == this._i.ValueType);
             if (data.Any()) return data.First().Key;
             else return null;
         }

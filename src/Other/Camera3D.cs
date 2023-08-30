@@ -8,6 +8,7 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
+using DynRenga.DynDocument.Views;
 
 namespace DynRenga.Other
 {
@@ -16,14 +17,22 @@ namespace DynRenga.Other
     /// </summary>
     public class Camera3D
     {
-        public Renga.ICamera3D camera;
+        public Renga.ICamera3D _i;
         /// <summary>
         /// Инициализация класса из интерфейса Renga.ICamera3D. Получать из ModelView.Camera
         /// </summary>
-        /// <param name="camera"></param>
-        public Camera3D (object camera)
+        /// <param name="_i"></param>
+        internal Camera3D (object Camera3D_object)
         {
-            this.camera = camera as Renga.ICamera3D;
+            this._i = Camera3D_object as Renga.ICamera3D;
+        }
+        /// <summary>
+        /// Возвращает Камеру из текущего 3D вида
+        /// </summary>
+        /// <param name="ModelView"></param>
+        public Camera3D (ModelView ModelView)
+        {
+            this._i = (ModelView._i as Renga.IView3DParams).Camera;
         }
         //properties
         /// <summary>
@@ -31,33 +40,33 @@ namespace DynRenga.Other
         /// </summary>
         /// <returns></returns>
         public dg.Point Position() => dg.Point.ByCoordinates(
-            this.camera.Position.X / 1000d,
-            this.camera.Position.Y / 1000d,
-            this.camera.Position.Z / 1000d);
+            this._i.Position.X / 1000d,
+            this._i.Position.Y / 1000d,
+            this._i.Position.Z / 1000d);
         /// <summary>
         /// Точка, куда смотрит камера в 3D
         /// </summary>
         /// <returns></returns>
         public dg.Point FocusPoint() => dg.Point.ByCoordinates(
-            this.camera.FocusPoint.X / 1000d,
-            this.camera.FocusPoint.Y / 1000d,
-            this.camera.FocusPoint.Z / 1000d);
+            this._i.FocusPoint.X / 1000d,
+            this._i.FocusPoint.Y / 1000d,
+            this._i.FocusPoint.Z / 1000d);
         /// <summary>
         /// Ось Z камеры
         /// </summary>
         /// <returns></returns>
         public dg.Vector UpVector() => dg.Vector.ByCoordinates(
-            this.camera.UpVector.X / 1000d,
-            this.camera.UpVector.Y / 1000d,
-            this.camera.UpVector.Z / 1000d);
+            this._i.UpVector.X / 1000d,
+            this._i.UpVector.Y / 1000d,
+            this._i.UpVector.Z / 1000d);
         /// <summary>
         /// Горизонтальный угол обзора, в радианах.
         /// </summary>
-        public double FovHorizontal => this.camera.FovHorizontal;
+        public double FovHorizontal => this._i.FovHorizontal;
         /// <summary>
         /// Вертикальный угол обзора, в радианах
         /// </summary>
-        public double FovVertical => this.camera.FovVertical;
+        public double FovVertical => this._i.FovVertical;
 
         /// <summary>
         /// Новое позиционирование камеры (угол обзора) для данных параметров
@@ -79,7 +88,7 @@ namespace DynRenga.Other
             vector.X = (float)(upVector.X * 1000f);
             vector.Y = (float)(upVector.Y * 1000f);
             vector.Z = (float)(upVector.Z * 1000f);
-            this.camera.LookAt(focus, pos, vector);
+            this._i.LookAt(focus, pos, vector);
         }
     }
 }

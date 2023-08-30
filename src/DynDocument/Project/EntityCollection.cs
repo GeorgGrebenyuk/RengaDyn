@@ -8,6 +8,7 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
+using Autodesk.DesignScript.Geometry.Core;
 
 namespace DynRenga.DynDocument.Project
 {
@@ -16,26 +17,26 @@ namespace DynRenga.DynDocument.Project
     /// </summary>
     public class EntityCollection
     {
-        public Renga.IEntityCollection collection;
+        public Renga.IEntityCollection _i;
         /// <summary>
         /// Инициация класса из com-объекта Renga.IEntityCollection
         /// </summary>
         /// <param name="EntityCollection_object"></param>
-        public EntityCollection(object EntityCollection_object)
+        internal EntityCollection(object EntityCollection_object)
         {
-            this.collection = EntityCollection_object as Renga.IEntityCollection;
+            this._i = EntityCollection_object as Renga.IEntityCollection;
         }
         /// <summary>
         /// Получение всех Entity в коллекции
         /// </summary>
         /// <returns></returns>
-        public List<object> GetEntities()
+        public List<Entity> GetEntities()
         {
-            List<object> objs = new List<object>();
-            var ids = this.collection.GetIds().OfType<int>();
+            List<Entity> objs = new List<Entity>();
+            var ids = this._i.GetIds().OfType<int>();
             foreach (int i in ids)
             {
-                objs.Add(this.collection.GetById(i));
+                objs.Add( new Entity(this._i.GetById(i)));
             }
             return objs;
         }
@@ -46,32 +47,32 @@ namespace DynRenga.DynDocument.Project
     /// </summary>
     public class Entity
     {
-        public Renga.IEntity entity;
+        public Renga.IEntity _i;
         /// <summary>
         /// Инициация класса из com-объекта Entity
         /// </summary>
         /// <param name="Entity_object"></param>
-        public Entity (object Entity_object)
+        internal Entity (object Entity_object)
         {
-            this.entity = Entity_object as Renga.IEntity;
+            this._i = Entity_object as Renga.IEntity;
         }
         //properties
         /// <summary>
         /// Получение идентификатора объекта (int)
         /// </summary>
-        public int Id => this.entity.Id;
+        public int Id => this._i.Id;
         /// <summary>
         /// Получение наименования объекта
         /// </summary>
-        public string Name => this.entity.Name;
+        public string Name => this._i.Name;
         /// <summary>
         /// Получение внутреннего идентификатора (Guid)
         /// </summary>
-        public Guid UniqueId => this.entity.uniqueId;
+        public Guid UniqueId => this._i.UniqueId;
         /// <summary>
         /// Получение типа объекта (что это за Entity)
         /// </summary>
-        public Guid TypeId => this.entity.TypeId;
+        public Guid TypeId => this._i.TypeId;
 
         /// <summary>
         /// Типы Entity
@@ -100,7 +101,7 @@ namespace DynRenga.DynDocument.Project
         /// <returns></returns>
         public string GetTypeAsString()
         {
-            Guid type = this.entity.TypeId;
+            Guid type = this._i.TypeId;
             string type_s = TypeIds().Where(a => a.Value == type).First().Key;
             return type_s;
         }

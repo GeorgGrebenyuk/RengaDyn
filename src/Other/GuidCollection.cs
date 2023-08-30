@@ -14,31 +14,22 @@ namespace DynRenga.Other
     /// <summary>
     /// Класс для работы со списком Guid'ов (Renga.IGuidCollection)
     /// </summary>
-    public class GuidCollection : Other.Technical.ICOM_Tools
+    public class GuidCollection
     {
-        private Renga.IGuidCollection collection;
+        private Renga.IGuidCollection _i;
         /// <summary>
         /// Инициация интерфейса
         /// </summary>
         /// <param name="GuidCollection_obj"></param>
-        public GuidCollection(object GuidCollection_obj)
+        internal GuidCollection(object GuidCollection_obj)
         {
-            this.collection = GuidCollection_obj as Renga.IGuidCollection;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.collection == null) return false;
-            else return true;
+            this._i = GuidCollection_obj as Renga.IGuidCollection;
         }
         /// <summary>
         /// Количество вложенных элементов
         /// </summary>
         /// <returns></returns>
-        public int Count => this.collection.Count;
+        public int Count => this._i.Count;
         /// <summary>
         /// Получение списка идентификаторов в форме Guid
         /// </summary>
@@ -46,9 +37,9 @@ namespace DynRenga.Other
         public List<Guid> GetGuids()
         {
             List<Guid> guids = new List<Guid>();
-            for (int i =0; i< this.collection.Count; i++)
+            for (int i =0; i< this._i.Count; i++)
             {
-                guids.Add(collection.Get(i));
+                guids.Add(_i.Get(i));
             }
             return guids;
         }

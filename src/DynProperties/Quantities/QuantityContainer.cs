@@ -14,25 +14,16 @@ namespace DynRenga.DynProperties.Quantities
     /// <summary>
     /// Класс для работы с перечнем расчетных свойств
     /// </summary>
-    public class QuantityContainer : Other.Technical.ICOM_Tools
+    public class QuantityContainer
     {
-        public Renga.IQuantityContainer q_man;
+        public Renga.IQuantityContainer _i;
         /// <summary>
         /// Получение набора расчетных свойств из интерфейса Renga
         /// </summary>
         /// <param name="renga_QuantityContainer_obj"></param>
-        public QuantityContainer(object renga_QuantityContainer_obj)
+        internal QuantityContainer(object renga_QuantityContainer_obj)
         {
-            this.q_man = renga_QuantityContainer_obj as Renga.IQuantityContainer;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.q_man == null) return false;
-            else return true;
+            this._i = renga_QuantityContainer_obj as Renga.IQuantityContainer;
         }
         /// <summary>
         /// Проверка, содержит ли данный набор расчетных свойств указанный Guid-идентификатор
@@ -41,16 +32,16 @@ namespace DynRenga.DynProperties.Quantities
         /// <returns></returns>
         public bool Contains(Guid prop_id)
         {
-            return this.q_man.Contains(prop_id);
+            return this._i.Contains(prop_id);
         }
         /// <summary>
         /// Получение Renga.IQuantity по его Guid-идентификатору
         /// </summary>
         /// <param name="prop_id"></param>
         /// <returns></returns>
-        public object Get (Guid prop_id)
+        public Quantity Get (Guid prop_id)
         {
-            if (this.q_man.Contains(prop_id)) return this.q_man.Get(prop_id);
+            if (this._i.Contains(prop_id)) return new Quantity(this._i.Get(prop_id));
             else return null;
         }
         //My
@@ -66,10 +57,10 @@ namespace DynRenga.DynProperties.Quantities
             List<object> quanities = new List<object>();
             foreach (KeyValuePair<string,Guid> prop2id in QuantityIdentifiers_Objects())
             {
-                if (this.q_man.Contains(prop2id.Value)) 
+                if (this._i.Contains(prop2id.Value)) 
                 {
                     guids.Add(prop2id.Value);
-                    quanities.Add(this.q_man.Get(prop2id.Value));
+                    quanities.Add(this._i.Get(prop2id.Value));
                 }
             }
             return new Dictionary<string, object>()

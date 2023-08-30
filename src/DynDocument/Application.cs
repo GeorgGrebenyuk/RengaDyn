@@ -10,16 +10,16 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
-
+using DynRenga.DynDocument.Views;
 
 namespace DynRenga.DynDocument
 {
     /// <summary>
     /// Класс для работы с приложением Renga (интерфейсом Renga.IApplication)
     /// </summary>
-    public  class Application : Other.Technical.ICOM_Tools
+    public class Application
     {
-        public Renga.IApplication renga_app;
+        public Renga.IApplication _i;
         /// <summary>
         /// Получает первый запущенный процесс Renga в системе и фиксирует интерфейс Renga.IApplication
         /// </summary>
@@ -35,22 +35,13 @@ namespace DynRenga.DynDocument
                 object comObject;
                 // Get first Renga moniker in list
                 rot.GetObject(rengaMonikers[0], out comObject);
-                this.renga_app = comObject as Renga.IApplication;
+                this._i = comObject as Renga.IApplication;
             }
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.renga_app == null) return false;
-            else return true;
         }
         /// <summary>
         /// Получение текущего активного вида в виде интерфейса Renga.IView
         /// </summary>
-        public object ActiveView => this.renga_app.ActiveView;
+        public View ActiveView => new View(this._i.ActiveView);
         /// <summary>
         /// Получает запущенный процесс Renga или создает его если такого нет, 
         /// и открывает проект по файловому пути к нему
@@ -72,8 +63,8 @@ namespace DynRenga.DynDocument
                     var renga = comObject as Renga.Application;
                     if (renga.HasProject() && renga.Project.FilePath == project_path)
                     {
-                        renga_app = renga;
-                        renga_app.Visible = true;
+                        _i = renga;
+                        _i.Visible = true;
                     }
                 }
             }
@@ -81,9 +72,9 @@ namespace DynRenga.DynDocument
             {
                 object comObject;
                 rot.GetObject(rengaMonikers[0], out comObject);
-                this.renga_app = comObject as Renga.Application;
-                this.renga_app.OpenProject(project_path);
-                this.renga_app.Visible = true;
+                this._i = comObject as Renga.Application;
+                this._i.OpenProject(project_path);
+                this._i.Visible = true;
                 
             }
 
@@ -94,23 +85,23 @@ namespace DynRenga.DynDocument
         }
         private int InitRengaAppAsNew(string PathToProject, bool IsIfc = false)
         {
-            this.renga_app = new Renga.Application();
-            this.renga_app.Visible = true;
+            this._i = new Renga.Application();
+            this._i.Visible = true;
             int result;
             string file_extension = Path.GetExtension(PathToProject);
 
-            if (IsIfc == true && file_extension.ToLower() == ".ifc") result = renga_app.ImportIfcProject(PathToProject);
-            else result = this.renga_app.OpenProject(PathToProject);
+            if (IsIfc == true && file_extension.ToLower() == ".ifc") result = _i.ImportIfcProject(PathToProject);
+            else result = this._i.OpenProject(PathToProject);
             if (result != 0)
             {
                 //Smth error
-                renga_app.Quit();
+                _i.Quit();
                 return 1;
             }
             else
             {
                 //All right
-                this.renga_app.Visible = true;
+                this._i.Visible = true;
                 return 0;
             }
 

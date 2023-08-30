@@ -16,31 +16,22 @@ namespace DynRenga.DynDocument.Views
     /// <summary>
     /// Класс для работы с отдельными Видами проекта (фасад, модель, чертежи)
     /// </summary>
-    public class View : Other.Technical.ICOM_Tools
+    public class View 
     {
-        public Renga.IView view;
+        public Renga.IView _i;
         /// <summary>
         /// Инициализация класса из интерфейса Renga.IView. Используйте нод Application.ActiveView
         /// </summary>
         /// <param name="view_object"></param>
-        public View (object view_object)
+        internal View (object view_object)
         {
-            this.view = view_object as Renga.IView;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.view == null) return false;
-            else return true;
+            this._i = view_object as Renga.IView;
         }
         //props
         /// <summary>
         /// Получение идентификатора
         /// </summary>
-        public int Id => this.view.Id;
+        public int Id => this._i.Id;
         /// <summary>
         /// Все типы видовых пространств
         /// </summary>
@@ -67,7 +58,7 @@ namespace DynRenga.DynDocument.Views
         /// <summary>
         /// Получение типа вида
         /// </summary>
-        public object Type => this.view.Type;
+        public object Type => this._i.Type;
         /// <summary>
         /// Получение типа вида как строки
         /// </summary>
@@ -75,6 +66,6 @@ namespace DynRenga.DynDocument.Views
         /// <summary>
         /// Получение камеры (интерфейса Renga.ICamera3D) из 3д-представления вида. Только для Модели!
         /// </summary>
-        public object Camera => (this.view as Renga.IView3DParams).Camera;
+        public object Camera => (this._i as Renga.IView3DParams).Camera;
     }
 }

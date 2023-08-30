@@ -14,25 +14,16 @@ namespace DynRenga.DynProperties.Quantities
     /// <summary>
     /// Класс для работы с отдельными расчетными свойствами Renga.IQuantity
     /// </summary>
-    public class Quantity : Other.Technical.ICOM_Tools
+    public class Quantity
     {
-        public Renga.IQuantity quan;
+        public Renga.IQuantity _i;
         /// <summary>
         /// Инициализация расчетного свойства из интерфейса Renga.IQuantity
         /// </summary>
         /// <param name="renga_Quantity_obj"></param>
-        public Quantity(object renga_Quantity_obj)
+        internal Quantity(object renga_Quantity_obj)
         {
-            this.quan = renga_Quantity_obj as Renga.IQuantity;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.quan == null) return false;
-            else return true;
+            this._i = renga_Quantity_obj as Renga.IQuantity;
         }
         /// <summary>
         /// Получение расшифровки для типа расчетного параметра
@@ -54,19 +45,19 @@ namespace DynRenga.DynProperties.Quantities
         /// см. нод Quantity.GetTypeAsString
         /// </summary>
         /// <returns></returns>
-        public object Type => this.quan.Type;
+        public object Type => this._i.Type;
         /// <summary>
         /// Проверка, имеет ли расчетный параметр значение
         /// </summary>
         /// <returns></returns>
-        public bool HasValue => this.quan.HasValue();
+        public bool HasValue => this._i.HasValue();
         /// <summary>
         /// Получение значения расчетного параметра как целочисленного значения (int)
         /// </summary>
         /// <returns></returns>
         public int AsCount()
         {
-            if (this.quan.HasValue()) return this.quan.AsCount();
+            if (this._i.HasValue()) return this._i.AsCount();
             else return -1;
         }
         /// <summary>
@@ -76,7 +67,7 @@ namespace DynRenga.DynProperties.Quantities
         /// <returns></returns>
         public double AsLength(Renga.LengthUnit length_unit)
         {
-            if (this.quan.HasValue()) return this.quan.AsLength(length_unit);
+            if (this._i.HasValue()) return this._i.AsLength(length_unit);
             else return -1d;
         }
         /// <summary>
@@ -86,7 +77,7 @@ namespace DynRenga.DynProperties.Quantities
         /// <returns></returns>
         public double AsArea(Renga.AreaUnit area_unit)
         {
-            if (this.quan.HasValue()) return this.quan.AsArea(area_unit);
+            if (this._i.HasValue()) return this._i.AsArea(area_unit);
             else return -1d;
         }
         /// <summary>
@@ -96,7 +87,7 @@ namespace DynRenga.DynProperties.Quantities
         /// <returns></returns>
         public double AsVolume(Renga.VolumeUnit volume_unit)
         {
-            if (this.quan.HasValue()) return this.quan.AsVolume(volume_unit);
+            if (this._i.HasValue()) return this._i.AsVolume(volume_unit);
             else return -1d;
         }
         /// <summary>
@@ -106,7 +97,7 @@ namespace DynRenga.DynProperties.Quantities
         /// <returns></returns>
         public double AsMass(Renga.MassUnit mass_unit)
         {
-            if (this.quan.HasValue()) return this.quan.AsMass(mass_unit);
+            if (this._i.HasValue()) return this._i.AsMass(mass_unit);
             else return -1d;
         }
         /// <summary>
@@ -116,7 +107,7 @@ namespace DynRenga.DynProperties.Quantities
         /// <returns></returns>
         public double GetValue()
         {
-            QuantityType type = this.quan.Type;
+            QuantityType type = this._i.Type;
 
             LengthUnit len = LengthUnit.LengthUnit_Meters;
             AreaUnit area = AreaUnit.AreaUnit_Meters2;
@@ -126,11 +117,11 @@ namespace DynRenga.DynProperties.Quantities
             switch (type)
             {
                 case QuantityType.QuantityType_Unknown: return -1d; ;
-                case QuantityType.QuantityType_Count: return this.quan.AsCount();
-                case QuantityType.QuantityType_Length: return this.quan.AsLength(len);
-                case QuantityType.QuantityType_Area: return this.quan.AsArea(area);
-                case QuantityType.QuantityType_Volume: return this.quan.AsVolume(vol);
-                case QuantityType.QuantityType_Mass: return this.quan.AsMass(mass);
+                case QuantityType.QuantityType_Count: return this._i.AsCount();
+                case QuantityType.QuantityType_Length: return this._i.AsLength(len);
+                case QuantityType.QuantityType_Area: return this._i.AsArea(area);
+                case QuantityType.QuantityType_Volume: return this._i.AsVolume(vol);
+                case QuantityType.QuantityType_Mass: return this._i.AsMass(mass);
             }
             return double.NaN;
         }

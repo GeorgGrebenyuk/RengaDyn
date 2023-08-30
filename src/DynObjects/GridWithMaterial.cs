@@ -8,43 +8,34 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
-
+using DynRenga.Other.Material;
 
 namespace DynRenga.DynObjects
 {
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IGridWithMaterial
     /// </summary>
-    public class GridWithMaterial : Other.Technical.ICOM_Tools
+    public class GridWithMaterial
     {
-        private Renga.IGridWithMaterial gr_mat;
+        private Renga.IGridWithMaterial _i;
         /// <summary>
         /// Инициализация класса из интерфейса Renga.IGridWithMaterial
         /// </summary>
         /// <param name="GridWithMaterial_obj"></param>
-        public GridWithMaterial (object GridWithMaterial_obj)
+        internal GridWithMaterial (object GridWithMaterial_obj)
         {
-            this.gr_mat = GridWithMaterial_obj as Renga.IGridWithMaterial;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.gr_mat == null) return false;
-            else return true;
+            this._i = GridWithMaterial_obj as Renga.IGridWithMaterial;
         }
         /// <summary>
         /// Получение IGrid
         /// </summary>
         /// <returns></returns>
-        public object IGrid => this.gr_mat.Grid;
+        public object IGrid => this._i.Grid;
         /// <summary>
         /// Получение материала свойственного IGrid
         /// </summary>
         /// <returns></returns>
-        public object IGridMaterial => this.gr_mat.Material;
+        public GridMaterial IGridMaterial => new GridMaterial(this._i.Material);
     }
 
 }

@@ -15,38 +15,29 @@ namespace DynRenga.DynProperties.Properties
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IPropertyDescription и классом Renga.PropertyDescription
     /// </summary>
-    public class PropertyDescription : Other.Technical.ICOM_Tools
+    public class PropertyDescription
     {
         //Для IPropertyDescription
-        public Renga.IPropertyDescription prop_descr;
+        public Renga.IPropertyDescription _i;
         /// <summary>
         /// Инициализация интерфейса Renga.IPropertyDescription из com-объекта
         /// </summary>
         /// <param name="PropertyDescription_obj"></param>
 
-        public PropertyDescription (object PropertyDescription_obj)
+        internal PropertyDescription (object PropertyDescription_obj)
         {
-            this.prop_descr = PropertyDescription_obj as Renga.IPropertyDescription;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.prop_descr == null) return false;
-            else return true;
+            this._i = PropertyDescription_obj as Renga.IPropertyDescription;
         }
         /// <summary>
         /// Получение наименования определения свойства
         /// </summary>
         /// <returns></returns>
-        public string Name  => this.prop_descr.Name;
+        public string Name  => this._i.Name;
         /// <summary>
         /// Получение типа определения свойства
         /// </summary>
         /// <returns></returns>
-        public object Type => this.prop_descr.Type;
+        public object Type => this._i.Type;
         /// <summary>
         /// Присвоение определению свойства перечня значений 
         /// (только для свойства с типом Enumeration)
@@ -54,8 +45,8 @@ namespace DynRenga.DynProperties.Properties
         /// <param name="enums"></param>
         public void SetEnumerationItems(List<string> enums)
         {
-            if (this.prop_descr.Type == Renga.PropertyType.PropertyType_Enumeration) 
-                this.prop_descr.SetEnumerationItems(enums.ToArray());
+            if (this._i.Type == Renga.PropertyType.PropertyType_Enumeration) 
+                this._i.SetEnumerationItems(enums.ToArray());
         }
         /// <summary>
         /// Получение из определения свойства перечня значений 
@@ -64,8 +55,8 @@ namespace DynRenga.DynProperties.Properties
         /// <returns></returns>
         public List<string> GetEnumerationItems()
         {
-            if (this.prop_descr.Type == Renga.PropertyType.PropertyType_Enumeration)
-                return this.prop_descr.GetEnumerationItems().OfType<string>().ToList();
+            if (this._i.Type == Renga.PropertyType.PropertyType_Enumeration)
+                return this._i.GetEnumerationItems().OfType<string>().ToList();
             else return null;
         }
         //Для PropertyDescription
@@ -89,7 +80,7 @@ namespace DynRenga.DynProperties.Properties
         /// <param name="PropertyDescription_obj"></param>
         /// <param name="NewProp"></param>
         [dr.IsVisibleInDynamoLibrary(false)] //Зачем он нужен?
-        public PropertyDescription(object PropertyDescription_obj, bool PropFromManager = true)
+        internal PropertyDescription(object PropertyDescription_obj, bool PropFromManager = true)
         {
             this.prop_descr_new = (Renga.PropertyDescription)PropertyDescription_obj;
         }

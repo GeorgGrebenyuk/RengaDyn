@@ -15,25 +15,16 @@ namespace DynRenga.DynProperties.Properties
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IProperty - одиночным свойством объекта
     /// </summary>
-    public class Property : Other.Technical.ICOM_Tools
+    public class Property
     {
-        public Renga.IProperty prop;
+        public Renga.IProperty _i;
         /// <summary>
         /// Инициация класса через интерфейс Renga.IProperty (получение свойства)
         /// </summary>
         /// <param name="Property_obj"></param>
-        public Property(object Property_obj)
+        internal Property(object Property_obj)
         {
-            this.prop = Property_obj as Renga.IProperty;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.prop == null) return false;
-            else return true;
+            this._i = Property_obj as Renga.IProperty;
         }
         /// <summary>
         /// Типы данных свойств (единицы измерения)
@@ -107,7 +98,7 @@ namespace DynRenga.DynProperties.Properties
         /// <returns></returns>
         public string GetTypeAsString()
         {
-           return PropertyTypes().Where(a => ((Renga.PropertyType)a.Value) == this.prop.Type).First().Key;           
+           return PropertyTypes().Where(a => ((Renga.PropertyType)a.Value) == this._i.Type).First().Key;           
         }
         /// <summary>
         /// Получение строковой расшифровки свойства Renga по его Guid-представлению
@@ -124,7 +115,7 @@ namespace DynRenga.DynProperties.Properties
         /// Получение типа свойства
         /// </summary>
         /// <returns></returns>
-        public object Type => this.prop.Type;
+        public object Type => this._i.Type;
         /// <summary>
         /// Получение значения свойства для фиксированных типов СИ (метры, кв.м, кг)
         /// </summary>
@@ -132,45 +123,45 @@ namespace DynRenga.DynProperties.Properties
         public object GetValue()
         {
             object value = null;
-            if (this.prop.HasValue())
+            if (this._i.HasValue())
             {
-                switch (this.prop.Type)
+                switch (this._i.Type)
                 {
                     case PropertyType.PropertyType_Undefined:
-                        value = this.prop.GetStringValue();
+                        value = this._i.GetStringValue();
                     break;
                     case PropertyType.PropertyType_Double:
-                        value = this.prop.GetDoubleValue();
+                        value = this._i.GetDoubleValue();
                         break;
                     case PropertyType.PropertyType_String:
-                        value = this.prop.GetStringValue();
+                        value = this._i.GetStringValue();
                         break;
                     case PropertyType.PropertyType_Angle:
-                        value = this.prop.GetAngleValue(Renga.AngleUnit.AngleUnit_Degrees);
+                        value = this._i.GetAngleValue(Renga.AngleUnit.AngleUnit_Degrees);
                         break;
                     case PropertyType.PropertyType_Area:
-                        value = this.prop.GetAreaValue(Renga.AreaUnit.AreaUnit_Meters2);
+                        value = this._i.GetAreaValue(Renga.AreaUnit.AreaUnit_Meters2);
                         break;
                     case PropertyType.PropertyType_Boolean:
-                        value = this.prop.GetBooleanValue();
+                        value = this._i.GetBooleanValue();
                         break;
                     case PropertyType.PropertyType_Enumeration:
-                        value = this.prop.GetEnumerationValue();
+                        value = this._i.GetEnumerationValue();
                         break;
                     case PropertyType.PropertyType_Integer:
-                        value = this.prop.GetIntegerValue();
+                        value = this._i.GetIntegerValue();
                         break;
                     case PropertyType.PropertyType_Length:
-                        value = this.prop.GetLengthValue(Renga.LengthUnit.LengthUnit_Meters);
+                        value = this._i.GetLengthValue(Renga.LengthUnit.LengthUnit_Meters);
                         break;
                     case PropertyType.PropertyType_Logical:
-                        value = this.prop.GetLogicalValue();
+                        value = this._i.GetLogicalValue();
                         break;
                     case PropertyType.PropertyType_Mass:
-                        value = this.prop.GetMassValue(Renga.MassUnit.MassUnit_Kilograms);
+                        value = this._i.GetMassValue(Renga.MassUnit.MassUnit_Kilograms);
                         break;
                     case PropertyType.PropertyType_Volume:
-                        value = this.prop.GetVolumeValue(Renga.VolumeUnit.VolumeUnit_Meters3);
+                        value = this._i.GetVolumeValue(Renga.VolumeUnit.VolumeUnit_Meters3);
                         break;
                 }
                 return value;
@@ -183,19 +174,19 @@ namespace DynRenga.DynProperties.Properties
         /// Получение строкового наименования свойства
         /// </summary>
         /// <returns></returns>
-        public string Name => this.prop.Name;
+        public string Name => this._i.Name;
         /// <summary>
         /// Получение Guid-идентификатора свойства
         /// </summary>
         /// <returns></returns>
-        public Guid Id => this.prop.Id;
+        public Guid Id => this._i.Id;
         /// <summary>
         /// Получение значения свойства как дробного числа double
         /// </summary>
         /// <returns></returns>
         public double GetDoubleValue()
         {
-            if (this.prop.HasValue()) return this.prop.GetDoubleValue();
+            if (this._i.HasValue()) return this._i.GetDoubleValue();
             else return double.NaN;
         }
         /// <summary>
@@ -204,18 +195,18 @@ namespace DynRenga.DynProperties.Properties
         /// <returns></returns>
         public string GetStringValue()
         {
-            if (this.prop.HasValue()) return this.prop.GetStringValue();
+            if (this._i.HasValue()) return this._i.GetStringValue();
             else return null;
         }
         /// <summary>
         /// Сброс значения свойства
         /// </summary>
-        public void ResetValue() => this.prop.ResetValue();
+        public void ResetValue() => this._i.ResetValue();
         /// <summary>
         /// Проверка, имеет ли свойство какое-либо значение
         /// </summary>
         /// <returns></returns>
-        public bool HasValue => this.prop.HasValue();
+        public bool HasValue => this._i.HasValue();
         /// <summary>
         /// Получение значения свойства как величины угла
         /// </summary>
@@ -223,7 +214,7 @@ namespace DynRenga.DynProperties.Properties
         /// <returns></returns>
         public double GetAngleValue(object AngleUnit)
         {
-            if (this.prop.HasValue()) return this.prop.GetAngleValue((Renga.AngleUnit)AngleUnit);
+            if (this._i.HasValue()) return this._i.GetAngleValue((Renga.AngleUnit)AngleUnit);
             else return double.NaN;
         }
         /// <summary>
@@ -232,7 +223,7 @@ namespace DynRenga.DynProperties.Properties
         /// <returns></returns>
         public object GetBooleanValue()
         {
-            if (this.prop.HasValue()) return this.prop.GetBooleanValue();
+            if (this._i.HasValue()) return this._i.GetBooleanValue();
             else return null;
         }
         /// <summary>
@@ -241,7 +232,7 @@ namespace DynRenga.DynProperties.Properties
         /// <returns></returns>
         public string GetEnumerationValue()
         {
-            if (this.prop.HasValue()) return this.prop.GetEnumerationValue();
+            if (this._i.HasValue()) return this._i.GetEnumerationValue();
             else return null;
         }
         /// <summary>
@@ -250,7 +241,7 @@ namespace DynRenga.DynProperties.Properties
         /// <returns></returns>
         public int GetIntegerValue()
         {
-            if (this.prop.HasValue()) return this.prop.GetIntegerValue();
+            if (this._i.HasValue()) return this._i.GetIntegerValue();
             else return -1000000;
         }
         /// <summary>
@@ -260,7 +251,7 @@ namespace DynRenga.DynProperties.Properties
         /// <returns></returns>
         public double GetLengthValue(object LengthUnit)
         {
-            if (this.prop.HasValue()) return this.prop.GetLengthValue((Renga.LengthUnit)LengthUnit);
+            if (this._i.HasValue()) return this._i.GetLengthValue((Renga.LengthUnit)LengthUnit);
             else return double.NaN;
         }
         /// <summary>
@@ -269,7 +260,7 @@ namespace DynRenga.DynProperties.Properties
         /// <returns></returns>
         public object GetLogicalValue()
         {
-            if (this.prop.HasValue()) return this.prop.GetLogicalValue();
+            if (this._i.HasValue()) return this._i.GetLogicalValue();
             else return null;
         }
         /// <summary>
@@ -279,59 +270,59 @@ namespace DynRenga.DynProperties.Properties
         /// <returns></returns>
         public double GetMassValue(object MassUnit)
         {
-            if (this.prop.HasValue()) return this.prop.GetMassValue((Renga.MassUnit)MassUnit);
+            if (this._i.HasValue()) return this._i.GetMassValue((Renga.MassUnit)MassUnit);
             else return double.NaN;
         }
         public double GetVolumeValue(object VolumeUnit)
         {
-            if (this.prop.HasValue()) return this.prop.GetVolumeValue((Renga.VolumeUnit)VolumeUnit);
+            if (this._i.HasValue()) return this._i.GetVolumeValue((Renga.VolumeUnit)VolumeUnit);
             else return double.NaN;
         }
         //Setting
         public void SetDoubleValue(double value_double)
         {
-            this.prop.SetDoubleValue(value_double);
+            this._i.SetDoubleValue(value_double);
         }
         public void SetStringValue(string value_string)
         {
-            this.prop.SetStringValue(value_string);
+            this._i.SetStringValue(value_string);
         }
         public void SetAngleValue (Renga.AngleUnit angle_unit, double angle_double)
         {
-            this.prop.SetAngleValue(angle_double, angle_unit);
+            this._i.SetAngleValue(angle_double, angle_unit);
         }
         public void SetAreaValue (Renga.AreaUnit area_unit, double area_double)
         {
-            this.prop.SetAreaValue(area_double, area_unit);
+            this._i.SetAreaValue(area_double, area_unit);
         }
         public void SetBooleanValue (bool value_bool)
         {
-            this.prop.SetBooleanValue(value_bool);
+            this._i.SetBooleanValue(value_bool);
         }
         public void SetEnumerationValue (string value_string)
         {
-            this.prop.SetEnumerationValue(value_string);
+            this._i.SetEnumerationValue(value_string);
         }
         public void SetIntegerValue (int value_int)
         {
-            this.prop.SetIntegerValue(value_int);
+            this._i.SetIntegerValue(value_int);
         }
         public void SetLengthValue (Renga.LengthUnit length_unit, double value_double)
         {
-            this.prop.SetLengthValue(value_double, length_unit);
+            this._i.SetLengthValue(value_double, length_unit);
         }
         public void SetLogicalValue (bool logic_value)
         {
-            if (logic_value == true) this.prop.SetLogicalValue(Renga.Logical.Logical_True);
-            else this.prop.SetLogicalValue(Renga.Logical.Logical_False);
+            if (logic_value == true) this._i.SetLogicalValue(Renga.Logical.Logical_True);
+            else this._i.SetLogicalValue(Renga.Logical.Logical_False);
         }
         public void SetMassValue (Renga.MassUnit mass_unit, double value_double)
         {
-            this.prop.SetMassValue(value_double, mass_unit);
+            this._i.SetMassValue(value_double, mass_unit);
         }
         public void SetVolumeValue (Renga.VolumeUnit volume_unit, double value_double)
         {
-            this.prop.SetVolumeValue(value_double, volume_unit);
+            this._i.SetVolumeValue(value_double, volume_unit);
         }
     }
 }

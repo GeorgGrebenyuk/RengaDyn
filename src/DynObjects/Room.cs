@@ -16,26 +16,26 @@ namespace DynRenga.DynObjects
     /// </summary>
     public class Room
     {
-        public Renga.IRoom room;
+        public Renga.IRoom _i;
         /// <summary>
         /// Инициация класса из объекта модели ModelObject
         /// </summary>
         /// <param name="ModelObject_Room"></param>
-        public Room (object ModelObject_Room)
+        internal Room (object ModelObject_Room)
         {
-            this.room = ModelObject_Room as Renga.IRoom;
+            this._i = ModelObject_Room as Renga.IRoom;
         }
         /// <summary>
         /// Получение строкового наименования комнаты
         /// </summary>
-        public string RoomName => this.room.RoomName;
+        public string RoomName => this._i.RoomName;
         /// <summary>
         /// Получение строкового номера комнаты
         /// </summary>
-        public string RoomNumber => this.room.RoomNumber;
+        public string RoomNumber => this._i.RoomNumber;
         /// <summary>
         /// Получение маркера-идентификатора помещения (Point2D)
         /// </summary>
-        public dg.Point MarkerPosition => dg.Point.ByCoordinates( this.room.MarkerPosition.X, this.room.MarkerPosition.Y, 0);
+        public dg.Point MarkerPosition => dg.Point.ByCoordinates( this._i.MarkerPosition.X, this._i.MarkerPosition.Y, 0);
     }
 }

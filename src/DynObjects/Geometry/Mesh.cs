@@ -15,56 +15,47 @@ namespace DynRenga.DynObjects.Geometry
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IMesh
     /// </summary>
-    public class Mesh : Other.Technical.ICOM_Tools
+    public class Mesh
     {
-        private Renga.IMesh mesh;
+        private Renga.IMesh _i;
         /// <summary>
         /// Инициализация класса через интерфейс Renga.IMesh
         /// </summary>
         /// <param name="mesh_obj"></param>
-        public Mesh(object mesh_obj)
+        internal Mesh(object mesh_obj)
         {
-            this.mesh = mesh_obj as Renga.IMesh;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.mesh == null) return false;
-            else return true;
+            this._i = mesh_obj as Renga.IMesh;
         }
         /// <summary>
         /// Получение количества Grid
         /// </summary>
         /// <returns></returns>
-        public int GridCount => this.mesh.GridCount;
+        public int GridCount => this._i.GridCount;
         /// <summary>
         /// Получение типа Мэша
         /// </summary>
         /// <returns></returns>
-        public Guid MeshType => this.mesh.MeshType;
+        public Guid MeshType => this._i.MeshType;
         /// <summary>
         /// Получение отдельной Grid по её порядковому номеру в составе Мэша
         /// </summary>
         /// <param name="grid_index"></param>
         /// <returns></returns>
-        public object GetGrid(int grid_index)
+        public Grid GetGrid(int grid_index)
         {
-            if (grid_index < 0 | grid_index > this.mesh.GridCount) return null;
-            else return this.mesh.GetGrid(grid_index);
+            if (grid_index < 0 | grid_index > this._i.GridCount) return null;
+            else return new Grid(this._i.GetGrid(grid_index));
         }
         /// <summary>
         /// Получение всех Grids
         /// </summary>
         /// <returns></returns>
-        public List<object> GetGrids()
+        public List<Grid> GetGrids()
         {
-            List<object> grids = new List<object>();
-            for (int i = 0; i < this.mesh.GridCount; i++)
+            List<Grid> grids = new List<Grid>();
+            for (int i = 0; i < this._i.GridCount; i++)
             {
-                grids.Add(this.mesh.GetGrid(i));
+                grids.Add(new Grid(this._i.GetGrid(i)));
             }
             return grids;
         }

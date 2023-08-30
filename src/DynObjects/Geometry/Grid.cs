@@ -14,57 +14,48 @@ namespace DynRenga.DynObjects.Geometry
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IGrid (триангулированная поверхность объекта)
     /// </summary>
-    public class Grid : Other.Technical.ICOM_Tools
+    public class Grid
     {
-        public Renga.IGrid grid;
+        public Renga.IGrid _i;
         /// <summary>
         /// Инициализация класса из интерфейса Renga.IGrid
         /// </summary>
         /// <param name="grid_obj"></param>
-        public Grid(object grid_obj)
+        internal Grid(object grid_obj)
         {
-            this.grid = grid_obj as Renga.IGrid;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.grid == null) return false;
-            else return true;
+            this._i = grid_obj as Renga.IGrid;
         }
         //Properties
         /// <summary>
         /// Получение числа граней триангуляции
         /// </summary>
         /// <returns></returns>
-        public int TriangleCount => this.grid.TriangleCount;
+        public int TriangleCount => this._i.TriangleCount;
         /// <summary>
         /// Получение числа вершин поверхности
         /// </summary>
         /// <returns></returns>
-        public int VertexCount => this.grid.VertexCount;
+        public int VertexCount => this._i.VertexCount;
         /// <summary>
         /// Получение числа нормалей поверхности
         /// </summary>
         /// <returns></returns>
-        public int NormalCount => this.grid.NormalCount;
+        public int NormalCount => this._i.NormalCount;
         /// <summary>
         /// Получение числа координат текстур (?) поверхности
         /// </summary>
         /// <returns></returns>
-        public int TextureCoordinateCount => this.grid.TextureCoordinateCount;
+        public int TextureCoordinateCount => this._i.TextureCoordinateCount;
         /// <summary>
         /// Получение типа Grid
         /// </summary>
         /// <returns></returns>
-        public object GridType => this.grid.GridType;
+        public object GridType => this._i.GridType;
         /// <summary>
         /// Проверка, является ли поверхность двухсторонней
         /// </summary>
         /// <returns></returns>
-        public bool DoubleSided => this.grid.DoubleSided;
+        public bool DoubleSided => this._i.DoubleSided;
         //Triangle
         /// <summary>
         /// Получение отдельной грани триангуляции по индексу
@@ -73,8 +64,8 @@ namespace DynRenga.DynObjects.Geometry
         /// <returns></returns>
         public object GetTriangle(int triangle_index)
         {
-            if (triangle_index < 0 | triangle_index > this.grid.TriangleCount) return null;
-            else return this.grid.GetTriangle(triangle_index);
+            if (triangle_index < 0 | triangle_index > this._i.TriangleCount) return null;
+            else return this._i.GetTriangle(triangle_index);
         }
         /// <summary>
         /// Преобразование информации об отдельной грани триангуляции в dynamo IndexGroup
@@ -108,8 +99,8 @@ namespace DynRenga.DynObjects.Geometry
         /// <returns></returns>
         public object GetVertex(int vertex_index)
         {
-            if (vertex_index < 0 | vertex_index > this.grid.VertexCount) return null;
-            else return this.grid.GetVertex(vertex_index);
+            if (vertex_index < 0 | vertex_index > this._i.VertexCount) return null;
+            else return this._i.GetVertex(vertex_index);
         }
         /// <summary>
         /// Получение отдельной точки как Dynamo Point
@@ -130,7 +121,7 @@ namespace DynRenga.DynObjects.Geometry
         /// <returns></returns>
         public List<double> GetVertexComponents(int vertex_index)
         {
-            Renga.FloatPoint3D p = this.grid.GetVertex(vertex_index);
+            Renga.FloatPoint3D p = this._i.GetVertex(vertex_index);
             return new List<double>(3) { p.X, p.Y, p.Z };
         }
         //Normal
@@ -239,11 +230,11 @@ namespace DynRenga.DynObjects.Geometry
                 {"Room_Floor",Renga.GridTypes.Room.Floor },
                 {"Room_Ceiling",Renga.GridTypes.Room.Ceiling },
                 {"Room_Wall",Renga.GridTypes.Room.Wall },
-                {"PlumbingFixture_Undefined",Renga.GridTypes.PlumbingFixture.Undefined },
-                {"PlumbingFixture_Any",Renga.GridTypes.PlumbingFixture.Any },
+                //{"PlumbingFixture_Undefined",Renga.GridTypes.PlumbingFixture.Undefined },
+                //{"PlumbingFixture_Any",Renga.GridTypes.PlumbingFixture.Any },
                 {"Pipe_Undefined",Renga.GridTypes.Pipe.Undefined },
                 {"Pipe_Any",Renga.GridTypes.Pipe.Any },
-                {"PipeFitting_Undefined",Renga.GridTypes.PipeFitting.Undefined },
+                //{"PipeFitting_Undefined",Renga.GridTypes.PipeFitting.Undefined },
                 {"Plate_Undefined",Renga.GridTypes.Plate.Undefined },
                 {"Plate_Any",Renga.GridTypes.Plate.Any },
             };
@@ -263,17 +254,17 @@ namespace DynRenga.DynObjects.Geometry
             List<dg.Point> points = new List<dg.Point>();
             List<dg.IndexGroup> indexes = new List<dg.IndexGroup>();
 
-            for (int p_counter = 0; p_counter < grid.VertexCount; p_counter++)
+            for (int p_counter = 0; p_counter < _i.VertexCount; p_counter++)
             {
-                Renga.FloatPoint3D p = grid.GetVertex(p_counter);
+                Renga.FloatPoint3D p = _i.GetVertex(p_counter);
                 dg.Point point_new = dg.Point.ByCoordinates(p.X / 1000.0, p.Y / 1000.0, p.Z / 1000.0);
                 if (point_new.X <= min.X && point_new.Y <= min.Y && point_new.Z <= min.Z) min = point_new;
                 if (point_new.X >= max.X && point_new.Y >= max.Y && point_new.Z >= max.Z) max = point_new;
                 points.Add(point_new);
             }
-            for (int j = 0; j < grid.TriangleCount; j++)
+            for (int j = 0; j < _i.TriangleCount; j++)
             {
-                Renga.Triangle tr = grid.GetTriangle(j);
+                Renga.Triangle tr = _i.GetTriangle(j);
                 indexes.Add(dg.IndexGroup.ByIndices((uint)tr.V0, (uint)tr.V1, (uint)tr.V2));
             }
 

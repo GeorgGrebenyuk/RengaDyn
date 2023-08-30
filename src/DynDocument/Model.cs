@@ -14,35 +14,26 @@ namespace DynRenga.DynDocument
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IModel (модель Проекта)
     /// </summary>
-    public class Model : Other.Technical.ICOM_Tools
+    public class Model
     {
-        public Renga.IModel model;
+        public Renga.IModel _i;
         /// <summary>
         /// Инициализация класса через свойство Проекта (класса Project)
         /// </summary>
-        /// <param name="project"></param>
-        public Model(Project.Project project)
+        /// <param name="_i"></param>
+        public Model(Project.Project renga_project)
         {
-            this.model = project.project.Model;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.model == null) return false;
-            else return true;
+            this._i = renga_project._i.Model;
         }
         /// <summary>
         /// Сведение к интерфейсу Renga.IModel объекта модели "Сборка"
         /// </summary>
         /// <param name="renga_model_object_assembly"></param>
-        public Model(object renga_model_object_assembly)
+        internal Model(object renga_model_object_assembly)
         {
             if ((renga_model_object_assembly as Renga.IModelObject).ObjectType == ObjectTypes.AssemblyInstance)
-                this.model = (Renga.IModelObject)renga_model_object_assembly as Renga.IModel;
-            else this.model = null;
+                this._i = (Renga.IModelObject)renga_model_object_assembly as Renga.IModel;
+            else this._i = null;
         }
         /// <summary>
         /// Получение внутреннего челочисленного идентификатора объекта из его Guid-идентификатора
@@ -51,7 +42,7 @@ namespace DynRenga.DynDocument
         /// <returns></returns>
         public int GetIdFromUniqueId(Guid internal_model_guid)
         {
-            return this.model.GetIdFromUniqueId(internal_model_guid);
+            return this._i.GetIdFromUniqueId(internal_model_guid);
         }
         /// <summary>
         /// Получение внутреннего Guid-идентификатора объекта из его целочисленного идентификатора
@@ -60,7 +51,7 @@ namespace DynRenga.DynDocument
         /// <returns></returns>
         public Guid GetUniqueIdFromId(int internal_model_id)
         {
-            return this.model.GetUniqueIdFromId(internal_model_id);
+            return this._i.GetUniqueIdFromId(internal_model_id);
         }
     }
 }

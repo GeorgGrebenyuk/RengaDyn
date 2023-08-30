@@ -15,51 +15,42 @@ namespace DynRenga.DynGeometry
     /// Класс для работы с интерфейсом Renga.IPlacement3DCollection, 
     /// коллекцией отдельных Renga.IPlacement3D
     /// </summary>
-    public class Placement3DCollection : Other.Technical.ICOM_Tools
+    public class Placement3DCollection
     {
-        public Renga.IPlacement3DCollection coll;
+        public Renga.IPlacement3DCollection _i;
         /// <summary>
         /// Инициация класса через интерфейс Renga.IPlacement3DCollection
         /// </summary>
         /// <param name="Placement3DCollection_object"></param>
-        public Placement3DCollection (object Placement3DCollection_object)
+        internal Placement3DCollection (object Placement3DCollection_object)
         {
-            this.coll = Placement3DCollection_object as Renga.IPlacement3DCollection;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.coll == null) return false;
-            else return true;
+            this._i = Placement3DCollection_object as Renga.IPlacement3DCollection;
         }
         /// <summary>
         /// Получение числа элементов в составе коллекции
         /// </summary>
         /// <returns></returns>
-        public int Count => this.coll.Count;
+        public int Count => this._i.Count;
         /// <summary>
         /// Получение отдельного интерфейса Renga.IPlacement3D
         /// по его внутреннему идентификатору в этой коллекции
         /// </summary>
         /// <param name="placement3d_index"></param>
         /// <returns></returns>
-        public object Get(int placement3d_index)
+        public Placement3D Get(int placement3d_index)
         {
-            return this.coll.Get(placement3d_index);
+            return new Placement3D(this._i.Get(placement3d_index));
         }
         /// <summary>
         /// Получение списка интерфейсов Renga.IPlacement3D
         /// </summary>
         /// <returns></returns>
-        public List<object> GetAll()
+        public List<Placement3D> GetAll()
         {
-            List<object> objects = new List<object>();
-            for (int i = 0; i < this.coll.Count; i++)
+            List<Placement3D> objects = new List<Placement3D>();
+            for (int i = 0; i < this._i.Count; i++)
             {
-                objects.Add(this.coll.Get(i));
+                objects.Add(new Placement3D(this._i.Get(i)));
             }
             return objects;
         }

@@ -14,38 +14,29 @@ namespace DynRenga.DynStyles
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IPlumbingFixtureStyle, стиля сантехнического оборудования
     /// </summary>
-    public class PlumbingFixtureStyle : Other.Technical.ICOM_Tools
+    public class PlumbingFixtureStyle
     {
-        public Renga.IPlumbingFixtureStyle pl_style;
+        public Renga.IPlumbingFixtureStyle _i;
         /// <summary>
         /// Инициация класса через интерфейс Renga.IPlumbingFixtureStyle
         /// </summary>
         /// <param name="PlumbingFixtureStyle_object"></param>
-        public PlumbingFixtureStyle (object PlumbingFixtureStyle_object)
+        internal PlumbingFixtureStyle (object PlumbingFixtureStyle_object)
         {
-            this.pl_style = PlumbingFixtureStyle_object as Renga.IPlumbingFixtureStyle;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.pl_style == null) return false;
-            else return true;
+            this._i = PlumbingFixtureStyle_object as Renga.IPlumbingFixtureStyle;
         }
         /// <summary>
         /// Получение имени стиля
         /// </summary>
         /// <returns></returns>
-        public string Name => this.pl_style.Name;
+        public string Name => this._i.Name;
         /// <summary>
         /// Получение строкового типа оборудования (Renga.PlumbingFixtureCategory)
         /// </summary>
         /// <returns></returns>
         public string GetCategory()
         {
-            return PlumbingFixtureCategoies().Where(a => (Renga.PlumbingFixtureCategory)a.Value == this.pl_style.Category).First().Key;
+            return PlumbingFixtureCategoies().Where(a => (Renga.PlumbingFixtureCategory)a.Value == this._i.Category).First().Key;
         }
         /// <summary>
         /// Типы сантехнического оборудования

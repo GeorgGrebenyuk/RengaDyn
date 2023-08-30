@@ -25,10 +25,10 @@ namespace DynRenga.DynObjects
         public static List<object> GetModelObjects(DynDocument.Model renga_model)
         {
             List<object> model_objects = new List<object>();
-            Renga.IModelObjectCollection collection = renga_model.model.GetObjects();
-            for (int i = 0; i < collection.Count; i++)
+            Renga.IModelObjectCollection _i = renga_model._i.GetObjects();
+            for (int i = 0; i < _i.Count; i++)
             {
-                model_objects.Add(collection.GetByIndex(i));
+                model_objects.Add(_i.GetByIndex(i));
             }
             return model_objects;
         }
@@ -39,8 +39,8 @@ namespace DynRenga.DynObjects
         /// <returns></returns>
         public static object GetModelObjectById (DynDocument.Model renga_model, int model_object_id)
         {
-            Renga.IModelObjectCollection collection = renga_model.model.GetObjects();
-            return collection.GetById(model_object_id);
+            Renga.IModelObjectCollection _i = renga_model._i.GetObjects();
+            return _i.GetById(model_object_id);
         }
         /// <summary>
         /// Выборка объектов модели (Renga::IModelObject) по типу (Guid)
@@ -49,11 +49,11 @@ namespace DynRenga.DynObjects
         /// <returns>Список объектов (интерфейсов Renga.IModelObject)</returns>
         public static List<object> GetObjectsByType(DynDocument.Model renga_model, Guid object_type)
         {
-            Renga.IModelObjectCollection collection = renga_model.model.GetObjects();
+            Renga.IModelObjectCollection _i = renga_model._i.GetObjects();
             List<object> objects_need = new List<object>();
-            foreach (int id in collection.GetIds())
+            foreach (int id in _i.GetIds())
             {
-                IModelObject currentObject = collection.GetById(id);
+                IModelObject currentObject = _i.GetById(id);
 
                 if (currentObject.ObjectType == object_type)
                 {
@@ -69,15 +69,15 @@ namespace DynRenga.DynObjects
         /// <returns></returns>
         public static List<object> GetObjectsByLevel (DynDocument.Model renga_model, object com_ILevel)
         {
-            Renga.IModelObjectCollection collection = renga_model.model.GetObjects();
-            IModelObject level = com_ILevel as IModelObject;
+            Renga.IModelObjectCollection _i = renga_model._i.GetObjects();
+            IModelObject _IModelObject = com_ILevel as IModelObject;
             List<object> objects_need = new List<object>();
-            foreach (int id in collection.GetIds())
+            foreach (int id in _i.GetIds())
             {
-                IModelObject currentObject = collection.GetById(id);
+                IModelObject currentObject = _i.GetById(id);
                 ILevelObject lvl_obj = currentObject as ILevelObject;
 
-                if (lvl_obj!= null && lvl_obj.LevelId == level.Id)
+                if (lvl_obj!= null && lvl_obj.LevelId == _IModelObject.Id)
                 {
                     objects_need.Add(currentObject);
                 }
@@ -96,7 +96,7 @@ namespace DynRenga.DynObjects
             if (run_again == false) return null;
             else
             {
-                var selection = renga_application.renga_app.Selection;
+                var selection = renga_application._i.Selection;
                 if (selection == null) return null;
                 else return selection.GetSelectedObjects().OfType<int>().ToList();
             }
@@ -109,7 +109,7 @@ namespace DynRenga.DynObjects
         /// <param name="model_objects_ids">Список с int-идентификаторами объектов модели</param>
         public static void SelectObjectsInModelByIds (DynDocument.Application renga_application, List<int> model_objects_ids)
         {
-            var selection = renga_application.renga_app.Selection;
+            var selection = renga_application._i.Selection;
             if (model_objects_ids.Any()) selection.SetSelectedObjects(model_objects_ids.ToArray());
         }
 

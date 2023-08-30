@@ -15,21 +15,12 @@ namespace DynRenga.DynGeometry
     /// Класс для работы с интерфейсом Renga.IPlacement2D - локальной системой координат 
     /// в двухмерном пространстве
     /// </summary>
-    public class Placement2D : Other.Technical.ICOM_Tools
+    public class Placement2D
     {
-        public Renga.IPlacement2D pl2d;
-        public Placement2D(object Placement2D_object)
+        public Renga.IPlacement2D _i;
+        internal Placement2D(object Placement2D_object)
         {
-            this.pl2d = Placement2D_object as Renga.IPlacement2D;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.pl2d == null) return false;
-            else return true;
+            this._i = Placement2D_object as Renga.IPlacement2D;
         }
         //properties
         /// <summary>
@@ -38,7 +29,7 @@ namespace DynRenga.DynGeometry
         /// <returns></returns>
         public dg.Point Origin()
         {
-            Renga.Point2D p = this.pl2d.Origin;
+            Renga.Point2D p = this._i.Origin;
             return dg.Point.ByCoordinates(p.X / 1000.0, p.Y / 1000.0,0);
         }
         /// <summary>
@@ -47,7 +38,7 @@ namespace DynRenga.DynGeometry
         /// <returns></returns>
         public dg.Vector AxisX()
         {
-            Renga.Vector2D vX = this.pl2d.AxisX;
+            Renga.Vector2D vX = this._i.AxisX;
             return dg.Vector.ByCoordinates(vX.X / 1000.0, vX.Y / 1000.0, 0);
         }
         /// <summary>
@@ -56,7 +47,7 @@ namespace DynRenga.DynGeometry
         /// <returns></returns>
         public dg.Vector AxisY()
         {
-            Renga.Vector2D vY = this.pl2d.AxisY;
+            Renga.Vector2D vY = this._i.AxisY;
             return dg.Vector.ByCoordinates(vY.X / 1000.0, vY.Y / 1000.0, 0);
         }
         //functions
@@ -72,32 +63,32 @@ namespace DynRenga.DynGeometry
         /// Проверка, является ли ортогональной данная СК
         /// </summary>
         /// <returns></returns>
-        public bool IsOrthogonal => this.pl2d.IsOrthogonal();
+        public bool IsOrthogonal => this._i.IsOrthogonal();
         /// <summary>
         /// Проверка, является ли нормальной данная СК
         /// </summary>
         /// <returns></returns>
-        public bool IsNormal => this.pl2d.IsNormal();
+        public bool IsNormal => this._i.IsNormal();
         /// <summary>
         /// Проверка, является ли данная СК левосторонней
         /// </summary>
         /// <returns></returns>
-        public bool IsLeft => this.pl2d.IsLeft();
+        public bool IsLeft => this._i.IsLeft();
         /// <summary>
         /// Получение Renga.ITransform3D из текущей СК в глобальную
         /// </summary>
         /// <returns></returns>
-        public object GetTransformFrom => this.pl2d.GetTransformFrom();
+        public Transform2D GetTransformFrom => new Transform2D(this._i.GetTransformFrom());
         /// <summary>
         /// Получение Renga.ITransform3D из глобальной СК в текущую
         /// </summary>
         /// <returns></returns>
-        public object GetTransformInto => this.pl2d.GetTransformInto();
+        public Transform2D GetTransformInto => new Transform2D(this._i.GetTransformInto());
         /// <summary>
         /// Получение копии текущей СК
         /// </summary>
         /// <returns></returns>
-        public object GetCopy => this.pl2d.GetCopy();
+        public Placement2D GetCopy => new Placement2D( this._i.GetCopy());
 
     }
 }

@@ -14,48 +14,39 @@ namespace DynRenga.DynGeometry
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IProfile (свойственного балке и пластине)
     /// </summary>
-    public class Profile : Other.Technical.ICOM_Tools
+    public class Profile
     {
-        public Renga.IProfile profile;
+        public Renga.IProfile _i;
         /// <summary>
         /// Инициализация интерфейса Renga.IProfile
         /// </summary>
         /// <param name="Profile_object"></param>
-        public Profile (object Profile_object)
+        internal Profile (object Profile_object)
         {
-            this.profile = Profile_object as Renga.IProfile;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.profile == null) return false;
-            else return true;
+            this._i = Profile_object as Renga.IProfile;
         }
         //properties
         /// <summary>
         /// Получение идентификатора описания свойства
         /// </summary>
         /// <returns></returns>
-        public int DescriptionId => this.profile.DescriptionId;
+        public int DescriptionId => this._i.DescriptionId;
         /// <summary>
         /// Получение набора параметров (интерфейса IParameterContainer)
         /// </summary>
         /// <returns></returns>
-        public object Parameters => this.profile.Parameters;
+        public object Parameters => this._i.Parameters;
         /// <summary>
         /// Получение списка интерфейсов Renga.IRegion2D из данного профиля
         /// </summary>
         /// <returns></returns>
-        public List<object> Regions()
+        public List<Region2D> Regions()
         {
-            List<object> regs = new List<object>();
-            Renga.IRegion2DCollection coll = this.profile.Regions;
+            List<Region2D> regs = new List<Region2D>();
+            Renga.IRegion2DCollection coll = this._i.Regions;
             for (int i = 0; i < coll.Count; i++)
             {
-                regs.Add(coll.Get(i));
+                regs.Add(new Region2D(coll.Get(i)));
             }
             return regs;
         }
@@ -66,7 +57,7 @@ namespace DynRenga.DynGeometry
         /// <returns></returns>
         public dg.Point GetCenterOfMass()
         {
-            Renga.Point2D p = this.profile.GetCenterOfMass();
+            Renga.Point2D p = this._i.GetCenterOfMass();
             return dg.Point.ByCoordinates(p.X, p.Y, 0d);
         }
     }
@@ -75,14 +66,14 @@ namespace DynRenga.DynGeometry
     /// </summary>
     public class ProfileDescription
     {
-        public Renga.IProfileDescription pr_d;
+        public Renga.IProfileDescription _i;
         /// <summary>
         /// Инициализация интерфейса Renga.IProfileDescription (описание профиля)
         /// </summary>
         /// <param name="ProfileDescription_object"></param>
-        public ProfileDescription(object ProfileDescription_object)
+        internal ProfileDescription(object ProfileDescription_object)
         {
-            this.pr_d = ProfileDescription_object as Renga.IProfileDescription;
+            this._i = ProfileDescription_object as Renga.IProfileDescription;
         }
         /// <summary>
         /// Получение и инициализация интерфйеса Renga.IProfileDescription по идентификатору описания
@@ -92,22 +83,22 @@ namespace DynRenga.DynGeometry
         /// <param name="ProfileDescription_id"></param>
         public ProfileDescription(DynDocument.Project.Project renga_project, int ProfileDescription_id)
         {
-            Renga.IProfileDescriptionManager man = renga_project.project.ProfileDescriptionManager;
-            this.pr_d = man.GetProfileDescription(ProfileDescription_id);
+            Renga.IProfileDescriptionManager _i = renga_project._i.ProfileDescriptionManager;
+            this._i = _i.GetProfileDescription(ProfileDescription_id);
         }
         /// <summary>
         /// Получение всех интерфейсов Renga.IProfileDescription из проекта
         /// </summary>
         /// <param name="renga_project"></param>
         /// <returns></returns>
-        public static List<object> GetAllProfileDescriptions(DynDocument.Project.Project renga_project)
+        public static List<ProfileDescription> GetAllProfileDescriptions(DynDocument.Project.Project renga_project)
         {
-            List<object> objs = new List<object>();
-            Renga.IProfileDescriptionManager man = renga_project.project.ProfileDescriptionManager;
-            List<int> ids = man.GetIds().OfType<int>().ToList();
+            List<ProfileDescription> objs = new List<ProfileDescription>();
+            Renga.IProfileDescriptionManager _i = renga_project._i.ProfileDescriptionManager;
+            List<int> ids = _i.GetIds().OfType<int>().ToList();
             foreach (int id in ids)
             {
-                objs.Add(man.GetProfileDescription(id));
+                objs.Add(new ProfileDescription(_i.GetProfileDescription(id)));
             }
             return objs;
         }
@@ -116,11 +107,11 @@ namespace DynRenga.DynGeometry
         /// Получение целочисленного идентификатора данного описания профиля
         /// </summary>
         /// <returns></returns>
-        public int Id => this.pr_d.Id;
+        public int Id => this._i.Id;
         /// <summary>
         /// Получение строкого наименования данного описания профиля
         /// </summary>
         /// <returns></returns>
-        public string Name => this.pr_d.Name;
+        public string Name => this._i.Name;
     }
 }

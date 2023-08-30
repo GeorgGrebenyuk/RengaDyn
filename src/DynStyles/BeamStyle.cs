@@ -14,40 +14,31 @@ namespace DynRenga.DynStyles
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IBeamStyle
     /// </summary>
-    public class BeamStyle : Other.Technical.ICOM_Tools
+    public class BeamStyle
     {
-        public Renga.IBeamStyle beam_style;
+        public Renga.IBeamStyle _i;
         /// <summary>
         /// Инициализация интерфейса Renga.IBeamStyle из com-объекта
         /// </summary>
         /// <param name="BeamStyle_object"></param>
-        public BeamStyle(object BeamStyle_object)
+        internal BeamStyle(object BeamStyle_object)
         {
-            this.beam_style = BeamStyle_object as Renga.IBeamStyle;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.beam_style == null) return false;
-            else return true;
+            this._i = BeamStyle_object as Renga.IBeamStyle;
         }
         /// <summary>
         /// Получение целочисленного идентификатора стиля
         /// </summary>
         /// <returns></returns>
-        public int Id => this.beam_style.Id;
+        public int Id => this._i.Id;
         /// <summary>
         /// Получение наименования стиля
         /// </summary>
         /// <returns></returns>
-        public string Name => this.beam_style.Name;
+        public string Name => this._i.Name;
         /// <summary>
         /// Получение интерфейса Renga.IProfile
         /// </summary>
         /// <returns></returns>
-        public object Profile => this.beam_style.Profile;
+        public object Profile => this._i.Profile;
     }
 }

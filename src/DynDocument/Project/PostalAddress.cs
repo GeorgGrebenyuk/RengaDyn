@@ -8,68 +8,56 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
+using DynRenga.DynProperties.Properties;
 
-namespace DynRenga.Other
+namespace DynRenga.DynDocument.Project
 {
     /// <summary>
-    /// Класс для работы с интерфейсом Renga.IPostalAddress (встречается в BuildingInfo и LandPlotInfo)
+    /// Класс для представления поля для заполнения адреса объекта
     /// </summary>
-    public class PostalAddress : Other.Technical.ICOM_Tools
+    public class PostalAddress
     {
-        public Renga.IPostalAddress p_add;
-        /// <summary>
-        /// Инициация интерфейса Renga.IPostalAddress из com-объекта
-        /// </summary>
-        /// <param name="PostalAddress_object"></param>
-        public PostalAddress(object PostalAddress_object)
+        public Renga.IPostalAddress _i;
+        internal PostalAddress (object PostalAddress_object)
         {
-            this.p_add = PostalAddress_object as Renga.IPostalAddress;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.p_add == null) return false;
-            else return true;
+            this._i = PostalAddress_object as Renga.IPostalAddress;
         }
         //Getting properties
         /// <summary>
         /// Получение строкового представления графы "Адресат"
         /// </summary>
         /// <returns></returns>
-        public string Addressee => this.p_add.Addressee;
+        public string Addressee => this._i.Addressee;
         /// <summary>
         /// Получение строкового представления (списка) графы "Адрес"
         /// </summary>
         /// <returns></returns>
-        public List<string> AddressLines => this.p_add.AddressLines.OfType<string>().ToList();
+        public List<string> AddressLines => this._i.AddressLines.OfType<string>().ToList();
         /// <summary>
         /// Получение строкового представления графы "Абонентский ящик"
         /// </summary>
         /// <returns></returns>
-        public string PostalBox => this.p_add.PostalBox;
+        public string PostalBox => this._i.PostalBox;
         /// <summary>
         /// Получение строкового представления графы "Населенный пункт"
         /// </summary>
         /// <returns></returns>
-        public string Town => this.p_add.Town;
+        public string Town => this._i.Town;
         /// <summary>
         /// Получение строкового представления графы "Регион"
         /// </summary>
         /// <returns></returns>
-        public string Region => this.p_add.Region;
+        public string Region => this._i.Region;
         /// <summary>
         /// Получение строкового представления графы "Почтовый индекс"
         /// </summary>
         /// <returns></returns>
-        public string Postcode => this.p_add.Postcode;
+        public string Postcode => this._i.Postcode;
         /// <summary>
         /// Получение строкового представления графы "Страна"
         /// </summary>
         /// <returns></returns>
-        public string Country => this.p_add.Country;
+        public string Country => this._i.Country;
         //Setting properties
         /// <summary>
         /// Заполнение строкового представления графы "Адресат"
@@ -77,15 +65,15 @@ namespace DynRenga.Other
         /// <param name="addressee_string"></param>
         public void SetAddressee(string addressee_string)
         {
-            this.p_add.Addressee = addressee_string;
+            this._i.Addressee = addressee_string;
         }
         /// <summary>
         /// Заполнение строкового представления (список) графы "Адрес"
         /// </summary>
         /// <param name="addressLines_string_list"></param>
-        public void SetAddressLines (List<string> addressLines_string_list)
+        public void SetAddressLines(List<string> addressLines_string_list)
         {
-            this.p_add.AddressLines = addressLines_string_list.ToArray();
+            this._i.AddressLines = addressLines_string_list.ToArray();
         }
         /// <summary>
         /// Заполнение строкового представления графы "Абонентский ящик"
@@ -93,7 +81,7 @@ namespace DynRenga.Other
         /// <param name="postalBox_string"></param>
         public void SetPostalBox(string postalBox_string)
         {
-            this.p_add.PostalBox = postalBox_string;
+            this._i.PostalBox = postalBox_string;
         }
         /// <summary>
         /// Заполнение строкового представления графы "Населенный пункт"
@@ -101,7 +89,7 @@ namespace DynRenga.Other
         /// <param name="town_string"></param>
         public void SetTown(string town_string)
         {
-            this.p_add.Town = town_string;
+            this._i.Town = town_string;
         }
         /// <summary>
         /// Заполнение строкового представления графы "Регион"
@@ -109,7 +97,7 @@ namespace DynRenga.Other
         /// <param name="region_string"></param>
         public void SetRegion(string region_string)
         {
-            this.p_add.Region = region_string;
+            this._i.Region = region_string;
         }
         /// <summary>
         /// Заполнение строкового представления графы "Почтовый индекс"
@@ -117,15 +105,15 @@ namespace DynRenga.Other
         /// <param name="postcode_string"></param>
         public void SetPostcode(string postcode_string)
         {
-            this.p_add.Postcode = postcode_string;
+            this._i.Postcode = postcode_string;
         }
         /// <summary>
         /// Заполнение строкового представления графы "Страна"
         /// </summary>
         /// <param name="country_string"></param>
-        public void SetCountry (string country_string)
+        public void SetCountry(string country_string)
         {
-            this.p_add.Country = country_string;
+            this._i.Country = country_string;
         }
     }
 }

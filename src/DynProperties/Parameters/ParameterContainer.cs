@@ -14,31 +14,22 @@ namespace DynRenga.DynProperties.Parameters
     /// <summary>
     /// Класс для работы с группой параметров (интерфейсом Renga.IParameterContainer)
     /// </summary>
-    public class ParameterContainer : Other.Technical.ICOM_Tools
+    public class ParameterContainer
     {
-        public Renga.IParameterContainer p_cont;
+        public Renga.IParameterContainer _i;
         /// <summary>
         /// Инициация класса из интерфейса Renga.IParameterContainer
         /// </summary>
         /// <param name="ParameterContainer_obj"></param>
-        public ParameterContainer (object ParameterContainer_obj)
+        internal ParameterContainer (object ParameterContainer_obj)
         {
-            this.p_cont = ParameterContainer_obj as Renga.IParameterContainer;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.p_cont == null) return false;
-            else return true;
+            this._i = ParameterContainer_obj as Renga.IParameterContainer;
         }
         /// <summary>
         /// Получение набора идентификаторов отдельных параметров как сущности Renga.IGuidCollection
         /// </summary>
         /// <returns></returns>
-        public object GetIds => this.p_cont.GetIds();
+        public Other.GuidCollection GetIds => new Other.GuidCollection(this._i.GetIds());
         /// <summary>
         /// Проверка, содержит ли данный набор параметров нужный параметр по его Guid-идентификатору
         /// </summary>
@@ -46,16 +37,16 @@ namespace DynRenga.DynProperties.Parameters
         /// <returns></returns>
         public bool Contains(Guid parameter_guid)
         {
-            return this.p_cont.Contains(parameter_guid);
+            return this._i.Contains(parameter_guid);
         }
         /// <summary>
         /// Получение отдельного параметра (интерфейса Renga.IParameter) по его Guid-идентификатору
         /// </summary>
         /// <param name="parameter_guid"></param>
         /// <returns></returns>
-        public object Get (Guid parameter_guid)
+        public Parameter Get (Guid parameter_guid)
         {
-            return this.p_cont.Get(parameter_guid);
+            return new Parameter(this._i.Get(parameter_guid));
         }
         //My
         /// <summary>
@@ -64,15 +55,15 @@ namespace DynRenga.DynProperties.Parameters
         /// </summary>
         /// <returns></returns>
         [dr.MultiReturn(new[] { "Parameters_id", "Parameters_object" })]
-        public Dictionary<string,object> GetParameters()
+        public Dictionary<string, object> GetParameters()
         {
-            Renga.IGuidCollection coll = this.p_cont.GetIds();
+            Renga.IGuidCollection coll = this._i.GetIds();
             List<Guid> ids = new List<Guid>();
-            List<object> objs = new List<object>();
+            List<Parameter> objs = new List<Parameter>();
             for (int i = 0; i < coll.Count; i++)
             {
                 ids.Add(coll.Get(i));
-                objs.Add(this.p_cont.Get(coll.Get(i)));
+                objs.Add(new Parameter(this._i.Get(coll.Get(i))));
             }
             return new Dictionary<string, object>()
             {

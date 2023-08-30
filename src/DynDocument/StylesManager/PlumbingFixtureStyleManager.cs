@@ -8,6 +8,7 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
+using DynRenga.DynStyles;
 
 namespace DynRenga.DynDocument.StylesManager
 {
@@ -15,37 +16,28 @@ namespace DynRenga.DynDocument.StylesManager
     /// Класс для работы с менеджером свойств сантехнического оборудования, 
     /// интерфейсом Renga.IPlumbingFixtureStyleManager
     /// </summary>
-    public class PlumbingFixtureStyleManager : Other.Technical.ICOM_Tools
+    public class PlumbingFixtureStyleManager
     {
-        public Renga.IPlumbingFixtureStyleManager man;
+        public Renga.IPlumbingFixtureStyleManager _i;
         /// <summary>
         /// Инициализация класса (получение менеджера свойств) из Проекта
         /// </summary>
         /// <param name="renga_project"></param>
         public PlumbingFixtureStyleManager(DynDocument.Project.Project renga_project)
         {
-            this.man = renga_project.project.PlumbingFixtureStyleManager;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.man == null) return false;
-            else return true;
+            this._i = renga_project._i.PlumbingFixtureStyleManager;
         }
         /// <summary>
         /// Получение всех стилей как интерфейсов Renga.IPlumbingFixtureStyle
         /// </summary>
         /// <returns></returns>
-        public List<object> GetPlumbingFixtureStyles()
+        public List<PlumbingFixtureStyle> GetPlumbingFixtureStyles()
         {
-            List<object> styles = new List<object>();
-            List<int> ids = this.man.GetIds().OfType<int>().ToList();
+            List<PlumbingFixtureStyle> styles = new List<PlumbingFixtureStyle>();
+            List<int> ids = this._i.GetIds().OfType<int>().ToList();
             for (int i = 0; i < ids.Count; i++)
             {
-                styles.Add(this.man.GetPlumbingFixtureStyle(i));
+                styles.Add(new PlumbingFixtureStyle(this._i.GetPlumbingFixtureStyle(i)));
             }
             return styles;
         }
@@ -55,16 +47,16 @@ namespace DynRenga.DynDocument.StylesManager
         /// <returns></returns>
         public List<int> GetIds()
         {
-            return this.man.GetIds().OfType<int>().ToList();
+            return this._i.GetIds().OfType<int>().ToList();
         }
         /// <summary>
         /// Получение интерфейса IPlumbingFixtureStyle по его идентификатору
         /// </summary>
         /// <param name="style_id">Численный (int) идентификатор стиля сантехнического оборудованиия</param>
         /// <returns></returns>
-        public object GetEquipmentStyle(int style_id)
+        public PlumbingFixtureStyle GetEquipmentStyle(int style_id)
         {
-            return this.man.GetPlumbingFixtureStyle(style_id);
+            return new PlumbingFixtureStyle(this._i.GetPlumbingFixtureStyle(style_id));
         }
         /// <summary>
         /// Проверяет, имеется ли стиль с таким идентификатором
@@ -73,7 +65,7 @@ namespace DynRenga.DynDocument.StylesManager
         /// <returns></returns>
         public bool Contains(int style_id)
         {
-            return this.man.Contains(style_id);
+            return this._i.Contains(style_id);
         }
     }
 }

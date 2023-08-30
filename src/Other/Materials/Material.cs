@@ -15,49 +15,41 @@ namespace DynRenga.Other.Material
     /// <summary>
     /// Класс для работы с объектом Renga.Material. Предсставляет однослойный материал
     /// </summary>
-    public class Material : Other.Technical.ICOM_Tools
+    public class Material
     {
-        public Renga.IMaterial material;
+        public Renga.IMaterial _i;
         /// <summary>
         /// Инициация материала Renga через интерфейс
         /// </summary>
         /// <param name="material_obj"></param>
-        public Material(object material_obj)
+        internal Material(object material_obj)
         {
-            this.material = material_obj as Renga.IMaterial;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.material == null) return false;
-            else return true;
+            this._i = material_obj as Renga.IMaterial;
         }
         /// <summary>
         /// Получает сущность материала по его идентификатору (встречается в GridMaterial)
         /// </summary>
-        /// <param name="renga_project_obj">Интерфейс проекта Renga</param>
+        /// <param name="renga_project">Проект Renga</param>
         /// <param name="material_id">Идентификатор материала</param>
         public Material (DynDocument.Project.Project renga_project, int material_id)
         {
-            Renga.IEntityCollection mat_manager = renga_project.project.Materials;
-            this.material = mat_manager.GetById(material_id) as Renga.IMaterial;
+            Renga.IEntityCollection mat_manager = renga_project._i.Materials;
+            this._i = mat_manager.GetById(material_id) as Renga.IMaterial;
 
         }
         /// <summary>
         /// Получение всех материалов (как интерфейсов Renga) из свойств проекта (Материалы)
         /// </summary>
-        /// <param name="renga_project_obj"></param>
+        /// <param name="renga_project">Проект Renga</param>
         /// <returns></returns>
-        public static List<object> GetAllMaterials (object renga_project_obj)
+        public static List<Material> GetAllMaterialIds (DynDocument.Project.Project renga_project)
         {
-            Renga.IEntityCollection materials_all = ((Renga.IProject)renga_project_obj).Materials;
-            List<object> mats = new List<object>();
+            Renga.IEntityCollection materials_all = renga_project._i.Materials;
+            Renga.IMaterialManager manager = renga_project._i.MaterialManager;
+            List<Material> mats = new List<Material>();
             foreach (int one_id in materials_all.GetIds())
             {
-                mats.Add(materials_all.GetById(one_id));
+                mats.Add(new Material(manager.GetMaterial(one_id)));
             }
             return mats;
         }
@@ -65,22 +57,22 @@ namespace DynRenga.Other.Material
         /// Идентификатор материала
         /// </summary>
         /// <returns></returns>
-        public int Id => this.material.Id;
+        public int Id => this._i.Id;
         /// <summary>
         /// Наименование материала
         /// </summary>
         /// <returns></returns>
-        public string Name => this.material.Name;
+        public string Name => this._i.Name;
         /// <summary>
         /// Плотность материала в кг/м3
         /// </summary>
         /// <returns></returns>
-        public double Density => this.material.Density;
+        public double Density => this._i.Density;
         /// <summary>
         /// Цвет материала. Ддя получения кода использовать нод RengaSimpleInterfaces.GetColorDataByRengaColor
         /// </summary>
         /// <returns></returns>
-        public object Color => this.material.Color;
+        public object Color => this._i.Color;
     }
     /// <summary>
     /// Класс для работы с материалом, свойственным Renga.IGrid
@@ -92,7 +84,7 @@ namespace DynRenga.Other.Material
         /// Инициация класса из интерфейса Renga.IGridMaterial
         /// </summary>
         /// <param name="GridMaterial_obj"></param>
-        public GridMaterial(object GridMaterial_obj)
+        internal GridMaterial(object GridMaterial_obj)
         {
             this.gr_mat = GridMaterial_obj as Renga.IGridMaterial;
         }
@@ -110,7 +102,7 @@ namespace DynRenga.Other.Material
         /// 
         /// </summary>
         /// <param name="LayeredMaterial_obj"></param>
-        public LayeredMaterial(object LayeredMaterial_obj)
+        internal LayeredMaterial(object LayeredMaterial_obj)
         {
             this.lay_mat = LayeredMaterial_obj as Renga.ILayeredMaterial;
         }
@@ -159,7 +151,7 @@ namespace DynRenga.Other.Material
         /// ИНициация интерфейса Renga.IMaterialLayer
         /// </summary>
         /// <param name="MaterialLayer_obj"></param>
-        public MaterialLayer(object MaterialLayer_obj)
+        internal MaterialLayer(object MaterialLayer_obj)
         {
             this.lay_mat = MaterialLayer_obj as Renga.IMaterialLayer;
 
@@ -178,7 +170,7 @@ namespace DynRenga.Other.Material
         /// Получает материал (Renga.IMaterial) свойственный данному Renga.IMaterialLayer
         /// </summary>
         /// <returns></returns>
-        public object Material => this.lay_mat.Material;
+        public Material Material => new Material(this.lay_mat.Material);
     }
 
 }

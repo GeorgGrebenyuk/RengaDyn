@@ -15,21 +15,12 @@ namespace DynRenga.DynGeometry
     /// Класс для работы с интерфейсом Renga.IPlacement3D - локальной системой координат 
     /// в трехмерном пространстве
     /// </summary>
-    public class Placement3D : Other.Technical.ICOM_Tools
+    public class Placement3D
     {
-        public Renga.IPlacement3D pl3d;
-        public Placement3D (object Placement3D_object)
+        public Renga.IPlacement3D _i;
+        internal Placement3D (object Placement3D_object)
         {
-            this.pl3d = Placement3D_object as Renga.IPlacement3D;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.pl3d == null) return false;
-            else return true;
+            this._i = Placement3D_object as Renga.IPlacement3D;
         }
         //properties
         /// <summary>
@@ -38,7 +29,7 @@ namespace DynRenga.DynGeometry
         /// <returns></returns>
         public dg.Point Origin()
         {
-            Renga.Point3D p = this.pl3d.Origin;
+            Renga.Point3D p = this._i.Origin;
             return dg.Point.ByCoordinates(p.X / 1000.0, p.Y / 1000.0, p.Z / 1000.0);
         }
         /// <summary>
@@ -47,7 +38,7 @@ namespace DynRenga.DynGeometry
         /// <returns></returns>
         public dg.Vector AxisX()
         {
-            Renga.Vector3D vX = this.pl3d.AxisX;
+            Renga.Vector3D vX = this._i.AxisX;
             return dg.Vector.ByCoordinates(vX.X / 1000.0, vX.Y / 1000.0, vX.Z / 1000.0);
         }
         /// <summary>
@@ -56,7 +47,7 @@ namespace DynRenga.DynGeometry
         /// <returns></returns>
         public dg.Vector AxisY()
         {
-            Renga.Vector3D vY = this.pl3d.AxisY;
+            Renga.Vector3D vY = this._i.AxisY;
             return dg.Vector.ByCoordinates(vY.X / 1000.0, vY.Y / 1000.0, vY.Z / 1000.0);
         }
         /// <summary>
@@ -65,7 +56,7 @@ namespace DynRenga.DynGeometry
         /// <returns></returns>
         public dg.Vector AxisZ()
         {
-            Renga.Vector3D vZ = this.pl3d.AxisZ;
+            Renga.Vector3D vZ = this._i.AxisZ;
             return dg.Vector.ByCoordinates(vZ.X / 1000.0, vZ.Y / 1000.0, vZ.Z / 1000.0);
         }
         //functions
@@ -81,27 +72,27 @@ namespace DynRenga.DynGeometry
         /// Проверка, является ли ортогональной данная СК
         /// </summary>
         /// <returns></returns>
-        public bool IsOrthogonal => this.pl3d.IsOrthogonal();
+        public bool IsOrthogonal => this._i.IsOrthogonal();
         /// <summary>
         /// Проверка, является ли нормальной данная СК
         /// </summary>
         /// <returns></returns>
-        public bool IsNormal => this.pl3d.IsNormal();
+        public bool IsNormal => this._i.IsNormal();
         /// <summary>
         /// Проверка, является ли данная СК левосторонней
         /// </summary>
         /// <returns></returns>
-        public bool IsLeft => this.pl3d.IsLeft();
+        public bool IsLeft => this._i.IsLeft();
         /// <summary>
         /// Получение Renga.ITransform3D из текущей СК в глобальную
         /// </summary>
         /// <returns></returns>
-        public object GetTransformFrom => this.pl3d.GetTransformFrom();
+        public object GetTransformFrom => this._i.GetTransformFrom();
         /// <summary>
         /// Получение Renga.ITransform3D из глобальной СК в текущую
         /// </summary>
         /// <returns></returns>
-        public object GetTransformInto => this.pl3d.GetTransformInto();
+        public Transform2D GetTransformInto => new Transform2D(this._i.GetTransformInto());
         /// <summary>
         /// Перемещение на указанный вектор
         /// </summary>
@@ -112,7 +103,7 @@ namespace DynRenga.DynGeometry
             vec.X = vector_to_moving.X * 1000.0;
             vec.Y = vector_to_moving.Y * 1000.0;
             vec.Z = vector_to_moving.Z * 1000.0;
-            this.pl3d.Move(vec);
+            this._i.Move(vec);
         }
         /// <summary>
         /// Поворот вокруг указанной оси (вектора)
@@ -124,7 +115,7 @@ namespace DynRenga.DynGeometry
             vec.X = vector_axis_rotate.X * 1000.0;
             vec.Y = vector_axis_rotate.Y * 1000.0;
             vec.Z = vector_axis_rotate.Z * 1000.0;
-            this.pl3d.Move(vec);
+            this._i.Move(vec);
         }
         /// <summary>
         /// Применение трансформации через интерфейс Renga.ITransform3D
@@ -132,13 +123,13 @@ namespace DynRenga.DynGeometry
         /// <param name="transform"></param>
         public void Transform (DynGeometry.Transform3D transform)
         {
-            this.pl3d.Transform(transform.tr3d);
+            this._i.Transform(transform._i);
         }
         /// <summary>
         /// Получение копии текущей СК
         /// </summary>
         /// <returns></returns>
-        public object GetCopy => this.pl3d.GetCopy();
+        public Placement3D GetCopy() => new Placement3D(this._i.GetCopy());
 
     }
 }

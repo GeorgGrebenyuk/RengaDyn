@@ -14,59 +14,50 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Route
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IRouteParams
     /// </summary>
-    public class RouteParams : Other.Technical.ICOM_Tools
+    public class RouteParams
     {
-        public Renga.IRouteParams route_params;
+        public Renga.IRouteParams _i;
         /// <summary>
         /// Инициализация класса из объекта модели Route
         /// </summary>
         /// <param name="ModelObject_Route"></param>
-        public RouteParams(object ModelObject_Route)
+        internal RouteParams(object ModelObject_Route)
         {
-            this.route_params = ModelObject_Route as Renga.IRouteParams;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.route_params == null) return false;
-            else return true;
+            this._i = ModelObject_Route as Renga.IRouteParams;
         }
         //properties
         /// <summary>
         /// Получение идентификатора объекта модели, расположенном на начале трассы
         /// </summary>
         /// <returns></returns>
-        public int SourceModelObjectId => this.route_params.SourceModelObjectId; 
+        public int SourceModelObjectId => this._i.SourceModelObjectId; 
         /// <summary>
         /// Получение идентификатора объекта модели, расположенном на конце трассы
         /// </summary>
         /// <returns></returns>
-        public int TargetModelObjectId => this.route_params.TargetModelObjectId; 
+        public int TargetModelObjectId => this._i.TargetModelObjectId; 
         /// <summary>
         /// Получение идентификатора стиля трассы
         /// </summary>
         /// <returns></returns>
-        public int SystemStyleId => this.route_params.SystemStyleId; 
+        public int SystemStyleId => this._i.SystemStyleId; 
 
         //functions
         /// <summary>
         /// Получение числа точек трассировки трассы
         /// </summary>
         /// <returns></returns>
-        public int GetJointCount => this.route_params.GetJointCount(); 
+        public int GetJointCount => this._i.GetJointCount(); 
         /// <summary>
         /// Получение числа присоединенных объектов (аксессуаров, фитингов) к трассе
         /// </summary>
         /// <returns></returns>
-        public int GetObjectOnRouteCount => this.route_params.GetObjectOnRouteCount(); 
+        public int GetObjectOnRouteCount => this._i.GetObjectOnRouteCount(); 
         /// <summary>
         /// Получение оси трассы как объекта Renga.ICurve3D
         /// </summary>
         /// <returns></returns>
-        public object GetContour => this.route_params.GetContour(); 
+        public DynGeometry.Curve3D GetContour => new DynGeometry.Curve3D(this._i.GetContour()); 
         /// <summary>
         /// Получение списка структур Renga.RouteJointParams,
         /// информация о геометрическом положении точек трассировки
@@ -76,9 +67,9 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Route
         public List<object> GetJointsParams()
         {
             List<object> joints = new List<object>();
-            for (int i = 0; i < this.route_params.GetJointCount(); i++)
+            for (int i = 0; i < this._i.GetJointCount(); i++)
             {
-                joints.Add(this.route_params.GetJointParams(i));
+                joints.Add(this._i.GetJointParams(i));
             }
             return joints;
         }
@@ -87,12 +78,12 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Route
         /// информация о геометрическом положении точек трассировки
         /// </summary>
         /// <returns></returns>
-        public List<object> GetObjectsOnRoutePlacement()
+        public List<ObjectOnRoutePlacement> GetObjectsOnRoutePlacement()
         {
-            List<object> joints = new List<object>();
-            for (int i = 0; i < this.route_params.GetObjectOnRouteCount(); i++)
+            List<ObjectOnRoutePlacement> joints = new List<ObjectOnRoutePlacement>();
+            for (int i = 0; i < this._i.GetObjectOnRouteCount(); i++)
             {
-                joints.Add(this.route_params.GetObjectOnRoutePlacement(i));
+                joints.Add(new ObjectOnRoutePlacement(this._i.GetObjectOnRoutePlacement(i)));
             }
             return joints;
         }
@@ -102,26 +93,26 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Route
     /// </summary>
     public class ObjectOnRoutePlacement
     {
-        public Renga.IObjectOnRoutePlacement obj;
+        public Renga.IObjectOnRoutePlacement _i;
         /// <summary>
         /// Инициализация класса из интерфейса Renga.IObjectOnRoutePlacement
         /// </summary>
         /// <param name="ObjectOnRoutePlacement_object"></param>
-        public ObjectOnRoutePlacement(object ObjectOnRoutePlacement_object)
+        internal ObjectOnRoutePlacement(object ObjectOnRoutePlacement_object)
         {
-            this.obj = ObjectOnRoutePlacement_object as Renga.IObjectOnRoutePlacement;
+            this._i = ObjectOnRoutePlacement_object as Renga.IObjectOnRoutePlacement;
         }
         /// <summary>
         ///  Получение идентификатора объекта
         /// </summary>
         /// <returns></returns>
-        public int Id => this.obj.Id;
+        public int Id => this._i.Id;
 
         /// <summary>
         /// Получение параметра кривой базовой линии
         /// </summary>
         /// <returns></returns>
-        public double Parameter => this.obj.parameter;
+        public double Parameter => this._i.parameter;
     }
 
     

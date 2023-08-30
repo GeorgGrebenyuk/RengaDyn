@@ -14,25 +14,16 @@ namespace DynRenga.DynStyles
     /// <summary>
     /// Класс для работы с описанием инженерной системы, интерфейсом Renga.ISystemStyle
     /// </summary>
-    public class SystemStyle : Other.Technical.ICOM_Tools
+    public class SystemStyle 
     {
-        public Renga.ISystemStyle style;
+        public Renga.ISystemStyle _i;
         /// <summary>
         /// Инициализация класса через интерфейс Renga.ISystemStyle
         /// </summary>
         /// <param name="SystemStyle_object"></param>
-        public SystemStyle(object SystemStyle_object)
+        internal SystemStyle(object SystemStyle_object)
         {
-            this.style = SystemStyle_object as Renga.ISystemStyle;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.style == null) return false;
-            else return true;
+            this._i = SystemStyle_object as Renga.ISystemStyle;
         }
         //properties
         /// <summary>
@@ -41,28 +32,28 @@ namespace DynRenga.DynStyles
         /// <returns></returns>
         public string GetSystemType()
         {
-            return SystemTypes().Where(a => (Renga.SystemType)a.Value == this.style.SystemType).First().Key;
+            return SystemTypes().Where(a => (Renga.SystemType)a.Value == this._i.SystemType).First().Key;
         }
         /// <summary>
         /// Получение строкового обозначения системы
         /// </summary>
         /// <returns></returns>
-        public string Designation => this.style.Designation;
+        public string Designation => this._i.Designation;
         /// <summary>
         /// Получение идентификатора стиля
         /// </summary>
         /// <returns></returns>
-        public int Id => this.style.Id;
+        public int Id => this._i.Id;
         /// <summary>
         /// Получение наименования стиля
         /// </summary>
         /// <returns></returns>
-        public string Name => this.style.Name;
+        public string Name => this._i.Name;
         /// <summary>
         /// Получение цвета стиля, используйте нод Other.RengaSimpleInterfaces.GetColorDataByRengaColor
         /// </summary>
         /// <returns></returns>
-        public object Color => this.style.Color;
+        public object Color => this._i.Color;
 
         private static Dictionary<string, object> SystemTypes()
         {

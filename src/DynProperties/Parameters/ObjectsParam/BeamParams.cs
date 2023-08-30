@@ -15,57 +15,48 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Beam
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IBeamParams (расширенные свойства Балки)
     /// </summary>
-    public class BeamParams : Other.Technical.ICOM_Tools
+    public class BeamParams
     {
-        public Renga.IBeamParams beam_params;
+        public Renga.IBeamParams _i;
         /// <summary>
         /// Инициация класса из объекта модели Renga.IModelObject
         /// </summary>
         /// <param name="ModelObject_Beam"></param>
-        public BeamParams(object ModelObject_Beam)
+        internal BeamParams(object ModelObject_Beam)
         {
-            this.beam_params = ModelObject_Beam  as Renga.IBeamParams;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.beam_params == null) return false;
-            else return true;
+            this._i = ModelObject_Beam  as Renga.IBeamParams;
         }
         /// <summary>
         /// Получение базовой линии балки как объекта геометрии Curve3D (см. класс в DynGeometry)
         /// </summary>
         /// <returns></returns>
-        public object GetBaseline => this.beam_params.GetBaseline();
+        public DynGeometry.Curve3D GetBaseline => new DynGeometry.Curve3D(this._i.GetBaseline());
         /// <summary>
         /// Получение расположения профиля балки (объект Placement2D)
         /// </summary>
         /// <returns></returns>
-        public object GetProfilePlacement => this.beam_params.GetProfilePlacement();
+        public DynGeometry.Placement2D GetProfilePlacement => new DynGeometry.Placement2D(this._i.GetProfilePlacement());
         /// <summary>
         /// Получение трехмерного расположения профиля балки (объект Placement3D) 
         /// по заданному параметру кривой
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
-        public object GetProfilePlacementOnBaseline(double param)
+        public DynGeometry.Placement3D GetProfilePlacementOnBaseline(double param)
         {
-            return this.beam_params.GetProfilePlacementOnBaseline(param);
+            return new DynGeometry.Placement3D(this._i.GetProfilePlacementOnBaseline(param));
         }
         //properties
         /// <summary>
         /// Получение целочисленного идентификатора стиля балки
         /// </summary>
         /// <returns></returns>
-        public int StyleId => this.beam_params.StyleId;
+        public int StyleId => this._i.StyleId;
         /// <summary>
         /// Получение значения вертикального смещения балки
         /// </summary>
         /// <returns></returns>
-        public double VerticalOffset => this.beam_params.VerticalOffset;
+        public double VerticalOffset => this._i.VerticalOffset;
 
     }
     

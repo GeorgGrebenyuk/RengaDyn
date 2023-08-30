@@ -14,55 +14,46 @@ namespace DynRenga.DynStyles
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IRebarStyle, стилем арматуры
     /// </summary>
-    public class RebarStyle : Other.Technical.ICOM_Tools
+    public class RebarStyle 
     {
-        public Renga.IRebarStyle rebar_style;
+        public Renga.IRebarStyle _i;
         /// <summary>
         /// Инициация класса через интерфейс Renga.IRebarStyle
         /// </summary>
         /// <param name="RebarStyle_object"></param>
-        public RebarStyle(object RebarStyle_object)
+        internal RebarStyle(object RebarStyle_object)
         {
-            this.rebar_style = RebarStyle_object as Renga.IRebarStyle;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.rebar_style == null) return false;
-            else return true;
+            this._i = RebarStyle_object as Renga.IRebarStyle;
         }
         /// <summary>
         /// Получение численного идентификатора стиля
         /// </summary>
         /// <returns></returns>
-        public int Id => this.rebar_style.Id;
+        public int Id => this._i.Id;
         /// <summary>
         /// Получение имени стиля
         /// </summary>
         /// <returns></returns>
-        public string Name => this.rebar_style.Name;
+        public string Name => this._i.Name;
         /// <summary>
         /// Получение марки арматуры
         /// </summary>
         /// <returns></returns>
-        public string GradeName => this.rebar_style.GradeName;
+        public string GradeName => this._i.GradeName;
         /// <summary>
         /// Получение диаметра рамтуры в милиметрах
         /// </summary>
         /// <returns></returns>
-        public double Diameter => this.rebar_style.Diameter;
+        public double Diameter => this._i.Diameter;
         /// <summary>
         /// Получение численного идентификатора материала арматуры
         /// </summary>
         /// <returns></returns>
-        public int MaterialId => this.rebar_style.MaterialId;
+        public int MaterialId => this._i.MaterialId;
         /// <summary>
         /// Предел прочности арматуры при растяжении
         /// </summary>
         /// <returns></returns>
-        public double GradeTensileStrength => this.rebar_style.GradeTensileStrength;
+        public double GradeTensileStrength => this._i.GradeTensileStrength;
     }
 }

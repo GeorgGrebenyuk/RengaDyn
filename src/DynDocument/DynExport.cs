@@ -8,6 +8,7 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
+using DynRenga.DynDocument.Project;
 
 namespace DynRenga.DynDocument
 {
@@ -56,16 +57,16 @@ namespace DynRenga.DynDocument
         /// <param name="ExportFormat_com">Версия для экспорта, нода AcadExportFormats</param>
         /// <param name="FileType">1 = dwg, 2 = dxf, 3 = pdf, 4 = xps</param>
         /// <param name="Overwrite">true для перезаписи файлов с таким же именем</param>
-        public static int ExportToAcad(object renga_project_com, string PathToFolderToExport, 
+        public static int ExportToAcad(DynRenga.DynDocument.Project.Project renga_project, string PathToFolderToExport, 
             int ExportFormat_com, bool AllDrawings = true, int FileType = 1, bool Overwrite = true)
         {
             Renga.AutocadVersion ExportFormat = (Renga.AutocadVersion)ExportFormat_com;
 
             IDrawingCollection renga_progect_drawings;
-            if (AllDrawings == false ) renga_progect_drawings = ((Renga.IProject)renga_project_com).Drawings;
+            if (AllDrawings == false ) renga_progect_drawings = renga_project._i.Drawings;
             else
             {
-                renga_progect_drawings = ((Renga.IProject)renga_project_com).Drawings2 as IDrawingCollection;
+                renga_progect_drawings = renga_project._i.Drawings2 as IDrawingCollection;
             }
             for (int i = 0; i < renga_progect_drawings.Count; ++i)
             {
@@ -99,15 +100,15 @@ namespace DynRenga.DynDocument
         {
             IIfcExportSettings settings = ifc_settings as IIfcExportSettings;
             string ProjectName;
-            if ((renga_project.project).FilePath != null) 
-                ProjectName = Path.GetFileNameWithoutExtension((renga_project.project).FilePath);
+            if ((renga_project._i).FilePath != null) 
+                ProjectName = Path.GetFileNameWithoutExtension((renga_project._i).FilePath);
             ProjectName = Guid.NewGuid().ToString();
             //string export_path = PathToFolderToExport.Replace("\\", "/") + "/" + ProjectName + ".ifc";
             string export_path = PathToFolderToExport.Replace("\\", "/");
             //if (File.Exists(export_path)) export_path.Replace(".ifc", Guid.NewGuid().ToString() + ".ifc");
 
-            if (wait_ifcExportSettings == 0) (renga_project.project).ExportToIfc2(export_path, Overwrite, settings);
-            else (renga_project.project).ExportToIfc(export_path, Overwrite);
+            if (wait_ifcExportSettings == 0) (renga_project._i).ExportToIfc2(export_path, Overwrite, settings);
+            else (renga_project._i).ExportToIfc(export_path, Overwrite);
             
             return 0;
         }
@@ -127,7 +128,7 @@ namespace DynRenga.DynDocument
             string file_LayerMappingFilePath, bool bool_ApproximateCurves, bool bool_VoidsAsReference, bool bool_SplitObjectsWithLayeredMaterialIntoParts, 
             bool bool_GeometricRepresentationWithoutCutting)
         {
-            IIfcExportSettings settings = renga_application.renga_app.CreateIfcExportSettings();
+            IIfcExportSettings settings = renga_application._i.CreateIfcExportSettings();
             settings.ValueMappingFilePath = file_ValueMappingFilePath;
             settings.Version = IfcVersion.IfcVersion_4;
             settings.EntityTypeMappingFilePath = file_EntityTypeMappingFilePath;

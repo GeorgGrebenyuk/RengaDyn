@@ -14,36 +14,27 @@ namespace DynRenga.DynProperties.Parameters
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IParameterDefinition 
     /// </summary>
-    public class ParameterDefinition : Other.Technical.ICOM_Tools
+    public class ParameterDefinition
     {
-        public Renga.IParameterDefinition param_def;
+        public Renga.IParameterDefinition _i;
         /// <summary>
         /// Инициализация интерфейса Renga.IParameterDefinition
         /// </summary>
         /// <param name="ParameterDefinition_obj_com"></param>
-        public ParameterDefinition(object ParameterDefinition_obj_com)
+        internal ParameterDefinition(object ParameterDefinition_obj_com)
         {
-            this.param_def = ParameterDefinition_obj_com as Renga.IParameterDefinition;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.param_def== null) return false;
-            else return true;
+            this._i = ParameterDefinition_obj_com as Renga.IParameterDefinition;
         }
         /// <summary>
         /// Получает наименование параметра
         /// </summary>
         /// <returns></returns>
-        public string Name => this.param_def.Name;
+        public string Name => this._i.Name;
         /// <summary>
         /// Получает тип параметра в виде Enum (числа)
         /// </summary>
         /// <returns></returns>
-        public object ParameterType => this.param_def.ParameterType;
+        public object ParameterType => this._i.ParameterType;
         /// <summary>
         /// Получает строковое наименование типа параметра
         /// </summary>
@@ -51,7 +42,7 @@ namespace DynRenga.DynProperties.Parameters
         public string GetParameterTypeAsString()
         {
             IEnumerable<KeyValuePair<string, object>> data = ParameterTypes().
-                Where(a => (Renga.ParameterType)a.Value == this.param_def.ParameterType);
+                Where(a => (Renga.ParameterType)a.Value == this._i.ParameterType);
             if (data.Any()) return data.First().Key;
             else return null;
         }

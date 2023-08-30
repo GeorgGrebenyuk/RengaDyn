@@ -15,46 +15,37 @@ namespace DynRenga.DynObjects
     /// <summary>
     /// Класс для работы с объектом модели Renga.IModelObject
     /// </summary>
-    public class ModelObject : Other.Technical.ICOM_Tools
+    public class ModelObject
     {
-        public Renga.IModelObject obj;
+        public Renga.IModelObject _i;
         /// <summary>
         /// Инициация класса из интерфейса Renga.IModelObject
         /// </summary>
         /// <param name="model_object_com"></param>
-        public ModelObject (object model_object_com)
+        internal ModelObject (object model_object_com)
         {
-            this.obj = model_object_com as Renga.IModelObject;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.obj == null) return false;
-            else return true;
+            this._i = model_object_com as Renga.IModelObject;
         }
         /// <summary>
         /// Получение типа объекта как Guid
         /// </summary>
         /// <returns></returns>
-        public Guid ObjectType => this.obj.ObjectType;
+        public Guid ObjectType => this._i.ObjectType;
         /// <summary>
         /// Получение целочисленного идентификатора объекта
         /// </summary>
         /// <returns></returns>
-        public int Id => this.obj.Id;
+        public int Id => this._i.Id;
         /// <summary>
         /// Получение наименования объекта в Renga
         /// </summary>
         /// <returns></returns>
-        public string Name => this.obj.Name;
+        public string Name => this._i.Name;
         /// <summary>
         /// Получение внутреннего идентификатора объекта в Renga как Guid
         /// </summary>
         /// <returns></returns>
-        public Guid UniqueId => this.obj.uniqueId;
+        public Guid UniqueId => this._i.UniqueId;
         /// <summary>
         /// Приведение объекта модели к интерфейсу Renga.IObjectWithMaterial для получения материала, если таковой вообще назначен.
         /// Если не назначен - будет возвращено "-1"
@@ -62,7 +53,7 @@ namespace DynRenga.DynObjects
         /// <returns></returns>
         public int GetAssotiatedMaterialId()
         {
-            Renga.IObjectWithMaterial obj_mat = this.obj as Renga.IObjectWithMaterial;
+            Renga.IObjectWithMaterial obj_mat = this._i as Renga.IObjectWithMaterial;
             if (obj_mat.HasMaterial()) return obj_mat.MaterialId;
             else return -1;
         }
@@ -73,7 +64,7 @@ namespace DynRenga.DynObjects
         /// <returns></returns>
         public int GetAssotiatedLayerMaterialId()
         {
-            Renga.IObjectWithLayeredMaterial obj_lay_mat = this.obj as Renga.IObjectWithLayeredMaterial;
+            Renga.IObjectWithLayeredMaterial obj_lay_mat = this._i as Renga.IObjectWithLayeredMaterial;
             if (obj_lay_mat.HasLayeredMaterial()) return obj_lay_mat.LayeredMaterialId;
             else return -1;
         }
@@ -83,7 +74,7 @@ namespace DynRenga.DynObjects
         /// <returns>Если марка отсутствует, то возвращается пустая строка. В противном случае - марка.</returns>
         public string GetAssotiatedMark()
         {
-            Renga.IObjectWithMark obj_mark = this.obj as Renga.IObjectWithMark;
+            Renga.IObjectWithMark obj_mark = this._i as Renga.IObjectWithMark;
             if (obj_mark == null) return "";
             else return obj_mark.Mark;
         }
@@ -97,9 +88,9 @@ namespace DynRenga.DynObjects
         {
             return new Dictionary<string, object>
             {
-                { "Properties_IPropertyContainer",this.obj.GetProperties()},
-                { "Quantities_IQuantityContainer",this.obj.GetQuantities()},
-                { "Parameters_IParameterContainer", this.obj.GetParameters()}
+                { "Properties_IPropertyContainer",this._i.GetProperties()},
+                { "Quantities_IQuantityContainer",this._i.GetQuantities()},
+                { "Parameters_IParameterContainer", this._i.GetParameters()}
             };
 
         }
@@ -110,13 +101,13 @@ namespace DynRenga.DynObjects
         [dr.MultiReturn(new[] { "LevelId", "VerticalOffset", "PlacementElevation", "ElevationAboveLevel" })]
         public Dictionary<string, object> GetLevelObjectInfo()
         {
-            ILevelObject obj = this.obj as ILevelObject;
+            ILevelObject _i = this._i as ILevelObject;
             return new Dictionary<string, object>
             {
-                {"LevelId",obj.LevelId },
-                {"VerticalOffset",obj.VerticalOffset },
-                {"PlacementElevation",obj.PlacementElevation},
-                {"ElevationAboveLevel",obj.ElevationAboveLevel }
+                {"LevelId",_i.LevelId },
+                {"VerticalOffset",_i.VerticalOffset },
+                {"PlacementElevation",_i.PlacementElevation},
+                {"ElevationAboveLevel",_i.ElevationAboveLevel }
             };
         }
 

@@ -8,48 +8,40 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
+using DynRenga.DynObjects.Geometry;
 
 namespace DynRenga.DynObjects
 {
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IExportedObject3D (трехмерным представлением объекта)
     /// </summary>
-    public class ExportedObject3D : Other.Technical.ICOM_Tools
+    public class ExportedObject3D
     {
-        private Renga.IExportedObject3D obj;
+        private Renga.IExportedObject3D _i;
         /// <summary>
         /// Инициализация класса через интерфейс Renga.IExportedObject3D
         /// </summary>
         /// <param name="ExportedObject3D_obj"></param>
-        public ExportedObject3D (object ExportedObject3D_obj)
+        internal ExportedObject3D (object ExportedObject3D_obj)
         {
-            this.obj = ExportedObject3D_obj as IExportedObject3D;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.obj == null) return false;
-            else return true;
+            this._i = ExportedObject3D_obj as IExportedObject3D;
         }
         /// <summary>
         /// Инициализация класса через интерфейс Renga.IExportedObject3D по идентификатору объекта модели (Renga.IModelObject)
         /// </summary>
-        /// <param name="data_exporter">Класс DataExporter</param>
+        /// <param name="_i">Класс DataExporter</param>
         /// <param name="modelobject_id">int ModelObjectId (Renga.IModelObject.Id)</param>
         /// <returns></returns>
-        public ExportedObject3D (DynDocument.DataExporter data_exporter, int modelobject_id)
+        public ExportedObject3D (DynDocument.DataExporter DataExporter, int modelobject_id)
         {
-            IExportedObject3DCollection collection = data_exporter.data_exporter.GetObjects3D();
+            IExportedObject3DCollection _IExportedObject3DCollection = DataExporter._i.GetObjects3D();
             
-            for (int i = 0; i < collection.Count; i++)
+            for (int i = 0; i < _IExportedObject3DCollection.Count; i++)
             {
-                Renga.IExportedObject3D obj = collection.Get(i);
-                if (obj.ModelObjectId == modelobject_id) 
+                Renga.IExportedObject3D _i = _IExportedObject3DCollection.Get(i);
+                if (_i.ModelObjectId == modelobject_id) 
                 {
-                    this.obj = obj;
+                    this._i = _i;
                     break;
                 }
             }
@@ -59,33 +51,33 @@ namespace DynRenga.DynObjects
         /// свойственного данному трехмерному представлению
         /// </summary>
         /// <returns></returns>
-        public int ModelObjectId => this.obj.ModelObjectId;
+        public int ModelObjectId => this._i.ModelObjectId;
         /// <summary>
         /// Получение количества мэшей
         /// </summary>
         /// <returns></returns>
-        public int MeshCount => this.obj.MeshCount;
+        public int MeshCount => this._i.MeshCount;
         /// <summary>
         /// Получение мэша по внутреннему индексу
         /// </summary>
         /// <param name="mesh_index"></param>
         /// <returns></returns>
-        public object GetMesh(int mesh_index)
+        public Mesh GetMesh(int mesh_index)
         {
-            if (mesh_index < 0 | mesh_index > this.obj.MeshCount) return null;
-            else return this.obj.GetMesh(mesh_index);
+            if (mesh_index < 0 | mesh_index > this._i.MeshCount) return null;
+            else return new Mesh(this._i.GetMesh(mesh_index));
         }
         /// <summary>
         /// Получение списка интерейсов Renga.IMesh
         /// </summary>
         /// <returns></returns>
 
-        public List<object> GetMeshes()
+        public List<Mesh> GetMeshes()
         {
-            List<object> meshes = new List<object>();
-            for (int i =0; i< this.obj.MeshCount; i++)
+            List<Mesh> meshes = new List<Mesh>();
+            for (int i =0; i< this._i.MeshCount; i++)
             {
-                meshes.Add(this.obj.GetMesh(i));
+                meshes.Add(new Mesh(this._i.GetMesh(i)));
 
             }
             return meshes;
@@ -101,9 +93,9 @@ namespace DynRenga.DynObjects
             dg.Point min = dg.Point.ByCoordinates(100000000000.0, 100000000000.0, 100000000000.0);
             dg.Point max = dg.Point.ByCoordinates(-100000000000.0, -100000000000.0, -100000000000.0);
 
-            for (int counter_meshes = 0; counter_meshes < this.obj.MeshCount; counter_meshes++)
+            for (int counter_meshes = 0; counter_meshes < this._i.MeshCount; counter_meshes++)
             {
-                Renga.IMesh mesh = this.obj.GetMesh(counter_meshes);
+                Renga.IMesh mesh = this._i.GetMesh(counter_meshes);
                 
                 List<dg.Point> points = new List<dg.Point>();
                 List<dg.IndexGroup> indexes = new List<dg.IndexGroup>();
@@ -147,9 +139,9 @@ namespace DynRenga.DynObjects
         public int GetTrianglesCount()
         {
             int triangles_count = 0;
-            for (int mesh_counter = 0; mesh_counter < this.obj.MeshCount; mesh_counter ++)
+            for (int mesh_counter = 0; mesh_counter < this._i.MeshCount; mesh_counter ++)
             {
-                Renga.IMesh mesh = this.obj.GetMesh(mesh_counter);
+                Renga.IMesh mesh = this._i.GetMesh(mesh_counter);
                 for (int grid_counter = 0; grid_counter < mesh.GridCount; grid_counter ++)
                 {
                     Renga.IGrid grid = mesh.GetGrid(grid_counter);

@@ -8,6 +8,7 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
+using DynRenga.DynStyles;
 
 namespace DynRenga.DynDocument.StylesManager
 {
@@ -15,37 +16,28 @@ namespace DynRenga.DynDocument.StylesManager
     /// Класс для работы с менеджером свойств балок, 
     /// интерфейсом Renga.IBeamStyleManager
     /// </summary>
-    public class BeamStyleManager : Other.Technical.ICOM_Tools
+    public class BeamStyleManager
     {
-        public Renga.IBeamStyleManager man;
+        public Renga.IBeamStyleManager _i;
         /// <summary>
         /// Инициализация класса (получение менеджера свойств) из Проекта
         /// </summary>
         /// <param name="renga_project"></param>
         public BeamStyleManager(DynDocument.Project.Project renga_project)
         {
-            this.man = renga_project.project.BeamStyleManager;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.man== null) return false;
-            else return true;
+            this._i = renga_project._i.BeamStyleManager;
         }
         /// <summary>
         /// Получение всех стилей как интерфейсов Renga.IBeamStyle
         /// </summary>
         /// <returns></returns>
-        public List<object> GetBeamStyles()
+        public List<BeamStyle> GetBeamStyles()
         {
-            List<object> styles = new List<object>();
-            List<int> ids = this.man.GetIds().OfType<int>().ToList();
+            List<BeamStyle> styles = new List<BeamStyle>();
+            List<int> ids = this._i.GetIds().OfType<int>().ToList();
             for (int i = 0; i < ids.Count; i++)
             {
-                styles.Add(this.man.GetBeamStyle(i));
+                styles.Add(new BeamStyle(this._i.GetBeamStyle(i)));
             }
             return styles;
         }
@@ -55,16 +47,16 @@ namespace DynRenga.DynDocument.StylesManager
         /// <returns></returns>
         public List<int> GetIds()
         {
-            return this.man.GetIds().OfType<int>().ToList();
+            return this._i.GetIds().OfType<int>().ToList();
         }
         /// <summary>
         /// Получение интерфейса IBeamStyle по его идентификатору
         /// </summary>
         /// <param name="style_id">Численный (int) идентификатор стиля балки</param>
         /// <returns></returns>
-        public object GetBeamStyle(int style_id)
+        public BeamStyle GetBeamStyle(int style_id)
         {
-            return this.man.GetBeamStyle(style_id);
+            return new BeamStyle( this._i.GetBeamStyle(style_id));
         }
         /// <summary>
         /// Проверяет, имеется ли стиль с таким идентификатором
@@ -73,7 +65,7 @@ namespace DynRenga.DynDocument.StylesManager
         /// <returns></returns>
         public bool Contains(int style_id)
         {
-            return this.man.Contains(style_id);
+            return this._i.Contains(style_id);
         }
     }
 }

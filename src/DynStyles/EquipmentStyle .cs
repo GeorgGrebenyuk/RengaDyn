@@ -14,38 +14,29 @@ namespace DynRenga.DynStyles
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IEquipmentStyle, стилем оборудования
     /// </summary>
-    public class EquipmentStyle : Other.Technical.ICOM_Tools
+    public class EquipmentStyle
     {
-        public Renga.IEquipmentStyle eq_style;
+        public Renga.IEquipmentStyle _i;
         /// <summary>
         /// Инициация класса из интерфейса Renga.IEquipmentStyle
         /// </summary>
         /// <param name="EquipmentStyle_object"></param>
-        public EquipmentStyle(object EquipmentStyle_object)
+        internal EquipmentStyle(object EquipmentStyle_object)
         {
-            this.eq_style = EquipmentStyle_object as Renga.IEquipmentStyle;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.eq_style == null) return false;
-            else return true;
+            this._i = EquipmentStyle_object as Renga.IEquipmentStyle;
         }
         /// <summary>
         /// Получение наименования класса
         /// </summary>
         /// <returns></returns>
-        public string Name => this.eq_style.Name;
+        public string Name => this._i.Name;
         /// <summary>
         /// Получение строкового типа оборудования (Renga.EquipmentCategory)
         /// </summary>
         /// <returns></returns>
         public string GetCategory()
         {
-            return EquipmentCategories().Where(a => (Renga.EquipmentCategory)a.Value == this.eq_style.Category).First().Key;
+            return EquipmentCategories().Where(a => (Renga.EquipmentCategory)a.Value == this._i.Category).First().Key;
         }
         /// <summary>
         /// Типы оборудования

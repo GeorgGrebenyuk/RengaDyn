@@ -14,164 +14,154 @@ namespace DynRenga.DynDocument.Project
     /// <summary>
     /// Класс для работы с проектом Renga, интерфейсом Renga.IProject
     /// </summary>
-    public class Project : Other.Technical.ICOM_Tools
+    public class Project
     {
-        public Renga.IProject project;
+        public Renga.IProject _i;
         /// <summary>
         /// Получает текущий проект (интерфейс Renga.Project) от интерфейса Renga.IApplication
         /// </summary>
         /// <param name="renga_application"></param>
         public Project(Application renga_application)
         {
-
-            this.project = renga_application.renga_app.Project;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.project == null) return false;
-            else return true;
+            this._i = renga_application._i.Project;
         }
         /// <summary>
         /// Получение файлового пути, по которому сохранен текущий проект или null если он не сохранен
         /// </summary>
         /// <returns>Строковый файловый путь</returns>
-        public string FilePath => this.project.FilePath;
+        public string FilePath => this._i.FilePath;
         /// <summary>
         /// Получение инфрмации о проекте ProjectInfo, в виде интерфейса IPropertyContainer
         /// </summary>
         /// <returns></returns>
-        public object IProjectInfo => this.project.ProjectInfo;
+        public ProjectInfo IProjectInfo => new ProjectInfo(this._i.ProjectInfo);
         /// <summary>
         /// Получение инфрмации о здании BuildingInfo, в виде интерфейса IPropertyContainer
         /// </summary>
         /// <returns></returns>
-        public object IBuildingInfo => this.project.BuildingInfo;
+        public BuildingInfo IBuildingInfo => new BuildingInfo( this._i.BuildingInfo);
         /// <summary>
         /// Получение инфрмации об участке LandPlotInfo, в виде интерфейса IPropertyContainer
         /// </summary>
         /// <returns></returns>
-        public object ILandPlotInfo => this.project.LandPlotInfo;
+        public LandPlotInfo ILandPlotInfo => new LandPlotInfo(this._i.LandPlotInfo);
         /// <summary>
         /// Стили аксессуаров для труб.
         /// </summary>
-        public object PipeAccessoryStyles => this.project.PipeAccessoryStyles;
+        public EntityCollection PipeAccessoryStyles => new EntityCollection(this._i.PipeAccessoryStyles);
         /// <summary>
         /// Стили труб
         /// </summary>
-        public object PipeStyles => this.project.PipeStyles;
+        public EntityCollection PipeStyles => new EntityCollection(this._i.PipeStyles);
         /// <summary>
         /// Стили трубопроводных фитингов
         /// </summary>
-        public object PipeFittingStyles => this.project.PipeFittingStyles;
+        public EntityCollection PipeFittingStyles => new EntityCollection(this._i.PipeFittingStyles);
         /// <summary>
         /// Стили механического оборудования
         /// </summary>
-        public object MechanicalEquipmentStyles => this.project.MechanicalEquipmentStyles;
+        public EntityCollection MechanicalEquipmentStyles => new EntityCollection(this._i.MechanicalEquipmentStyles);
         /// <summary>
         /// Сттили воздуховодов
         /// </summary>
-        public object DuctStyles => this.project.DuctStyles;
+        public EntityCollection DuctStyles => new EntityCollection(this._i.DuctStyles);
         /// <summary>
         /// Стили фитингов воздуховодов
         /// </summary>
-        public object DuctFittingStyles => this.project.DuctFittingStyles;
+        public EntityCollection DuctFittingStyles => new EntityCollection(this._i.DuctFittingStyles);
         /// <summary>
         /// Стили аксесуаров воздуховодов
         /// </summary>
-        public object DuctAccessoryStyles => this.project.DuctAccessoryStyles;
+        public EntityCollection DuctAccessoryStyles => new EntityCollection(this._i.DuctAccessoryStyles);
         /// <summary>
         /// Стили осветительных приборов
         /// </summary>
-        public object LightFixtureStyles => this.project.LightFixtureStyles;
+        public EntityCollection LightFixtureStyles => new EntityCollection(this._i.LightFixtureStyles);
         /// <summary>
         /// Стили аксессуаров электрического оборудования
         /// </summary>
-        public object WiringAccessoryStyles => this.project.WiringAccessoryStyles;
+        public EntityCollection WiringAccessoryStyles => new EntityCollection(this._i.WiringAccessoryStyles);
         /// <summary>
         /// Стили электрических распределительных щитков
         /// </summary>
-        public object ElectricDistributionBoardStyles => this.project.ElectricDistributionBoardStyles;
+        public EntityCollection ElectricDistributionBoardStyles => new EntityCollection(this._i.ElectricDistributionBoardStyles);
         /// <summary>
         /// Стили электрических проводников
         /// </summary>
-        public object ElectricalConductorStyles => this.project.ElectricalConductorStyles;
+        public EntityCollection ElectricalConductorStyles => new EntityCollection(this._i.ElectricalConductorStyles);
         /// <summary>
         /// Стили линий электрических
         /// </summary>
-        public object ElectricalCircuitLineStyles => this.project.ElectricalCircuitLineStyles;
+        public EntityCollection ElectricalCircuitLineStyles => new EntityCollection(this._i.ElectricalCircuitLineStyles);
         /// <summary>
         /// Стили инженерных систем
         /// </summary>
-        public object SystemStyles => this.project.SystemStyles;
+        public EntityCollection SystemStyles => new EntityCollection(this._i.SystemStyles);
         /// <summary>
         /// Стили сантехнических приспособлений
         /// </summary>
-        public object PlumbingFixtureStyles => this.project.PlumbingFixtureStyles;
+        public EntityCollection PlumbingFixtureStyles => new EntityCollection(this._i.PlumbingFixtureStyles);
         /// <summary>
         /// Стили оборудования
         /// </summary>
-        public object EquipmentStyles => this.project.EquipmentStyles;
+        public EntityCollection EquipmentStyles => new EntityCollection(this._i.EquipmentStyles);
         /// <summary>
         /// Сборки
         /// </summary>
-        public object Assemblies => this.project.Assemblies;
+        public EntityCollection Assemblies => new EntityCollection(this._i.Assemblies);
         /// <summary>
         /// Чертежи
         /// </summary>
-        public object Drawings2 => this.project.Drawings2;
+        public EntityCollection Drawings2 => new EntityCollection(this._i.Drawings2);
         /// <summary>
         /// Стили элементов
         /// </summary>
-        public object ElementStyles => this.project.ElementStyles;
+        public EntityCollection ElementStyles => new EntityCollection(this._i.ElementStyles);
         /// <summary>
         /// Стили балок
         /// </summary>
-        public object BeamStyles => this.project.BeamStyles;
+        public EntityCollection BeamStyles => new EntityCollection(this._i.BeamStyles);
         /// <summary>
         /// Стили колонн
         /// </summary>
-        public object ColumnStyles => this.project.ColumnStyles;
+        public EntityCollection ColumnStyles => new EntityCollection(this._i.ColumnStyles);
         /// <summary>
         /// Стили пластин
         /// </summary>
-        public object PlateStyles => this.project.PlateStyles;
+        public EntityCollection PlateStyles => new EntityCollection(this._i.PlateStyles);
         /// <summary>
         /// Материалы
         /// </summary>
-        public object Materials => this.project.Materials;
+        public EntityCollection Materials => new EntityCollection(this._i.Materials);
         /// <summary>
         /// Стили окон
         /// </summary>
-        public object WindowStyles => this.project.WindowStyles;
+        public EntityCollection WindowStyles => new EntityCollection(this._i.WindowStyles);
         /// <summary>
         /// Стили дверей
         /// </summary>
-        public object DoorStyles => this.project.DoorStyles;
+        public EntityCollection DoorStyles => new EntityCollection(this._i.DoorStyles);
         /// <summary>
         /// Список многослойных материалов
         /// </summary>
-        public object LayeredMaterials => this.project.LayeredMaterials;
+        public EntityCollection LayeredMaterials => new EntityCollection(this._i.LayeredMaterials);
         /// <summary>
         /// Профили
         /// </summary>
-        public object Profiles => this.project.Profiles;
+        public EntityCollection Profiles => new EntityCollection(this._i.Profiles);
         /// <summary>
         /// Спецификации
         /// </summary>
-        public object Topics => this.project.Topics;
+        public EntityCollection Topics => new EntityCollection(this._i.Topics);
         /// <summary>
         /// Стили листов
         /// </summary>
-        public object LayoutStyles => this.project.LayoutStyles;
+        public EntityCollection LayoutStyles => new EntityCollection(this._i.LayoutStyles);
         /// <summary>
         /// Стили номеров страниц
         /// </summary>
-        public object PageFormatStyles => this.project.PageFormatStyles;
-        public object Drawings => this.project.Drawings;
+        public EntityCollection PageFormatStyles => new EntityCollection(this._i.PageFormatStyles);
+        public EntityCollection Drawings => new EntityCollection(this._i.Drawings);
     }
     
 }

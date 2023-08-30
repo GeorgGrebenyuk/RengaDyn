@@ -8,48 +8,42 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
+using DynRenga.DynProperties.Quantities;
+using DynRenga.DynGeometry;
+
 namespace DynRenga.DynStyles
 {
     /// <summary>
     /// Класс для работы с интерфейсом Renga.IReinforcementUnitStyle, стилем арматурного элемента
     /// </summary>
-    public class ReinforcementUnitStyle : Other.Technical.ICOM_Tools
+    public class ReinforcementUnitStyle
     {
-        public Renga.IReinforcementUnitStyle rein_style;
+        public Renga.IReinforcementUnitStyle _i;
         /// <summary>
         /// Инициация класса через интерфейс Renga.IReinforcementUnitStyle
         /// </summary>
         /// <param name="ReinforcementUnitStyle_object"></param>
-        public ReinforcementUnitStyle(object ReinforcementUnitStyle_object)
+        internal ReinforcementUnitStyle(object ReinforcementUnitStyle_object)
         {
-            this.rein_style = ReinforcementUnitStyle_object as Renga.IReinforcementUnitStyle;
-        }
-        /// <summary>
-        /// Проверка на null полученного интерфейса
-        /// </summary>
-        /// <returns></returns>
-        public bool CheckIsNotNull()
-        {
-            if (this.rein_style == null) return false;
-            else return true;
+            this._i = ReinforcementUnitStyle_object as Renga.IReinforcementUnitStyle;
         }
         /// <summary>
         /// Получение идентификатора стиля
         /// </summary>
         /// <returns></returns>
-        public int Id => this.rein_style.Id;
+        public int Id => this._i.Id;
         /// <summary>
         /// Получение наименования стиля
         /// </summary>
         /// <returns></returns>
-        public string Name => this.rein_style.Name;
+        public string Name => this._i.Name;
         /// <summary>
         /// Получение типа (Renga.ReinforcementUnitType)
         /// </summary>
         /// <returns></returns>
         public string GetUnitType()
         {
-            return ReinforcementUnitTypes().Where(a => (Renga.ReinforcementUnitType)a.Value == this.rein_style.UnitType).First().Key;
+            return ReinforcementUnitTypes().Where(a => (Renga.ReinforcementUnitType)a.Value == this._i.UnitType).First().Key;
         }
         private static Dictionary<string,object> ReinforcementUnitTypes()
         {
@@ -64,16 +58,30 @@ namespace DynRenga.DynStyles
         /// Получение списка интерфейсов IRebarUsage
         /// </summary>
         /// <returns></returns>
-        public List<object> GetRebarUsages()
+        public List<RebarUsage> GetRebarUsages()
         {
-            List<object> rebars = new List<object>();
-            Renga.IRebarUsageCollection coll = this.rein_style.GetRebarUsages();
+            List<RebarUsage> rebars = new List<RebarUsage>();
+            Renga.IRebarUsageCollection coll = this._i.GetRebarUsages();
             for (int i = 0; i < coll.Count; i++)
             {
-                rebars.Add(coll.Get(i));
+                rebars.Add(new RebarUsage(coll.Get(i)));
             }
             return rebars;
         }
 
+    }
+    /// <summary>
+    /// Represents a usage of rebar in the reinforcement unit or reinforced object.
+    /// </summary>
+    public class RebarUsage
+    {
+        public Renga.IRebarUsage _i;
+        internal RebarUsage(object RebarUsage_object)
+        {
+            this._i = RebarUsage_object as Renga.IRebarUsage;
+        }
+        public int StyleId => this._i.StyleId;
+        public QuantityContainer GetQuantitoes() => new QuantityContainer(this._i.GetQuantities());
+        public Curve3D GetRebarGeometry() => new Curve3D(this._i.GetRebarGeometry());
     }
 }
