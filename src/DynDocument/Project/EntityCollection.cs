@@ -9,6 +9,7 @@ using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
 using Autodesk.DesignScript.Geometry.Core;
+using DynRenga.DynProperties.Properties;
 
 namespace DynRenga.DynDocument.Project
 {
@@ -40,6 +41,15 @@ namespace DynRenga.DynDocument.Project
             }
             return objs;
         }
+        /// <summary>
+        /// Возвращает объект по идентификатору (актуально для приведения к других классов к Entity путем запроса ObjectId)
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Entity GetById(int id)
+        {
+            return new Entity(this._i.GetById(id));
+        }
 
     }
     /// <summary>
@@ -55,6 +65,19 @@ namespace DynRenga.DynDocument.Project
         internal Entity (object Entity_object)
         {
             this._i = Entity_object as Renga.IEntity;
+        }
+        /// <summary>
+        /// Возвращает свойства связанные с объектом, если их возможно получить
+        /// </summary>
+        /// <returns></returns>
+        public PropertyContainer GetProperties()
+        {
+            var cont = this._i.GetInterfaceByName("IPropertyContainer");
+            if (cont != null)
+            {
+                return new PropertyContainer(cont);
+            }
+            else return null;
         }
         //properties
         /// <summary>
