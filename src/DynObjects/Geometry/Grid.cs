@@ -62,53 +62,21 @@ namespace DynRenga.DynObjects.Geometry
         /// </summary>
         /// <param name="triangle_index"></param>
         /// <returns></returns>
-        public object GetTriangle(int triangle_index)
+        public dg.IndexGroup GetDynamoIndexGroupFromTriangle(int triangle_index)
         {
-            if (triangle_index < 0 | triangle_index > this._i.TriangleCount) return null;
-            else return this._i.GetTriangle(triangle_index);
-        }
-        /// <summary>
-        /// Преобразование информации об отдельной грани триангуляции в dynamo IndexGroup
-        /// </summary>
-        /// <param name="triangle_obj"></param>
-        /// <returns></returns>
-        public static dg.IndexGroup GetDynamoIndexGroupByTriangle(object triangle_obj)
-        {
+            Renga.Triangle triangle_obj = this._i.GetTriangle(triangle_index);
             return dg.IndexGroup.ByIndices(
-                ((Renga.Triangle)triangle_obj).V0,
-                ((Renga.Triangle)triangle_obj).V1,
-                 ((Renga.Triangle)triangle_obj).V2);
-        }
-        /// <summary>
-        /// Получение информации об индексах точек данной грани триангуляции
-        /// </summary>
-        /// <param name="triangle_obj"></param>
-        /// <returns></returns>
-        public static List<int> GetTriangleComponentsByTriangle(object triangle_obj)
-        {
-            return new List<int>(3) {
-                (int)((Renga.Triangle)triangle_obj).V0,
-                (int)((Renga.Triangle)triangle_obj).V1,
-                (int)((Renga.Triangle)triangle_obj).V2 };
+                triangle_obj.V0,triangle_obj.V1,triangle_obj.V2);
         }
         //Vertex
         /// <summary>
-        /// Получение отдельной точки
+        /// Получение отдельной точки как Dynamo Point
         /// </summary>
         /// <param name="vertex_index"></param>
         /// <returns></returns>
-        public object GetVertex(int vertex_index)
+        public dg.Point GetDynamoPointFromVertex (int vertex_index)
         {
-            if (vertex_index < 0 | vertex_index > this._i.VertexCount) return null;
-            else return this._i.GetVertex(vertex_index);
-        }
-        /// <summary>
-        /// Получение отдельной точки как Dynamo Point
-        /// </summary>
-        /// <param name="vertex_obj"></param>
-        /// <returns></returns>
-        public static dg.Point GetDynamoPointByVertex (object vertex_obj)
-        {
+            Renga.FloatPoint3D vertex_obj = this._i.GetVertex(vertex_index);
             return dg.Point.ByCoordinates(
                 ((Renga.FloatPoint3D)vertex_obj).X,
                 ((Renga.FloatPoint3D)vertex_obj).Y,

@@ -17,7 +17,7 @@ namespace DynRenga.DynObjects.Geometry
     /// </summary>
     public class Mesh
     {
-        private Renga.IMesh _i;
+        public Renga.IMesh _i;
         /// <summary>
         /// Инициализация класса через интерфейс Renga.IMesh
         /// </summary>

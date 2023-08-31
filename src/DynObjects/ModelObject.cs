@@ -88,27 +88,11 @@ namespace DynRenga.DynObjects
         {
             return new Dictionary<string, object>
             {
-                { "Properties_IPropertyContainer",this._i.GetProperties()},
-                { "Quantities_IQuantityContainer",this._i.GetQuantities()},
-                { "Parameters_IParameterContainer", this._i.GetParameters()}
+                { "Properties_IPropertyContainer", new DynProperties.Properties.PropertyContainer (this._i.GetProperties())},
+                { "Quantities_IQuantityContainer", new DynProperties.Quantities.QuantityContainer(this._i.GetQuantities())},
+                { "Parameters_IParameterContainer", new DynProperties.Parameters.ParameterContainer (this._i.GetParameters())}
             };
 
-        }
-        /// <summary>
-        /// Представление объекта модели как объекта уровня и получение информации о нем
-        /// </summary>
-        /// <returns></returns>
-        [dr.MultiReturn(new[] { "LevelId", "VerticalOffset", "PlacementElevation", "ElevationAboveLevel" })]
-        public Dictionary<string, object> GetLevelObjectInfo()
-        {
-            ILevelObject _i = this._i as ILevelObject;
-            return new Dictionary<string, object>
-            {
-                {"LevelId",_i.LevelId },
-                {"VerticalOffset",_i.VerticalOffset },
-                {"PlacementElevation",_i.PlacementElevation},
-                {"ElevationAboveLevel",_i.ElevationAboveLevel }
-            };
         }
 
     }

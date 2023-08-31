@@ -21,6 +21,14 @@ namespace DynRenga.DynDocument.Views
         {
             this._i = view_object as Renga.IModelView;
         }
+        /// <summary>
+        /// Приведение текущего вида к виду модели
+        /// </summary>
+        /// <param name="view_Model"></param>
+        public ModelView (View view_Model)
+        {
+            this._i = view_Model._i as Renga.IModelView;
+        }
         //functions
         /// <summary>
         /// Изменение видимости объектов.

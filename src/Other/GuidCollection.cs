@@ -16,7 +16,7 @@ namespace DynRenga.Other
     /// </summary>
     public class GuidCollection
     {
-        private Renga.IGuidCollection _i;
+        public Renga.IGuidCollection _i;
         /// <summary>
         /// Инициация интерфейса
         /// </summary>

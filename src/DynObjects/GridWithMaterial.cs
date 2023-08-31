@@ -9,6 +9,7 @@ using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
 using DynRenga.Other.Materials;
+using DynRenga.DynObjects.Geometry;
 
 namespace DynRenga.DynObjects
 {
@@ -17,7 +18,7 @@ namespace DynRenga.DynObjects
     /// </summary>
     public class GridWithMaterial
     {
-        private Renga.IGridWithMaterial _i;
+        public Renga.IGridWithMaterial _i;
         /// <summary>
         /// Инициализация класса из интерфейса Renga.IGridWithMaterial
         /// </summary>
@@ -30,7 +31,7 @@ namespace DynRenga.DynObjects
         /// Получение IGrid
         /// </summary>
         /// <returns></returns>
-        public object IGrid => this._i.Grid;
+        public Grid IGrid => new Grid(this._i.Grid);
         /// <summary>
         /// Получение материала свойственного IGrid
         /// </summary>

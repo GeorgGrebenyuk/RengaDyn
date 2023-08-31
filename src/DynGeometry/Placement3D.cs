@@ -87,7 +87,7 @@ namespace DynRenga.DynGeometry
         /// Получение Renga.ITransform3D из текущей СК в глобальную
         /// </summary>
         /// <returns></returns>
-        public object GetTransformFrom => this._i.GetTransformFrom();
+        public Transform3D GetTransformFrom => new Transform3D(this._i.GetTransformFrom());
         /// <summary>
         /// Получение Renga.ITransform3D из глобальной СК в текущую
         /// </summary>

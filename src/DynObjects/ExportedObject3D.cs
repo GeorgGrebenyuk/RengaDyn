@@ -17,7 +17,7 @@ namespace DynRenga.DynObjects
     /// </summary>
     public class ExportedObject3D
     {
-        private Renga.IExportedObject3D _i;
+        public Renga.IExportedObject3D _i;
         /// <summary>
         /// Инициализация класса через интерфейс Renga.IExportedObject3D
         /// </summary>

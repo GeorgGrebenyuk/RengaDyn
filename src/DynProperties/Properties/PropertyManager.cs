@@ -163,19 +163,19 @@ namespace DynRenga.DynProperties.Properties
         {
             return this._i.GetPropertyType(property_id);
         }
-        /// <summary>
-        /// Регистрация в Renga созданного Renga.PropertyDescription (как класса), 
-        /// см. конструктор с двумя аргументами для нода-класса PropertyDescription
-        /// </summary>
-        /// <param name="property_id"></param>
-        /// <param name="prop_description_new"></param>
-        public void RegisterProperty(Guid property_id, PropertyDescription prop_description_new)
-        {
-            this._i.RegisterProperty(property_id, prop_description_new.prop_descr_new);
-        }
+        ///// <summary>
+        ///// Регистрация в Renga созданного Renga.PropertyDescription (как класса), 
+        ///// см. конструктор с двумя аргументами для нода-класса PropertyDescription
+        ///// </summary>
+        ///// <param name="property_id"></param>
+        ///// <param name="prop_description_new"></param>
+        //public void RegisterProperty(Guid property_id, PropertyDescription prop_description_new)
+        //{
+        //    this._i.RegisterProperty(property_id, prop_description_new.prop_descr_new);
+        //}
 
         /// <summary>
-        /// Создание интерфейса Renga.IPropertyDescription по имени и значению свойства
+        /// Создание нового свойства () по имени и значению свойства
         /// </summary>
         /// <param name="name"></param>
         /// <param name="property_type"></param>

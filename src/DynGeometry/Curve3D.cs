@@ -140,9 +140,9 @@ namespace DynRenga.DynGeometry
         /// <param name="sense">Направление обрезаемой (новой) кривой. 1 = направление не менятся;
         /// -1 = направление меняется на противоположное</param>
         /// <returns></returns>
-        public object GetTrimmed(double T1, double T2, int sense)
+        public Curve3D GetTrimmed(double T1, double T2, int sense)
         {
-            return this._i.GetTrimmed(T1, T2, sense);
+            return new Curve3D(this._i.GetTrimmed(T1, T2, sense));
         }
         /// <summary>
         /// Вычисляет ближайшую проекцию точки на кривую 
@@ -164,9 +164,9 @@ namespace DynRenga.DynGeometry
         /// </summary>
         /// <param name="Transfrom">Класс для трехмерного координатного преобразования</param>
         /// <returns></returns>
-        public object GetTransformed(Transform3D Transfrom)
+        public Curve3D GetTransformed(Transform3D Transfrom)
         {
-            return this._i.GetTransformed(Transfrom._i);
+            return new Curve3D(this._i.GetTransformed(Transfrom._i));
         }
         /// <summary>
         /// Получение кривой, смещенной на данный вектор

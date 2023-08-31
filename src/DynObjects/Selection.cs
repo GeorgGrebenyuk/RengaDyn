@@ -8,7 +8,7 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
-
+using DynRenga.DynDocument;
 
 namespace DynRenga.DynObjects
 {
@@ -22,13 +22,13 @@ namespace DynRenga.DynObjects
         /// Получение списка объектов (интерфейс Renga.IModelObject) из модели проекта
         /// </summary>
         /// <returns>Список объектов (интерфейсов Renga.IModelObject)</returns>
-        public static List<object> GetModelObjects(DynDocument.Model renga_model)
+        public static List<ModelObject> GetModelObjects(DynDocument.Model renga_model)
         {
-            List<object> model_objects = new List<object>();
+            List<ModelObject> model_objects = new List<ModelObject>();
             Renga.IModelObjectCollection _i = renga_model._i.GetObjects();
             for (int i = 0; i < _i.Count; i++)
             {
-                model_objects.Add(_i.GetByIndex(i));
+                model_objects.Add(new ModelObject(_i.GetByIndex(i)));
             }
             return model_objects;
         }
@@ -37,27 +37,27 @@ namespace DynRenga.DynObjects
         /// </summary>
         /// <param name="model_object_id">int идентификатор объекта модели</param>
         /// <returns></returns>
-        public static object GetModelObjectById (DynDocument.Model renga_model, int model_object_id)
+        public static ModelObject GetModelObjectById (DynDocument.Model renga_model, int model_object_id)
         {
             Renga.IModelObjectCollection _i = renga_model._i.GetObjects();
-            return _i.GetById(model_object_id);
+            return new ModelObject(_i.GetById(model_object_id));
         }
         /// <summary>
         /// Выборка объектов модели (Renga::IModelObject) по типу (Guid)
         /// </summary>
         /// <param name="object_type">Guid типа объектов, см. нод GynObjects.General</param>
         /// <returns>Список объектов (интерфейсов Renga.IModelObject)</returns>
-        public static List<object> GetObjectsByType(DynDocument.Model renga_model, Guid object_type)
+        public static List<ModelObject> GetObjectsByType(DynDocument.Model renga_model, Guid object_type)
         {
             Renga.IModelObjectCollection _i = renga_model._i.GetObjects();
-            List<object> objects_need = new List<object>();
+            List<ModelObject> objects_need = new List<ModelObject>();
             foreach (int id in _i.GetIds())
             {
                 IModelObject currentObject = _i.GetById(id);
 
                 if (currentObject.ObjectType == object_type)
                 {
-                    objects_need.Add(currentObject);
+                    objects_need.Add(new ModelObject(currentObject));
                 }
             }
             return objects_need;
@@ -67,11 +67,11 @@ namespace DynRenga.DynObjects
         /// </summary>
         /// <param name="com_ILevel">Интерфейс Renga.Level</param>
         /// <returns></returns>
-        public static List<object> GetObjectsByLevel (DynDocument.Model renga_model, object com_ILevel)
+        public static List<ModelObject> GetObjectsByLevel (DynDocument.Model renga_model, Level com_ILevel)
         {
             Renga.IModelObjectCollection _i = renga_model._i.GetObjects();
-            IModelObject _IModelObject = com_ILevel as IModelObject;
-            List<object> objects_need = new List<object>();
+            IModelObject _IModelObject = com_ILevel._i as IModelObject;
+            List<ModelObject> objects_need = new List<ModelObject>();
             foreach (int id in _i.GetIds())
             {
                 IModelObject currentObject = _i.GetById(id);
@@ -79,7 +79,7 @@ namespace DynRenga.DynObjects
 
                 if (lvl_obj!= null && lvl_obj.LevelId == _IModelObject.Id)
                 {
-                    objects_need.Add(currentObject);
+                    objects_need.Add(new ModelObject(currentObject));
                 }
             }
             return objects_need;

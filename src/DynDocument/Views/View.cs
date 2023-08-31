@@ -8,8 +8,7 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
-
-
+using DynRenga.Other;
 
 namespace DynRenga.DynDocument.Views
 {
@@ -63,9 +62,5 @@ namespace DynRenga.DynDocument.Views
         /// Получение типа вида как строки
         /// </summary>
         public string TypeAsString => ViewTypes().Where(a => a.Value == Type).First().Key;
-        /// <summary>
-        /// Получение камеры (интерфейса Renga.ICamera3D) из 3д-представления вида. Только для Модели!
-        /// </summary>
-        public object Camera => (this._i as Renga.IView3DParams).Camera;
     }
 }

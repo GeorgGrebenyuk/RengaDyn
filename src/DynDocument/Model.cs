@@ -8,6 +8,7 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
+using DynRenga.DynObjects;
 
 namespace DynRenga.DynDocument
 {
@@ -26,13 +27,13 @@ namespace DynRenga.DynDocument
             this._i = renga_project._i.Model;
         }
         /// <summary>
-        /// Сведение к интерфейсу Renga.IModel объекта модели "Сборка"
+        /// Приведение Сборки к данному классу
         /// </summary>
         /// <param name="renga_model_object_assembly"></param>
-        internal Model(object renga_model_object_assembly)
+        public Model(ModelObject renga_model_object_assembly)
         {
-            if ((renga_model_object_assembly as Renga.IModelObject).ObjectType == ObjectTypes.AssemblyInstance)
-                this._i = (Renga.IModelObject)renga_model_object_assembly as Renga.IModel;
+            if (renga_model_object_assembly._i.ObjectType == ObjectTypes.AssemblyInstance)
+                this._i = renga_model_object_assembly._i as Renga.IModel;
             else this._i = null;
         }
         /// <summary>
