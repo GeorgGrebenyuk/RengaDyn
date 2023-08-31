@@ -179,8 +179,8 @@
       "Outputs": [
         {
           "Id": "2d65f68413734751ad57c246f922af99",
-          "Name": "var[]..[]",
-          "Description": "var[]..[]",
+          "Name": "PropertyDescription",
+          "Description": "PropertyDescription",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -188,7 +188,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Создание интерфейса Renga.IPropertyDescription по имени и значению свойства\n\nPropertyManager.CreatePropertyDescription (name: string, property_type: var): var[]..[]"
+      "Description": "Создание нового свойства () по имени и значению свойства\n\nPropertyManager.CreatePropertyDescription (name: string, property_type: var): PropertyDescription"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -454,36 +454,6 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DynRenga.DynProperties.Properties.PropertyDescription.PropertyDescription@var",
-      "Id": "eba68e213bd5432ea017bceee81f5b7f",
-      "Inputs": [
-        {
-          "Id": "46c5fa608fc94faa9637952d47b1bd34",
-          "Name": "PropertyDescription_obj",
-          "Description": "var",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "3e27155948e64ac781c276af4d3e27c9",
-          "Name": "PropertyDescription",
-          "Description": "PropertyDescription",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Инициализация интерфейса Renga.IPropertyDescription из com-объекта\n\nPropertyDescription.PropertyDescription (PropertyDescription_obj: var): PropertyDescription"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
       "FunctionSignature": "DynRenga.Other.RengaSimpleInterfaces.GuidByString@string",
       "Id": "648f683480a54fb89094ca7d4bb116b1",
       "Inputs": [
@@ -550,8 +520,8 @@
     },
     {
       "Start": "2d65f68413734751ad57c246f922af99",
-      "End": "46c5fa608fc94faa9637952d47b1bd34",
-      "Id": "9836c90cbe434db8b4642d3a6af423d0"
+      "End": "96352e79e0aa401ca7850667ea788c6e",
+      "Id": "6acb07c30df949d0951c533b948a8e1c"
     },
     {
       "Start": "f252b48503fc424da08b69ee7a3164b6",
@@ -597,11 +567,6 @@
       "Start": "8bcc427975fc47a98afb27c8f0b49338",
       "End": "bc2fa9b36be2497c93c71de9ec2b1338",
       "Id": "14033e63089a4835bfc4ce68f90cecbb"
-    },
-    {
-      "Start": "3e27155948e64ac781c276af4d3e27c9",
-      "End": "96352e79e0aa401ca7850667ea788c6e",
-      "Id": "82856e9738094866a0de921a090519e6"
     },
     {
       "Start": "2f544c2d1aaa40cf94d632ec391f0cfc",
@@ -708,8 +673,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1670.9640369522126,
-        "Y": 509.55614307404687
+        "X": 1675.2870487989171,
+        "Y": 523.6859510329864
       },
       {
         "ShowGeometry": true,
@@ -748,7 +713,7 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2519.8006585833432,
+        "X": 2500.1595563643532,
         "Y": 599.88706658441015
       },
       {
@@ -770,16 +735,6 @@
         "Excluded": false,
         "X": 3218.8316278776488,
         "Y": 671.86593787479478
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "PropertyDescription.PropertyDescription",
-        "Id": "eba68e213bd5432ea017bceee81f5b7f",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 2038.6626570267849,
-        "Y": 514.08710603911334
       },
       {
         "ShowGeometry": true,
@@ -836,17 +791,16 @@
         "Id": "be33b962dd024cd19e50ed025e6d9c6d",
         "Title": "1. Создание определения свойств",
         "Nodes": [
-          "c451964fa0de4cf190714c0087df9ae6",
-          "eba68e213bd5432ea017bceee81f5b7f"
+          "c451964fa0de4cf190714c0087df9ae6"
         ],
-        "Left": 1660.9640369522126,
-        "Top": 456.55614307404687,
-        "Width": 775.69862007457232,
-        "Height": 198.0,
+        "Left": 1665.2870487989171,
+        "Top": 427.6859510329864,
+        "Width": 368.0,
+        "Height": 241.0,
         "FontSize": 36.0,
-        "InitialTop": 509.55614307404687,
-        "InitialHeight": 149.53096296506646,
-        "TextblockHeight": 43.0,
+        "InitialTop": 523.6859510329864,
+        "InitialHeight": 145.0,
+        "TextblockHeight": 86.0,
         "Background": "#FFFF7BAC"
       },
       {
@@ -857,9 +811,9 @@
           "11f7531315a74aa193d287af30a11449",
           "a7ccf612e425443eb680ba435f194a76"
         ],
-        "Left": 2509.8006585833432,
+        "Left": 2490.1595563643532,
         "Top": 503.88706658441015,
-        "Width": 996.03096929430558,
+        "Width": 1015.6720715132956,
         "Height": 312.97887129038463,
         "FontSize": 36.0,
         "InitialTop": 599.88706658441015,
@@ -868,8 +822,8 @@
         "Background": "#FFFF7BAC"
       }
     ],
-    "X": -178.19745977215393,
-    "Y": 198.87755186229577,
-    "Zoom": 0.43766633266173993
+    "X": -1621.0396536899184,
+    "Y": -133.09268230469695,
+    "Zoom": 0.79435246305134766
   }
 }
