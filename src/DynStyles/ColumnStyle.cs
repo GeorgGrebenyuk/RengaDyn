@@ -8,6 +8,7 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
+using DynRenga.DynGeometry;
 
 namespace DynRenga.DynStyles
 {
@@ -39,6 +40,6 @@ namespace DynRenga.DynStyles
         /// Получение интерфейса Renga.IProfile
         /// </summary>
         /// <returns></returns>
-        public object Profile => this._i.Profile;
+        public Profile Profile => new Profile(this._i.Profile);
     }
 }

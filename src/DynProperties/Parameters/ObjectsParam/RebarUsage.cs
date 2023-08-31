@@ -28,6 +28,14 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam
             this._i = RebarUsage_object as Renga.IRebarUsage;
         }
         /// <summary>
+        /// Приведение объекта модели (арматуры) к данному классу
+        /// </summary>
+        /// <param name="ModelObject_RebarUsage"></param>
+        public RebarUsage(DynRenga.DynObjects.ModelObject ModelObject_RebarUsage)
+        {
+            this._i = ModelObject_RebarUsage._i as Renga.IRebarUsage;
+        }
+        /// <summary>
         /// Получение интерфейса Renga.IQuantityContainer (расчетных свойств)
         /// </summary>
         /// <returns></returns>

@@ -26,6 +26,14 @@ namespace DynRenga.DynObjects
             this._i = ModelObject_Room as Renga.IRoom;
         }
         /// <summary>
+        /// Приведение объекта модели к типу помещения
+        /// </summary>
+        /// <param name="modelObject_room"></param>
+        public Room (ModelObject modelObject_room)
+        {
+            this._i = modelObject_room._i as Renga.IRoom;
+        }
+        /// <summary>
         /// Получение строкового наименования комнаты
         /// </summary>
         public string RoomName => this._i.RoomName;
@@ -36,6 +44,6 @@ namespace DynRenga.DynObjects
         /// <summary>
         /// Получение маркера-идентификатора помещения (Point2D)
         /// </summary>
-        public dg.Point MarkerPosition => dg.Point.ByCoordinates( this._i.MarkerPosition.X, this._i.MarkerPosition.Y, 0);
+        public dg.Point MarkerPosition => dg.Point.ByCoordinates(this._i.MarkerPosition.X, this._i.MarkerPosition.Y);
     }
 }

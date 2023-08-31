@@ -24,7 +24,6 @@ namespace DynRenga.DynDocument
         /// из сущности проекта Renga (класса Project)
         /// </summary>
         /// <param name="renga_project"></param>
-        [dr.IsVisibleInDynamoLibrary(true)]
         public DataExporter(DynRenga.DynDocument.Project.Project renga_project)
         {
             this._i = renga_project._i.DataExporter;

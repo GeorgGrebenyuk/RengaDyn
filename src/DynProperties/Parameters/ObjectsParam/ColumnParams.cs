@@ -25,6 +25,14 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Column
         {
             this._i = ModelObject_column as Renga.IColumnParams;
         }
+        /// <summary>
+        /// Приведение объекта модели (колонны) к данному классу
+        /// </summary>
+        /// <param name="ModelObject_column"></param>
+        public ColumnParams(DynRenga.DynObjects.ModelObject ModelObject_column)
+        {
+            this._i = ModelObject_column._i as Renga.IColumnParams;
+        }
         //properties
         /// <summary>
         /// Получение высоты колонны

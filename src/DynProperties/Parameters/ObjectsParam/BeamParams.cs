@@ -8,7 +8,7 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
-
+using DynRenga.DynObjects;
 
 namespace DynRenga.DynProperties.Parameters.ObjectsParam.Beam
 {
@@ -25,6 +25,14 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Beam
         internal BeamParams(object ModelObject_Beam)
         {
             this._i = ModelObject_Beam  as Renga.IBeamParams;
+        }
+        /// <summary>
+        /// Приведение объекта модели (балки) к данному классу
+        /// </summary>
+        /// <param name="ModelObject_beam"></param>
+        public BeamParams(DynRenga.DynObjects.ModelObject ModelObject_beam)
+        {
+            this._i = ModelObject_beam._i as Renga.IBeamParams;
         }
         /// <summary>
         /// Получение базовой линии балки как объекта геометрии Curve3D (см. класс в DynGeometry)

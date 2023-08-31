@@ -19,22 +19,6 @@ namespace DynRenga.Other
     {
         private RengaSimpleInterfaces() { }
         /// <summary>
-        /// Получение цветового кода из объекта Renga.COlor
-        /// </summary>
-        /// <param name="renga_color_obj"></param>
-        /// <returns></returns>
-        [dr.MultiReturn(new[] { "Red", "Green", "Blue", "Alpha" })]
-        public static Dictionary<string,int> GetColorDataByRengaColor (object renga_color_obj)
-        {
-            return new Dictionary<string, int>()
-            {
-                {"Red",((Renga.Color)renga_color_obj).Red },
-                {"Green",((Renga.Color)renga_color_obj).Green },
-                {"Blue",((Renga.Color)renga_color_obj).Blue },
-                {"Alpha",((Renga.Color)renga_color_obj).Alpha }
-            };
-        }
-        /// <summary>
         /// Расшифровка значения типа Logical в Renga (встречается в свойствах)
         /// </summary>
         /// <param name="Logical_obj"></param>

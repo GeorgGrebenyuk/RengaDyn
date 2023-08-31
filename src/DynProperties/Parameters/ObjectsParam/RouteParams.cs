@@ -25,6 +25,14 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Route
         {
             this._i = ModelObject_Route as Renga.IRouteParams;
         }
+        /// <summary>
+        /// Приведение объекта модели (трассы) к данному классу
+        /// </summary>
+        /// <param name="ModelObject_route"></param>
+        public RouteParams(DynRenga.DynObjects.ModelObject ModelObject_route)
+        {
+            this._i = ModelObject_route._i as Renga.IRouteParams;
+        }
         //properties
         /// <summary>
         /// Получение идентификатора объекта модели, расположенном на начале трассы
@@ -64,12 +72,12 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Route
         /// </summary>
         /// <returns></returns>
         [dr.IsVisibleInDynamoLibrary(false)]
-        public List<object> GetJointsParams()
+        public List<RouteJointParams> GetJointsParams()
         {
-            List<object> joints = new List<object>();
+            List<RouteJointParams> joints = new List<RouteJointParams>();
             for (int i = 0; i < this._i.GetJointCount(); i++)
             {
-                joints.Add(this._i.GetJointParams(i));
+                joints.Add(new RouteJointParams(this._i.GetJointParams(i)));
             }
             return joints;
         }
@@ -88,33 +96,4 @@ namespace DynRenga.DynProperties.Parameters.ObjectsParam.Route
             return joints;
         }
     }
-    /// <summary>
-    /// Класс для работы с интерфейсом Renga.IObjectOnRoutePlacement
-    /// </summary>
-    public class ObjectOnRoutePlacement
-    {
-        public Renga.IObjectOnRoutePlacement _i;
-        /// <summary>
-        /// Инициализация класса из интерфейса Renga.IObjectOnRoutePlacement
-        /// </summary>
-        /// <param name="ObjectOnRoutePlacement_object"></param>
-        internal ObjectOnRoutePlacement(object ObjectOnRoutePlacement_object)
-        {
-            this._i = ObjectOnRoutePlacement_object as Renga.IObjectOnRoutePlacement;
-        }
-        /// <summary>
-        ///  Получение идентификатора объекта
-        /// </summary>
-        /// <returns></returns>
-        public int Id => this._i.Id;
-
-        /// <summary>
-        /// Получение параметра кривой базовой линии
-        /// </summary>
-        /// <returns></returns>
-        public double Parameter => this._i.parameter;
-    }
-
-    
-
 }

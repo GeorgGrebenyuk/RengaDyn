@@ -8,6 +8,7 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
+using DynRenga.Other;
 
 namespace DynRenga.DynStyles
 {
@@ -53,7 +54,7 @@ namespace DynRenga.DynStyles
         /// Получение цвета стиля, используйте нод Other.RengaSimpleInterfaces.GetColorDataByRengaColor
         /// </summary>
         /// <returns></returns>
-        public object Color => this._i.Color;
+        public Renga_Color Color => new Renga_Color(this._i.Color);
 
         private static Dictionary<string, object> SystemTypes()
         {

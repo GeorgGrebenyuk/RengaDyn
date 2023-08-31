@@ -24,33 +24,34 @@ namespace DynRenga.DynGeometry
     /// </summary>
     public class Region2D
     {
-        public Renga.IRegion2D reg2d;
+        public Renga.IRegion2D _i;
         /// <summary>
         /// Инициализация интерфейса Renga.IRegion2D из com-объекта
         /// </summary>
         /// <param name="Region2D_object"></param>
         internal Region2D(object Region2D_object)
         {
-            this.reg2d = Region2D_object as Renga.IRegion2D;
+            this._i = Region2D_object as Renga.IRegion2D;
         }
         //functions
         /// <summary>
         /// Получение внешнего контура профиля как интерфейса Renga.ICurve2D
         /// </summary>
         /// <returns></returns>
-        public object GetOuterContour => this.reg2d.GetOuterContour();
+        public object GetOuterContour => this._i.GetOuterContour();
         /// <summary>
         /// Получение набора контуров профиля как списка интерфейсов Renga.ICurve2D
         /// </summary>
         /// <returns></returns>
-        public List<object> GetContours()
+        public List<Curve2D> GetContours()
         {
-            List<object> cs = new List<object>();
-            for (int i = 0; i < this.reg2d.GetContourCount(); i++)
+            List<Curve2D> cs = new List<Curve2D>();
+            for (int i = 0; i < this._i.GetContourCount(); i++)
             {
-                cs.Add(this.reg2d.GetContour(i));
+                cs.Add(new Curve2D(this._i.GetContour(i)));
             }
             return cs;
         }
     }
+    
 }

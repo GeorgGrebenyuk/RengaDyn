@@ -10,6 +10,7 @@ using dg = Autodesk.DesignScript.Geometry;
 using Renga;
 using DynRenga.DynProperties.Quantities;
 using DynRenga.DynGeometry;
+using DynRenga.DynProperties.Parameters.ObjectsParam;
 
 namespace DynRenga.DynStyles
 {
@@ -69,19 +70,5 @@ namespace DynRenga.DynStyles
             return rebars;
         }
 
-    }
-    /// <summary>
-    /// Represents a usage of rebar in the reinforcement unit or reinforced object.
-    /// </summary>
-    public class RebarUsage
-    {
-        public Renga.IRebarUsage _i;
-        internal RebarUsage(object RebarUsage_object)
-        {
-            this._i = RebarUsage_object as Renga.IRebarUsage;
-        }
-        public int StyleId => this._i.StyleId;
-        public QuantityContainer GetQuantitoes() => new QuantityContainer(this._i.GetQuantities());
-        public Curve3D GetRebarGeometry() => new Curve3D(this._i.GetRebarGeometry());
     }
 }

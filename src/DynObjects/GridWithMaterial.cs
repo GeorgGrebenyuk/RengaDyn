@@ -8,7 +8,7 @@ using System.Text;
 using dr = Autodesk.DesignScript.Runtime;
 using dg = Autodesk.DesignScript.Geometry;
 using Renga;
-using DynRenga.Other.Material;
+using DynRenga.Other.Materials;
 
 namespace DynRenga.DynObjects
 {

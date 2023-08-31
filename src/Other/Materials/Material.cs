@@ -10,7 +10,7 @@ using dg = Autodesk.DesignScript.Geometry;
 using Renga;
 
 
-namespace DynRenga.Other.Material
+namespace DynRenga.Other.Materials
 {
     /// <summary>
     /// Класс для работы с объектом Renga.Material. Предсставляет однослойный материал
@@ -72,105 +72,10 @@ namespace DynRenga.Other.Material
         /// Цвет материала. Ддя получения кода использовать нод RengaSimpleInterfaces.GetColorDataByRengaColor
         /// </summary>
         /// <returns></returns>
-        public object Color => this._i.Color;
+        public Renga_Color Color => new Renga_Color(this._i.Color);
     }
-    /// <summary>
-    /// Класс для работы с материалом, свойственным Renga.IGrid
-    /// </summary>
-    public class GridMaterial
-    {
-        public Renga.IGridMaterial gr_mat;
-        /// <summary>
-        /// Инициация класса из интерфейса Renga.IGridMaterial
-        /// </summary>
-        /// <param name="GridMaterial_obj"></param>
-        internal GridMaterial(object GridMaterial_obj)
-        {
-            this.gr_mat = GridMaterial_obj as Renga.IGridMaterial;
-        }
-        public int Id => this.gr_mat.Id;
-        public object Color => this.gr_mat.Color;
-    }
-    /// <summary>
-    /// Класс для работы с многослойной конструкцией (материалами слоев сложных объектов - Стен, Перекрытий, Крыш)
-    /// </summary>
-    public class LayeredMaterial
-    {
-        public Renga.ILayeredMaterial lay_mat;
-        /// <summary>
-        /// Инициация интерфейса Renga.ILayeredMaterial
-        /// 
-        /// </summary>
-        /// <param name="LayeredMaterial_obj"></param>
-        internal LayeredMaterial(object LayeredMaterial_obj)
-        {
-            this.lay_mat = LayeredMaterial_obj as Renga.ILayeredMaterial;
-        }
-        /// <summary>
-        /// Наименование многослойного материала
-        /// </summary>
-        /// <returns></returns>
-        public string Name => this.lay_mat.Name;
-        /// <summary>
-        /// Получение интерфейса Renga.IMaterialLayerCollection, то есть коллекции слоев материалов
-        /// </summary>
-        /// <returns></returns>
-        public object Layers => this.lay_mat.Layers;
-        /// <summary>
-        /// Получение идентификатора базового слоя
-        /// </summary>
-        /// <returns></returns>
-        public int BaseLayerIndex => this.lay_mat.BaseLayerIndex;
-        /// <summary>
-        /// Получение идентификатора для класса (интерейса Renga.ILayeredMaterial)
-        /// </summary>
-        /// <returns></returns>
-        public int Id => this.lay_mat.Id;
-        /// <summary>
-        /// Получение группы Renga.MaterialLayer из данного многослойного материала
-        /// </summary>
-        /// <returns></returns>
-        public List<object> GetLayers()
-        {
-            List<object> MaterialLayers = new List<object>();
-            Renga.IMaterialLayerCollection collect = this.lay_mat.Layers;
-            for (int i = 0; i < collect.Count; i++)
-            {
-                MaterialLayers.Add(collect.Get(i));
-            }
-            return MaterialLayers;
-        }
-    }
-    /// <summary>
-    /// Класс для работы с материалом слоя (многослойной конструкции)
-    /// </summary>
-    public class MaterialLayer
-    {
-        public Renga.IMaterialLayer lay_mat;
-        /// <summary>
-        /// ИНициация интерфейса Renga.IMaterialLayer
-        /// </summary>
-        /// <param name="MaterialLayer_obj"></param>
-        internal MaterialLayer(object MaterialLayer_obj)
-        {
-            this.lay_mat = MaterialLayer_obj as Renga.IMaterialLayer;
-
-        }
-        /// <summary>
-        /// Получение идентификатора для материала Renga.IMaterial
-        /// </summary>
-        /// <returns></returns>
-        public int Id => this.lay_mat.Id;
-        /// <summary>
-        /// Получение толщины материала
-        /// </summary>
-        /// <returns></returns>
-        public double Thickness => this.lay_mat.Thickness;
-        /// <summary>
-        /// Получает материал (Renga.IMaterial) свойственный данному Renga.IMaterialLayer
-        /// </summary>
-        /// <returns></returns>
-        public Material Material => new Material(this.lay_mat.Material);
-    }
+    
+    
+    
 
 }
