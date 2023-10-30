@@ -23,9 +23,19 @@ namespace DynRenga.DynDocument.Project
         /// Инициация класса из com-объекта Entity
         /// </summary>
         /// <param name="Entity_object"></param>
-        internal Entity(object Entity_object)
+        internal Entity(object Entity_object, int some_value = 0)
         {
             this._i = Entity_object as Renga.IEntity;
+        }
+        /// <summary>
+        /// Приведение любого объекта Renga к Entity
+        /// </summary>
+        /// <param name="AnyRengaObject"></param>
+        /// <exception cref="Exception">Invalid casting</exception>
+        public Entity (dynamic AnyRengaObject)
+        {
+            this._i = AnyRengaObject as Renga.IEntity;
+            if (this._i == null) throw new Exception("Invalid casting");
         }
         /// <summary>
         /// Возвращает свойства связанные с объектом, если их возможно получить
